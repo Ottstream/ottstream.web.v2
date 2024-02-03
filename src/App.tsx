@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import '@/App.css';
 import reactLogo from 'Assets/react.svg';
 import viteLogo from 'Assets/vite.svg';
 
 function App() {
   const [count, setCount] = useState(0);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -18,6 +21,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <p>{t('auth')}</p>
       <div className="card">
         <button onClick={() => setCount(count => count + 1)}>
           count i s {count}
