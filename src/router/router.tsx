@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         path: RouterPaths.Dashboard,
         element: importPages.Dashboard,
       },
+      {
+        path: RouterPaths.Users,
+        element: importPages.Users,
+      },
     ],
   },
   {

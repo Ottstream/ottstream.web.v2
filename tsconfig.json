@@ -3,7 +3,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "commonjs",
+    "module": "es2020",
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -24,13 +24,8 @@
 
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "Assets/*": [
-        "src/assets/*"
-      ]
-    }
-
+      "@/*": ["src/*"],
+      "Assets/*": ["src/assets/*"],
+    },
   },
 }
