@@ -38,6 +38,8 @@ export const WrapperOTS = styled.div`
         #0c99a8 45%
       )
       top right / 50% 50% no-repeat;
+      background-repeat: no-repeat;
+    background-size: contain;
 `;
 
 export const InfoBoxOTS = styled.div`
