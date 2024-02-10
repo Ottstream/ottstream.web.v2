@@ -12,7 +12,7 @@ import {
 
 import { BaseQueryExtraOptions, FetchArgs } from './types';
 
-const baseUrl = 'base.com';
+const baseUrl = 'https://panelapidev.ottstream.live/v1/auth';
 export const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: async headers => {
