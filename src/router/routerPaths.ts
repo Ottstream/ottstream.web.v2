@@ -1,6 +1,7 @@
 enum RouterPaths {
   Home = '/',
   Login = '/login',
+  Registration = '/registration',
   CreateNewPassword = '/create-new-password',
   ResetPassword = '/reset-password',
   NotFound = '*',

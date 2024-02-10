@@ -31,6 +31,10 @@ const router = createBrowserRouter([
         path: RouterPaths.Login,
         element: importPages.Login,
       },
+      {
+        path: RouterPaths.Registration,
+        element: importPages.Registration,
+      },
     ],
   },
 
