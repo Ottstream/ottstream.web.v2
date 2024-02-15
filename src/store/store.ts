@@ -1,9 +1,12 @@
 import { baseApi } from '@/api/baseQuery';
+
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import modalReducer from '@/components/Modal/services/modalSlice';
 
 export const store = configureStore({
   reducer: {
+    modal: modalReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: getDefaultMiddleware =>

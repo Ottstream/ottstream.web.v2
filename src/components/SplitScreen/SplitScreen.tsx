@@ -1,7 +1,10 @@
-import { SplitScreenProps } from '.';
+import React from 'react';
+
 import Container from './SplitScreen.styles';
 
-export const SplitScreen = (props: SplitScreenProps) => {
+import { SplitScreenProps } from '.';
+
+const SplitScreen = (props: SplitScreenProps) => {
   const { children, leftWeight, rightWeight } = props;
   const [left, right] = children;
 
@@ -12,3 +15,5 @@ export const SplitScreen = (props: SplitScreenProps) => {
     </Container>
   );
 };
+
+export default SplitScreen;
