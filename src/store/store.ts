@@ -2,7 +2,7 @@ import { baseApi } from '@/api/baseQuery';
 
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import modalReducer from '@/components/Modal/services/modalSlice';
+import modalReducer from '../components/Modal/services/modalSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +15,7 @@ export const store = configureStore({
     ),
   devTools: process.env.NODE_ENV !== 'production',
 });
+
 setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
