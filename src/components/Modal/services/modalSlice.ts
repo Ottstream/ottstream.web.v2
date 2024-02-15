@@ -1,8 +1,9 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '../../../store/store';
+import { RootState } from '@/store/store';
 
-import { createDispatchers } from '../../../utils/dispatcher';
+import { createDispatchers } from '@/utils/dispatcher';
+
 import { IModalState } from '../types/types';
 
 export const initialState: IModalState = {
@@ -48,9 +49,6 @@ export const modalSlice = createSlice({
 export const { openModal } = modalSlice.actions;
 
 export const modalDispatcher = createDispatchers(modalSlice.actions);
-export const modalSelector = createSelector(
-  [(state: RootState) => state.modal],
-  modal => modal,
-);
+export const modalSelector = (state: RootState) => state.modal;
 
 export default modalSlice.reducer;
