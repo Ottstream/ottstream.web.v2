@@ -5,6 +5,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "es2020",
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -28,4 +30,5 @@
       "Assets/*": ["src/assets/*"],
     },
   },
+  "include": ["src/components", "src/custom.d.ts"]
 }

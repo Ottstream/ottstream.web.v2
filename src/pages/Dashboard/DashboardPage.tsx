@@ -1,5 +1,9 @@
 import React from 'react';
+import Sidebar from '../Layouts/Sidebar';
 
-export default function DashboardPage() {
-  return <div>DashboardPage</div>;
+const DashboardPage = () => {
+  return (
+    <Sidebar/>
+  );
 }
+export default DashboardPage;
