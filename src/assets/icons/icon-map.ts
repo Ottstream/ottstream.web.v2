@@ -10,10 +10,9 @@ import Equipments from "./Equipments.svg?react";
 import Shippings from "./Shippings.svg?react";
 import Flussonics from "./Flussonics.svg?react";
 import Help from "./Help.svg?react";
+import LogoSM from "./logo-small.svg?react";
 
-interface Icons {
-    [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
+type Icons = Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
 
 const icons: Icons = {
     review: Review,
@@ -27,8 +26,8 @@ const icons: Icons = {
     equipments: Equipments,
     shippings: Shippings,
     flussonics: Flussonics,
-    help: Help
-
+    help: Help,
+    logoSM: LogoSM
 };
 
 export default icons;

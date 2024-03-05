@@ -1,9 +1,7 @@
-import React from 'react';
-import Sidebar from '../Layouts/Sidebar';
 
 const DashboardPage = () => {
   return (
-    <Sidebar/>
+    <div>Dashboard Page</div>
   );
 }
 export default DashboardPage;

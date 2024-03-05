@@ -28,7 +28,13 @@
     "paths": {
       "@/*": ["src/*"],
       "Assets/*": ["src/assets/*"],
+      "Pages/*": ["src/pages/*"],
     },
   },
-  "include": ["src/components", "src/custom.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ]
 }
