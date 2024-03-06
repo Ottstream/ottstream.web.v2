@@ -1,7 +1,7 @@
 import {
   InfoBoxOTS,
   WrapperOTS,
-} from '@/pages/Auth/WelcomeOTS/WelcomeOTS.styles';
+} from 'Pages/Auth/WelcomeOTS/WelcomeOTS.styles';
 import welcomeLogo from 'Assets/images/welcomeOST.png';
 
 const WelcomeOTS = () => {

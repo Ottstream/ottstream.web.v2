@@ -13,13 +13,17 @@ import { store } from './store/store';
 import { GlobalStyle } from './themes/GlobalStyle';
 
 import Modal from './components/Modal/Modal';
+import { ThemeProvider } from 'styled-components';
+import theme from './themes/theme';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-      <Modal />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+        <Modal />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
 );

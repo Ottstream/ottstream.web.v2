@@ -28,6 +28,7 @@ module.exports = {
         map: [
           ['@', './src'],
           ['Assets', './src/assets'],
+          ['Pages', './src/pages'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       },
