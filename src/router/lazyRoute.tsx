@@ -28,8 +28,18 @@ const pageList = [
   'Registration',
   'RegistrationCompanyInformation',
   'ResetPassword',
-
   'UserList',
+  'Review',
+  'Providers',
+  'Clients',
+  'Transactions',
+  'Packages',
+  'Equipments',
+  'Discounts',
+  'Appointments',
+  'Shippings',
+  'Flussonics',
+  'Help',
 ];
 const modules = import.meta.glob('../pages/**/*.tsx');
 

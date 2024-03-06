@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 		width: 100%;
 		font-size: 100%;
 		font-family: 'Montserrat', sans-serif;
+		overflow: hidden
 	}
 	button,
 	input,

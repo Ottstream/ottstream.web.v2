@@ -10,3 +10,4 @@ export default function UsersPage() {
     </div>
   );
 }
+export default UsersPage;
