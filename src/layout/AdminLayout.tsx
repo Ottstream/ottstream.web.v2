@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import Icon from '@/components/Icon'
 import { FlexContainer, SiderContainer, LogoContainer, HeaderContainer, Trigger, LogoName } from './Layout.styles';
+import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -53,6 +54,7 @@ const items: MenuItem[] = [
 export default function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate()
+  const theme = useTheme()
 
   const CustomTrigger = () => (
     <Trigger>
@@ -66,11 +68,13 @@ export default function AdminLayout() {
   const onClick: MenuProps['onClick'] = (e) => {
     navigate(e.key)
   };
+
   return (
     <Layout>
       <SiderContainer 
+        // {...theme}
         width={256}
-        theme='light'
+        theme={theme}
         trigger={<CustomTrigger />} 
         collapsible 
         collapsed={collapsed} 

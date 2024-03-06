@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from '../themes/theme'
 import Sider from 'antd/es/layout/Sider';
 import { Header } from 'antd/es/layout/layout';
 
@@ -12,10 +11,10 @@ export const FlexContainer = styled.div`
 
 export const SiderContainer =  styled(Sider)`
     &.ant-layout-sider {
-        background-color: ${theme.colorPalette.dark3};
+        background-color: ${props => props.theme.colorPalette.dark3};
         box-shadow: 0px 4px 6px 0px rgba(10, 60, 104, 0.25);
         .ant-menu {
-            background-color: ${theme.colorPalette.dark3};
+            background-color: ${props => props.theme.colorPalette.dark3};
         }
         .ant-menu-root {
             position: relative;
@@ -48,7 +47,7 @@ export const SiderContainer =  styled(Sider)`
             margin: 0;
             border-radius: 0;
             border-left: 3px solid transparent;
-            color: ${theme.colorPalette.subtle};
+            color: ${props => props.theme.colorPalette.subtle};
           
         }
         .ant-menu-submenu, .ant-menu-submenu-title {
@@ -56,7 +55,7 @@ export const SiderContainer =  styled(Sider)`
             width: 100%;
             border-radius: 0;
             border-left: 3px solid transparent;
-            color: ${theme.colorPalette.subtle}
+            color: ${props => props.theme.colorPalette.subtle}
         }
         .ant-menu-submenu-title {
             height: 46px;
@@ -65,8 +64,8 @@ export const SiderContainer =  styled(Sider)`
         }
         .ant-menu-item-selected {
             border-radius: 0;
-            border-left: 3px solid ${theme.colorPalette.secondaryDark};
-            background: ${theme.colorPalette.light1};
+            border-left: 3px solid ${props => props.theme.colorPalette.secondaryDark};
+            background: ${props => props.theme.colorPalette.light1};
         }
     }
 `
@@ -76,7 +75,7 @@ export const LogoContainer = styled.button`
     display: flex;
     padding-left: 24px;
     align-items: center;
-    background-color: ${theme.colorPalette.dark3};
+    background-color: ${props => props.theme.colorPalette.dark3};
 `
 export const LogoName = styled.div`
     padding-left: 8px;
@@ -92,10 +91,10 @@ export const LogoName = styled.div`
 
 export const HeaderContainer = styled(Header)`
     padding: 0;
-    background-color: ${theme.colorPalette.dark3};
+    background-color: ${props => props.theme.colorPalette.dark3};
 `
 
 export const Trigger = styled.div`
-    background-color: ${theme.colorPalette.light1};
-    color: ${theme.colorPalette.subtle};
+    background-color: ${props => props.theme.colorPalette.light1};
+    color: ${props => props.theme.colorPalette.subtle};
 `
