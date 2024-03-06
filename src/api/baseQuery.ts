@@ -52,5 +52,61 @@ export const baseQueryWithReauth: BaseQueryFn = async (
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithReauth,
-  endpoints: () => ({}),
+  endpoints: builder => ({
+    fetchSignIn: builder.mutation({
+      query: ({ email, password }) => ({
+        url: '/login',
+        method: 'POST',
+
+        body: {
+          email,
+          password,
+        },
+      }),
+    }),
+    fetchSignUp: builder.mutation({
+      query: ({
+        firstname,
+        lastname,
+        email,
+        password,
+        channel,
+        client,
+        company,
+        description,
+        companyEmail,
+        website,
+        phone,
+      }) => ({
+        url: '/register-user-provider',
+        method: 'POST',
+        body: {
+          firstname,
+          lastname,
+          email,
+          password,
+          channelAmount: channel,
+          clientAmount: client,
+          companyName: company,
+          description,
+          companyEmail,
+          website,
+          phone,
+        },
+      }),
+    }),
+    fetchRessetPassword: builder.mutation({
+      query: ({ email }) => ({
+        url: '/forgot-password',
+        method: 'POST',
+        body: { email },
+      }),
+    }),
+  }),
 });
+
+export const {
+  useFetchSignInMutation,
+  useFetchSignUpMutation,
+  useFetchRessetPasswordMutation,
+} = baseApi;
