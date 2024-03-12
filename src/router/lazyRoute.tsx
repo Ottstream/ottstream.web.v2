@@ -21,7 +21,7 @@ import { ElementType, lazy, Suspense } from 'react';
  * for your project structure.
  */
 
-const pageList = ['Login', 'Dashboard', 'Users', 'Registration', 'Chat'];
+const pageList = ['Login', 'Dashboard', 'Users', 'Registration', 'Chat', 'Review', 'Providers', 'Clients', 'Transactions', 'Packages', 'Equipments', 'Discounts', 'Appointments', 'Shippings', 'Flussonics', 'Help'];
 // const modules = import.meta.glob('../pages/**/*.tsx');
 const modules = import.meta.glob('../pages/**/!(*.styles).tsx');
 // const modules = import.meta.glob('../pages/**/!(*.styles|Components)/**/*.tsx');

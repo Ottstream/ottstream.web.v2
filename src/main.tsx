@@ -15,13 +15,17 @@ import router from './router/router';
 import { Provider } from 'react-redux';
 
 import { store } from './store/store';
+import { ThemeProvider } from 'styled-components';
+import theme from './themes/theme';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-      <Modal />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+        <Modal />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
 );

@@ -5,6 +5,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "es2020",
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -25,8 +27,14 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "Assets/*": ["src/assets/*"]
+      "Assets/*": ["src/assets/*"],
+      "Pages/*": ["src/pages/*"],
     },
-    "allowSyntheticDefaultImports": true
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ]
 }
