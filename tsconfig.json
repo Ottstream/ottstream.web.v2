@@ -25,7 +25,8 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "Assets/*": ["src/assets/*"],
+      "Assets/*": ["src/assets/*"]
     },
+    "allowSyntheticDefaultImports": true
   },
 }
