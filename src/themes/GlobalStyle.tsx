@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle`
 
 /* reset default css styles */
@@ -202,6 +201,7 @@ export const GlobalStyle = createGlobalStyle`
 
   #root{
 		width: 100%;
+    height: 100%;
     box-sizing: border-box;
     /* min-height: 100%; */
   }

@@ -71,3 +71,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/*for tabs*/
+.ant-tabs-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.ant-tabs-tab {
+  width: 50%;
+  justify-content: center;
+}
+/*.ant-tabs-tab {*/
+/*  color: #012F57*/
+/*}*/
+
+/*.ant-tabs-tab-active{*/
+/*}*/
+
+/*.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{*/
+/*color: #01B2B8*/
+/*}*/
+.ant-tabs-ink-bar  {
+  border-bottom: 2px solid #01B2B8;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active  .ant-tabs-tab-btn{
+  color:#01B2B8
+}

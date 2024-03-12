@@ -27,6 +27,7 @@ enum RouterPaths {
   Fees = '/fees',
   Counterparties = '/counterparties',
   CommissionRules = '/commission-rules',
+  Chat = '/chat',
 }
 
 export default RouterPaths;

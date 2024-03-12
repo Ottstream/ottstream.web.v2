@@ -21,8 +21,10 @@ import { ElementType, lazy, Suspense } from 'react';
  * for your project structure.
  */
 
-const pageList = ['Login', 'Dashboard', 'Users', 'Registration'];
-const modules = import.meta.glob('../pages/**/*.tsx');
+const pageList = ['Login', 'Dashboard', 'Users', 'Registration', 'Chat'];
+// const modules = import.meta.glob('../pages/**/*.tsx');
+const modules = import.meta.glob('../pages/**/!(*.styles).tsx');
+// const modules = import.meta.glob('../pages/**/!(*.styles|Components)/**/*.tsx');
 
 type Props = {
   loading?: ElementType;
@@ -46,10 +48,13 @@ function mapPagesToModules(
   pages: string[],
   moduleList: Record<string, () => Promise<unknown>>,
 ) {
+  console.log('modules', modules);
   return pages.reduce((acc, page) => {
-    const modulePath = Object.keys(modules).find(path =>
-      path.includes(`/${page}/${page}`),
-    );
+    console.log('page', page);
+    const modulePath = Object.keys(modules).find(path => {
+      console.log('PATH', path, '--------', path.includes(`/${page}/${page}`));
+      return path.includes(`/${page}/${page}`);
+    });
     if (modulePath) {
       acc[page] = lazyRoute({
         factory: moduleList[modulePath] as () => JSX.Element['type'],

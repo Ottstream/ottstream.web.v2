@@ -22,6 +22,10 @@ const router = createBrowserRouter([
         path: RouterPaths.Users,
         element: importPages.Users,
       },
+      {
+        path: RouterPaths.Chat,
+        element: importPages.Chat,
+      },
     ],
   },
   {
