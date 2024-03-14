@@ -3,7 +3,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 
-import ConversationList from '@/pages/Chat/Components/ConversationList.tsx';
+import ConversationList from '@/pages/Chat/Components/ConversationList';
 
 const TabBarWrapper = () => {
   const onChange = (key: string) => {
@@ -30,23 +30,9 @@ const TabBarWrapper = () => {
         onChange={onChange}
         centered={true}
         type={'line'}
-        // size={'large'}
-        // indicator={{ size: 200, align: 'center' }}
-        // tabBarGutter={100}
         animated={{ inkBar: true, tabPane: true }}
-        style={{
-          backgroundColor: '#d5d5d5',
-          // color: '#01B2B8',
-          // color: '#01B2B8',
-        }}
-        tabBarStyle={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          // backgroundColor: '#9daa5d',
-          // border: '1px solid blue',
-          // color: '#01B2B8',
-          // borderBottom: '1px solid darkmagenta',
-        }}
+        style={{}}
+        tabBarStyle={{}}
       />
     </>
   );

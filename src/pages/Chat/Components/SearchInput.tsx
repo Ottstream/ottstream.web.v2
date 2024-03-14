@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Select, SelectProps } from 'antd';
 import jsonp from 'fetch-jsonp';
 import qs from 'qs';
+import styled from 'styled-components';
 
 let timeout: ReturnType<typeof setTimeout> | null;
 let currentValue: string;
 
-const fetch = (value: string, callback: Function) => {
+const fetch = (value: string, callback: (data: any) => void) => {
   if (timeout) {
     clearTimeout(timeout);
     timeout = null;
@@ -39,37 +40,45 @@ const fetch = (value: string, callback: Function) => {
   }
 };
 
-const SearchSection = (props: any) => {
+interface SearchInputProps {
+  placeholder?: string;
+  onSearch?: (value: string, callback: (data: any) => void) => void;
+}
+const StyledSelect = styled(Select)`
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 10px;
+`;
+
+const SearchInput = ({ placeholder, onSearch = fetch }: SearchInputProps) => {
   const [data, setData] = useState<SelectProps['options']>([]);
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string | unknown>();
 
   const handleSearch = (newValue: string) => {
-    fetch(newValue, setData);
+    onSearch(newValue, setData);
   };
 
-  const handleChange = (newValue: string) => {
+  const handleChange = (newValue: string | unknown) => {
     setValue(newValue);
   };
   return (
-    <>
-      <Select
-        showSearch
-        value={value}
-        placeholder={props.placeholder}
-        style={props.style}
-        defaultActiveFirstOption={false}
-        suffixIcon={null}
-        filterOption={false}
-        onSearch={handleSearch}
-        onChange={handleChange}
-        notFoundContent={null}
-        options={(data || []).map(d => ({
-          value: d.value,
-          label: d.text,
-        }))}
-      />
-    </>
+    <StyledSelect
+      showSearch
+      value={value}
+      placeholder={placeholder}
+      style={{ width: '100%' }}
+      defaultActiveFirstOption={false}
+      suffixIcon={null}
+      filterOption={false}
+      onSearch={handleSearch}
+      onChange={handleChange}
+      notFoundContent={null}
+      options={(data || []).map(d => ({
+        value: d.value,
+        label: d.text,
+      }))}
+    />
   );
 };
 
-export default SearchSection;
+export default SearchInput;

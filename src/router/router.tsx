@@ -36,35 +36,35 @@ const router = createBrowserRouter([
       },
       {
         path: RouterPaths.Transactions,
-        element: importPages.Transactions
+        element: importPages.Transactions,
       },
       {
         path: RouterPaths.Packages,
-        element: importPages.Packages
+        element: importPages.Packages,
       },
       {
         path: RouterPaths.Equipments,
-        element: importPages.Equipments
+        element: importPages.Equipments,
       },
       {
         path: RouterPaths.Discounts,
-        element: importPages.Discounts
+        element: importPages.Discounts,
       },
       {
         path: RouterPaths.Appointments,
-        element: importPages.Appointments
+        element: importPages.Appointments,
       },
       {
         path: RouterPaths.Shippings,
-        element: importPages.Shippings
+        element: importPages.Shippings,
       },
       {
         path: RouterPaths.Flussonics,
-        element: importPages.Flussonics
+        element: importPages.Flussonics,
       },
       {
         path: RouterPaths.Help,
-        element: importPages.Help
+        element: importPages.Help,
       },
       {
         path: RouterPaths.Chat,
