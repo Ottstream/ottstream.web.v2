@@ -5,10 +5,17 @@ import { Button, Layout, Menu } from 'antd';
 import {
   MenuFoldOutlined,
   LeftOutlined,
-  RightOutlined
+  RightOutlined,
 } from '@ant-design/icons';
-import Icon from '@/components/Icon'
-import { FlexContainer, SiderContainer, LogoContainer, HeaderContainer, Trigger, LogoName } from './Layout.styles';
+import Icon from '@/components/Icon';
+import {
+  FlexContainer,
+  SiderContainer,
+  LogoContainer,
+  HeaderContainer,
+  Trigger,
+  LogoName,
+} from './Layout.styles';
 import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -27,65 +34,66 @@ function getItem(
   } as MenuItem;
 }
 const items: MenuItem[] = [
-  getItem('Review', 'review', <Icon name='review'/>),
-  getItem('Providers/Resellers', 'providers', <Icon name='providers'/>),
-  getItem('Users', 'sub1', <Icon name='users'/>, [
+  getItem('Review', 'review', <Icon name="review" />),
+  getItem('Providers/Resellers', 'providers', <Icon name="providers" />),
+  getItem('Users', 'sub1', <Icon name="users" />, [
     getItem('List', 'users'),
     getItem('Activity', 'users-activity'),
   ]),
-  getItem('Clients', 'sub2', <Icon name='clients'/>, [
+  getItem('Clients', 'sub2', <Icon name="clients" />, [
     getItem('List', 'clients'),
     getItem('Activity', 'clients-activity'),
     getItem('Bills', 'clients-bills'),
   ]),
-  getItem('Transactions', 'transactions', <Icon name='transactions'/>),
-  getItem('Packages', 'packages', <Icon name='packages'/>),
-  getItem('Equipments', 'sub3', <Icon name='equipments'/>,  [
+  getItem('Transactions', 'transactions', <Icon name="transactions" />),
+  getItem('Packages', 'packages', <Icon name="packages" />),
+  getItem('Equipments', 'sub3', <Icon name="equipments" />, [
     getItem('Types', 'equipments'),
     getItem('List', '11'),
   ]),
-  getItem('Discounts', 'discounts', <Icon name='discounts'/>),
-  getItem('Appointments', 'appointments', <Icon name='appointments'/>),
-  getItem('Shippings', 'shippings', <Icon name='shippings'/>),
-  getItem('Flussonics Hosts', 'flussonics', <Icon name='flussonics'/>),
-  getItem('Help', 'help', <Icon name='help'/>)
+  getItem('Discounts', 'discounts', <Icon name="discounts" />),
+  getItem('Appointments', 'appointments', <Icon name="appointments" />),
+  getItem('Shippings', 'shippings', <Icon name="shippings" />),
+  getItem('Flussonics Hosts', 'flussonics', <Icon name="flussonics" />),
+  getItem('Help', 'help', <Icon name="help" />),
 ];
 
 export default function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate()
-  const theme = useTheme()
+  const navigate = useNavigate();
+  const theme = useTheme();
 
   const CustomTrigger = () => (
     <Trigger>
-      {collapsed 
-        ? <RightOutlined />
-        : <div style={{ textAlign: 'start', paddingLeft: '16px'}}><LeftOutlined style={{marginRight: '8px'}}/> Minimize Menu</div>
-      }
+      {collapsed ? (
+        <RightOutlined />
+      ) : (
+        <div style={{ textAlign: 'start', paddingLeft: '16px' }}>
+          <LeftOutlined style={{ marginRight: '8px' }} /> Minimize Menu
+        </div>
+      )}
     </Trigger>
   );
 
-  const onClick: MenuProps['onClick'] = (e) => {
-    navigate(e.key)
+  const onClick: MenuProps['onClick'] = e => {
+    navigate(e.key);
   };
 
   return (
     <Layout>
-      <SiderContainer 
-        // {...theme}
+      <SiderContainer
         width={256}
         theme={theme}
-        trigger={<CustomTrigger />} 
-        collapsible 
-        collapsed={collapsed} 
-        onCollapse={(value) => setCollapsed(value)} 
-      >
+        trigger={<CustomTrigger />}
+        collapsible
+        collapsed={collapsed}
+        onCollapse={value => setCollapsed(value)}>
         <LogoContainer onClick={() => navigate('dashboard')}>
-          <Icon name='logoSM' size={28}/>
-          {!collapsed ? <LogoName>OTT Stream </LogoName>: null}
+          <Icon name="logoSM" size={28} />
+          {!collapsed ? <LogoName>OTT Stream </LogoName> : null}
         </LogoContainer>
         <FlexContainer>
-          <Menu theme='light' onClick={onClick} mode='inline'  items={items} />
+          <Menu theme="light" onClick={onClick} mode="inline" items={items} />
         </FlexContainer>
       </SiderContainer>
       <Layout>
@@ -95,13 +103,13 @@ export default function AdminLayout() {
             icon={<MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
             style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
+              fontSize: '16px',
+              width: 64,
+              height: 64,
             }}
           />
         </HeaderContainer>
-        <div style={{ padding: '20px', overflow:'auto'}}>
+        <div style={{ overflow: 'auto' }}>
           <Outlet />
         </div>
       </Layout>
