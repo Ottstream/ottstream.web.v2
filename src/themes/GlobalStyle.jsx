@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 // eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle`
@@ -8,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		border: 0;
+		font-family: Montserrat
 	}
 	*,
 	:after,
