@@ -1,6 +1,6 @@
-import { Header } from 'antd/es/layout/layout';
-import Sider from 'antd/es/layout/Sider';
 import styled from 'styled-components';
+import Sider from 'antd/es/layout/Sider';
+import { Header } from 'antd/es/layout/layout';
 
 export const FlexContainer = styled.div`
   display: flex;
@@ -91,7 +91,7 @@ export const LogoName = styled.div`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  width: 110px;
+  width: 120px;
   transition: width 2s;
 `;
 

@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
-
-import {
-  LeftOutlined,
-  MenuFoldOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
+import { useNavigate, Outlet } from 'react-router-dom';
 import type { MenuProps } from 'antd';
 import { Button, Layout, Menu } from 'antd';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useTheme } from 'styled-components';
-
+import {
+  MenuFoldOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import Icon from '@/components/Icon';
-
 import {
   FlexContainer,
-  HeaderContainer,
-  LogoContainer,
-  LogoName,
   SiderContainer,
+  LogoContainer,
+  HeaderContainer,
   Trigger,
+  LogoName,
 } from './Layout.styles';
+import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -85,7 +82,6 @@ export default function AdminLayout() {
   return (
     <Layout>
       <SiderContainer
-        // {...theme}
         width={256}
         theme={theme}
         trigger={<CustomTrigger />}
@@ -113,17 +109,7 @@ export default function AdminLayout() {
             }}
           />
         </HeaderContainer>
-        <div
-          style={
-            {
-              // display: 'flex',
-              // flex: 1,
-              // border: '1px solid green',
-              // margin: '5px',
-              // padding: '20px',
-              // overflow: 'auto',
-            }
-          }>
+        <div style={{ overflow: 'auto' }}>
           <Outlet />
         </div>
       </Layout>
