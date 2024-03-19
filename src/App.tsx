@@ -9,7 +9,6 @@ import viteLogo from 'Assets/vite.svg';
 function App() {
   const [count, setCount] = useState(0);
   const { t } = useTranslation();
-
   return (
     <>
       <div>

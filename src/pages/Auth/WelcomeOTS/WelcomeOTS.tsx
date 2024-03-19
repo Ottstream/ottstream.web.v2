@@ -1,8 +1,5 @@
-import {
-  InfoBoxOTS,
-  WrapperOTS,
-} from 'Pages/Auth/WelcomeOTS/WelcomeOTS.styles';
 import welcomeLogo from 'Assets/images/welcomeOST.png';
+import { InfoBoxOTS, WrapperOTS } from '../Styled';
 
 const WelcomeOTS = () => {
   return (

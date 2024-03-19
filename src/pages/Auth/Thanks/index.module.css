@@ -1,0 +1,8 @@
+.title {
+  color: var(--Secondary-color, #0a3c68);
+}
+
+.description {
+  color: var(--Secondary-color, #0a3c68);
+  text-align: center;
+}
