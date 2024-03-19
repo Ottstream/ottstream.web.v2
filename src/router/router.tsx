@@ -88,8 +88,20 @@ const router = createBrowserRouter([
       //   element: importPages.RegistrationCompanyInformation,
       // },
       {
-        path: RouterPaths.ResetPassword,
-        element: importPages.ResetPassword,
+        path: RouterPaths.ForgotPassword,
+        element: importPages.ForgotPassword,
+      },
+      {
+        path: RouterPaths.ResetPasswords,
+        element: importPages.ResetPasswords,
+      },
+      {
+        path: RouterPaths.NewPassword,
+        element: importPages.NewPassword,
+      },
+      {
+        path: RouterPaths.Thanks,
+        element: importPages.Thanks,
       },
     ],
   },

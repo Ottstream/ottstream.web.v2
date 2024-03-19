@@ -37,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
 		width: 100%;
 		font-size: 100%;
 		font-family: 'Montserrat', sans-serif;
-		overflow: hidden
 	}
 	button,
 	input,
@@ -204,7 +203,7 @@ export const GlobalStyle = createGlobalStyle`
   #root{
 		width: 100%;
     box-sizing: border-box;
-    /* min-height: 100%; */
+    min-height: 100%;
   }
 
 	.heading1 {
@@ -228,5 +227,12 @@ export const GlobalStyle = createGlobalStyle`
 		font-weight: 500;
 		line-height: 22px;
 	}
-
+  
+  .smallText {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+  }
 `;

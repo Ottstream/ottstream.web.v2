@@ -1,22 +1,25 @@
 import { useFetchSignInMutation } from '@/api/baseQuery';
-import Inputs from '@/components/Input/Inputs';
 import { SignInSchema } from '@/schema';
 import hello from 'Assets/images/hello.svg';
 import { Checkbox } from 'antd';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import { valuesType } from '.';
+
+import Inputs from '@/components/Input/Inputs';
 import {
   CheckboxContainerSignIn,
   PersonalButtonNextStep,
   PersonalInformationForms,
   PersonalInformationIconContainer,
   PersonalInformationTitle,
-  WrapperPersonlInformation,
-} from '../Components';
+  WrapperInputs,
+  WrapperInputsContainer,
+  WrapperPersonalInformation,
+} from '../Styled';
+import { LoginInitialValuesType, LoginValuesType } from '../types';
 import styles from './index.module.css';
 
-const initialValues = {
+const initialValues: LoginInitialValuesType = {
   email: '',
   password: '',
   rememberMe: false,
@@ -25,14 +28,14 @@ const initialValues = {
 const LoginPage = () => {
   const [fetchSignIn, data] = useFetchSignInMutation();
 
-  const handleSubmit = (values: valuesType) => {
+  const handleSubmit = (values: LoginValuesType) => {
     const { email, password } = values;
 
     fetchSignIn({ email, password });
   };
 
   return (
-    <WrapperPersonlInformation>
+    <WrapperPersonalInformation>
       <PersonalInformationTitle>
         <h4 className="heading1"> Sign In</h4>
       </PersonalInformationTitle>
@@ -48,54 +51,57 @@ const LoginPage = () => {
             handleSubmit(values);
             resetForm();
           }}>
-          {({ values, errors, handleChange, touched, handleBlur }) => {
+          {({ values, handleChange, handleBlur }) => {
             return (
               <Form>
-                <Inputs
-                  type="text"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  placeholder="User Name"
-                  label="User Name"
-                  // style={touched.email && { marginBottom: 0 }}
-                />
-                {/* {touched.email && <div className={'error'}>{errors.email}</div>} */}
-
-                <Inputs
-                  type="password"
-                  value={values.password}
-                  name="password"
-                  onChange={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                  placeholder="Password"
-                  label="Password"
-                  // style={touched.password && { marginBottom: 0 }}
-                />
-                {/* {touched.password && (
-                  <div className={'error'}>{errors.password}</div>
-                )} */}
+                <WrapperInputsContainer>
+                  <WrapperInputs>
+                    <Inputs
+                      type="text"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange('email')}
+                      onBlur={handleBlur('email')}
+                      placeholder="Username"
+                      label="Username"
+                    />
+                  </WrapperInputs>
+                  <WrapperInputs>
+                    <Inputs
+                      type="password"
+                      value={values.password}
+                      name="password"
+                      onChange={handleChange('password')}
+                      onBlur={handleBlur('password')}
+                      placeholder="Password"
+                      label="Password"
+                      showPasswordToggle
+                    />
+                  </WrapperInputs>
+                </WrapperInputsContainer>
 
                 <CheckboxContainerSignIn>
                   <Checkbox
                     name="rememberMe"
-                    onChange={handleChange('rememberMe')}>
+                    onChange={() => handleChange('rememberMe')}>
                     Remember me
                   </Checkbox>
 
-                  <Link to="/reset-password" className={styles.forgotPassword}>
+                  <Link to="/forgot-password" className={styles.forgotPassword}>
                     Forgot Password ?
                   </Link>
                 </CheckboxContainerSignIn>
-
                 <PersonalButtonNextStep>Sign in</PersonalButtonNextStep>
               </Form>
             );
           }}
         </Formik>
       </PersonalInformationForms>
-    </WrapperPersonlInformation>
+      <PersonalInformationIconContainer className="footer">
+        <p> No account? </p>
+        <Link to="/registration"> Sign Up</Link>
+      </PersonalInformationIconContainer>
+    </WrapperPersonalInformation>
   );
 };
 

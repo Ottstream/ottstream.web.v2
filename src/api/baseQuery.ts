@@ -10,9 +10,16 @@ import {
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/query/react';
 
-import { BaseQueryExtraOptions, FetchArgs } from './types';
+import {
+  BaseQueryExtraOptions,
+  FetchArgs,
+  fetchForgotPasswordType,
+  fetchResetPasswordType,
+  fetchSignInType,
+  fetchSignUpTypes,
+} from './types';
 
-const baseUrl = 'https://panelapidev.ottstream.live/v1/auth';
+const baseUrl = 'https://panelapidev.ottstream.live';
 export const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: async headers => {
@@ -54,8 +61,8 @@ export const baseApi = createApi({
   baseQuery: baseQueryWithReauth,
   endpoints: builder => ({
     fetchSignIn: builder.mutation({
-      query: ({ email, password }) => ({
-        url: '/login',
+      query: ({ email, password }: fetchSignInType) => ({
+        url: '/v1/auth/login',
         method: 'POST',
 
         body: {
@@ -77,8 +84,8 @@ export const baseApi = createApi({
         companyEmail,
         website,
         phone,
-      }) => ({
-        url: '/register-user-provider',
+      }: fetchSignUpTypes) => ({
+        url: '/v1/auth/register-user-provider',
         method: 'POST',
         body: {
           firstname,
@@ -95,11 +102,18 @@ export const baseApi = createApi({
         },
       }),
     }),
-    fetchRessetPassword: builder.mutation({
-      query: ({ email }) => ({
-        url: '/forgot-password',
+    forgotPassword: builder.mutation({
+      query: ({ email }: fetchForgotPasswordType) => ({
+        url: '/v1/auth/forgot-password',
         method: 'POST',
         body: { email },
+      }),
+    }),
+    ressetPassword: builder.mutation({
+      query: ({ email, oneTimePass }: fetchResetPasswordType) => ({
+        url: '/v2/auth/forgot/login',
+        method: 'POST',
+        body: { email, oneTimePass },
       }),
     }),
   }),
@@ -108,5 +122,6 @@ export const baseApi = createApi({
 export const {
   useFetchSignInMutation,
   useFetchSignUpMutation,
-  useFetchRessetPasswordMutation,
+  useForgotPasswordMutation,
+  useRessetPasswordMutation,
 } = baseApi;

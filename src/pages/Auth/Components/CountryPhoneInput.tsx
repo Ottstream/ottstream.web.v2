@@ -3,8 +3,7 @@ import React from 'react';
 import { Input, Select } from 'antd';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-
-import countryCodes from '@/data/countryCodes';
+import countryCodes from '@/data/countyCodes';
 
 const { Option } = Select;
 

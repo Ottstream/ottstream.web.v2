@@ -4,42 +4,48 @@ import { Formik } from 'formik';
 
 import { initialValuesSignUp, SignupSchema } from '@/schema';
 
-import {
-  PersonalButtonNextStep,
-  WrapperPersonlInformation,
-} from '../Components';
 import RegistrationCompanyInformation from './RegistrationCompanyInformation/RegistrationCompanyInformation';
 import RegistrationPersonaInformation from './RegistrationPersonalInformation/RegistrationPersonaInformation';
-import Thanks from './Thanks/Thanks';
+
 import { useFetchSignUpMutation } from '@/api/baseQuery';
+import ArrowLeftIcon from '@/components/Icon/Icon';
+import { InitialValuesSignUp } from '@/schema/types';
+import {
+  CompanyInformationWrapper,
+  PersonalButtonNextStep,
+  WrapperPersonalInformation,
+} from '../Styled';
+import { FormikActions } from '../types';
+const steps = ['Personal Information', 'Company Information'];
 
-const steps = ['Personal Information', 'Company Information', 'Thank You'];
-
-function _renderStepContent(step) {
+function _renderStepContent(step: number) {
   switch (step) {
     case 0:
       return <RegistrationPersonaInformation />;
     case 1:
-      return <RegistrationCompanyInformation />;
-    case 2:
-      return <Thanks />;
+      return (
+        <CompanyInformationWrapper>
+          <RegistrationCompanyInformation />
+        </CompanyInformationWrapper>
+      );
+
     default:
       return <div>Not Found</div>;
   }
 }
 
 export default function Registration() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const currentValidationSchema = SignupSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
-  const [fetchSignUp, data] = useFetchSignUpMutation();
+  const [fetchSignUp] = useFetchSignUpMutation();
 
   const handleBack = () => {
-    setActiveStep(step => step - 1);
+    setActiveStep((step: number) => step - 1);
   };
 
-  function handleSubmit(values, actions) {
+  function handleSubmit(values: InitialValuesSignUp, actions: FormikActions) {
     if (isLastStep) {
       const {
         firstname,
@@ -54,9 +60,10 @@ export default function Registration() {
         website,
         phone,
       } = values;
-      const channel = Number(channelAmount);
-      const client = Number(clientAmount);
-      const company = [
+      const channel: number = Number(channelAmount);
+      const client: number = Number(clientAmount);
+
+      const company: any = [
         {
           lang: 'en',
           name: companyName,
@@ -83,7 +90,7 @@ export default function Registration() {
   }
 
   return (
-    <WrapperPersonlInformation>
+    <WrapperPersonalInformation>
       <Formik
         initialValues={initialValuesSignUp}
         onSubmit={handleSubmit}
@@ -91,25 +98,28 @@ export default function Registration() {
         validationSchema={currentValidationSchema}>
         {({ isSubmitting, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            {_renderStepContent(activeStep)}
-            <div className="">
-              {activeStep !== 0 && <button onClick={handleBack}>Back</button>}
-              <div className="">
+            {activeStep === 0 && (
+              <>
+                <RegistrationPersonaInformation />
                 <PersonalButtonNextStep disabled={isSubmitting} type="submit">
-                  {isLastStep ? 'Sign Up' : 'Next'}
+                  Next
                 </PersonalButtonNextStep>
-                {isSubmitting && (
-                  <p>loading</p>
-                  // <CircularProgress
-                  //   size={24}
-                  //   className={classes.buttonProgress}
-                  // />
-                )}
-              </div>
-            </div>
+              </>
+            )}
+            {activeStep === 1 && (
+              <CompanyInformationWrapper>
+                <RegistrationCompanyInformation />
+                <button onClick={handleBack} className='backStep'>
+                  <ArrowLeftIcon/>
+                </button>
+                <PersonalButtonNextStep disabled={isSubmitting} type="submit">
+                  Sign Up
+                </PersonalButtonNextStep>
+              </CompanyInformationWrapper>
+            )}
           </form>
         )}
       </Formik>
-    </WrapperPersonlInformation>
+    </WrapperPersonalInformation>
   );
 }

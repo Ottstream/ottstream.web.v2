@@ -4,3 +4,9 @@ export interface inputsWithLabelProps {
   inputValue: string | number;
   onChange: () => void;
 }
+
+export interface InputsProps {
+  label: string;
+  showPasswordToggle?: boolean;
+  closePasswordLength?: boolean;
+}
