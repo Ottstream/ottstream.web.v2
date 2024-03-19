@@ -2,15 +2,16 @@ import React from 'react';
 
 import { Input, Typography } from 'antd';
 import { useField } from 'formik';
+import { TextAreasAttributeI } from './types';
 
 const { TextArea } = Input;
 
-const TextAreas: React.FC = ({
+const TextAreas = ({
   label,
   minRows = 3,
   maxRows = 5,
   ...props
-}: any) => {
+}: TextAreasAttributeI) => {
   const [field, meta, helpers] = useField(props);
 
   return (

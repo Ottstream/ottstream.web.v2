@@ -1,4 +1,4 @@
-export interface textAreasType {
+export interface TextAreasAttributeI {
   label: string;
   minRows?: number;
   maxRows?: number;
