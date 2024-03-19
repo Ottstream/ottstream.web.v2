@@ -1,15 +1,13 @@
 import TabBarWrapper from '@/pages/Chat/Components/TabBarWrapper';
 import { LeftPanelWrapper } from '@/pages/Chat/Sections/LeftPanel/LeftPanel.styles';
+import ConversationTypesSection from 'Pages/Chat/Components/ConversationTypesSection';
+import OnlineUserSection from 'Pages/Chat/Components/OnlineUserSection';
 
 const LeftPanel = () => {
   return (
     <LeftPanelWrapper>
-      <div>
-        <p>Filter Conversation types section</p>
-      </div>
-      <div>
-        <p>Online user section</p>
-      </div>
+      <ConversationTypesSection />
+      <OnlineUserSection />
       <TabBarWrapper />
     </LeftPanelWrapper>
   );

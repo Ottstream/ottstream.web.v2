@@ -6,7 +6,7 @@ const colorPalette: Theme['colorPalette'] = {
   secondaryDark: '#012F57',
   subtle: '#4E6E8A',
   light1: '#DEE6EC',
-  dark3: '#F8F8FA'
+  dark3: '#F8F8FA',
 };
 
 const breakpoints: Theme['breakpoints'] = {
@@ -17,17 +17,17 @@ const breakpoints: Theme['breakpoints'] = {
 };
 
 const typography: Theme['typography'] = {
-    fontFamily: 'Montserrat',
-    fontSize: '14px',
-    fontStyle: 'normal',
-    fontWeight: 400,
-    lineHeight: '22px',
+  fontFamily: 'Montserrat',
+  fontSize: '14px',
+  fontStyle: 'normal ',
+  fontWeight: 400,
+  lineHeight: '22px',
 };
 
 const theme: Theme = {
-    colorPalette,
-    breakpoints,
-    typography
+  colorPalette,
+  breakpoints,
+  typography,
 };
 
 export default theme;
