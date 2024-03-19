@@ -1,14 +1,12 @@
 import {
   BaseQueryApi,
   BaseQueryFn,
-  QueryReturnValue,
-} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
-import {
   createApi,
   fetchBaseQuery,
   FetchBaseQueryError,
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/query/react';
+import { QueryReturnValue } from 'node_modules/@reduxjs/toolkit/dist/query/baseQueryTypes';
 
 import { BaseQueryExtraOptions, FetchArgs } from './types';
 

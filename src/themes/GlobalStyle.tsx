@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-// eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle`
 
 /* reset default css styles */
