@@ -332,3 +332,22 @@ export const PassValidInfo = styled.div`
     color: #7a7a7a;
   }
 `;
+
+export const BorderBottomLine = styled.div`
+  width: 704px;
+  height: var(--BorderRadius-borderRadius0, 1px);
+  background: #000000;
+  margin-top: 32px;
+  display: flex;
+`;
+
+export const WrapperResendEmail = styled.div`
+  display: flex;
+  width: 704px;
+  margin-top: 32px;
+  justify-content: space-between;
+`;
+
+export const ResendButton = styled.button`
+  color: #000;
+`;

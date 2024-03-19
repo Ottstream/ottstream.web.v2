@@ -1,16 +1,22 @@
 import reset from 'Assets/images/reset.svg';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
+  BorderBottomLine,
   PersonalButtonNextStep,
+  ResendButton,
   WrapperInputs,
   WrapperPersonalInformation,
+  WrapperResendEmail,
   WrapperResetPasswordDescription,
 } from '../Styled';
-
+import { Button, Flex } from 'antd';
 import { Form, Formik } from 'formik';
 
-import { useRessetPasswordMutation } from '@/api/baseQuery';
+import {
+  useForgotPasswordMutation,
+  useRessetPasswordMutation,
+} from '@/api/baseQuery';
 import Inputs from '@/components/Input/Inputs';
 import { VerifyOTPSchema } from '@/schema';
 
@@ -36,15 +42,15 @@ const ResetPasswords = () => {
     }
   }
   const [timer, setTimer] = useState(6);
-  const [timeoutReached, setTimeoutReached] = useState(false);
+
   const [ressetPassword, data] = useRessetPasswordMutation();
+  const [forgotPassword, dateForgot] = useForgotPasswordMutation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (timer > 0) {
         setTimer(prevTimer => prevTimer - 1);
-        setTimeoutReached(true);
       } else {
         clearInterval(intervalId);
       }
@@ -59,6 +65,15 @@ const ResetPasswords = () => {
 
     if (token) {
       navigate('/new-password');
+    }
+  };
+
+  const handleResendEmail = () => {
+    const { state } = useLocation();
+    if (state !== null) {
+      const { email } = state;
+      forgotPassword({ email });
+      setTimer(prevTimer => (prevTimer = 5));
     }
   };
 
@@ -96,11 +111,27 @@ const ResetPasswords = () => {
                 />
               </WrapperInputs>
 
-              <PersonalButtonNextStep className='resetPassBtn'>Sumbit</PersonalButtonNextStep>
+              {values.otp.length > 0 && (
+                <PersonalButtonNextStep className="resetPassBtn">
+                  Sumbit
+                </PersonalButtonNextStep>
+              )}
             </Form>
           );
         }}
       </Formik>
+      <BorderBottomLine />
+
+      <WrapperResendEmail>
+        <Link to="/login" className="smallText" style={{ color: '#000' }}>
+          Return to Log In
+        </Link>
+        {timer === 0 && (
+          <ResendButton className="smallText" onClick={handleResendEmail}>
+            Resend the email
+          </ResendButton>
+        )}
+      </WrapperResendEmail>
     </WrapperPersonalInformation>
   );
 };
