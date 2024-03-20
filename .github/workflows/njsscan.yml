@@ -37,4 +37,4 @@ jobs:
           password: ${{ secrets.DEPLOY_PASS }}
           port: 22
           source: "dist/" # Updated to target 'dist' directory
-          target: "/home/project"
+          target: "/home/admin/project/"
