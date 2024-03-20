@@ -37,11 +37,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # Downloads the artifacts from the 'build' job
+      - name: Checkout code # This might not be necessary for deployment but is here for completeness
+        uses: actions/checkout@v2
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: build-artifacts
+          name: build-artifacts # Make sure this matches the name used in the upload step of the build job
       
       # Deploys the artifacts to your server using SCP
       - name: Copy files to the server
