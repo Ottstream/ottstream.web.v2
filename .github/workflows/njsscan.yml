@@ -1,69 +1,33 @@
 name: Build and Deploy
-
 on:
   push:
     branches:
-      - staging
+      - main # Or your default branch
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      # Sets up a Node.js environment with the specified version
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
-      
-      # Installs dependencies using yarn
-      - name: Install dependencies
+          node-version: '14' # Use your project's required Node.js version
+
+      - name: Install Dependencies
         run: yarn install
-      
-      # Builds your project and generates output in the 'build/' directory
+
       - name: Build
         run: yarn build
-      
-      # Archives the contents of 'build/' directory as artifacts
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: build/
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code # This might not be necessary for deployment but is here for completeness
-        uses: actions/checkout@v2
-
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts # Make sure this matches the name used in the upload step of the build job
-      
-      # Deploys the artifacts to your server using SCP
-      - name: Copy files to the server
+      - name: Deploy to Server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASS }}
           port: 22
-          source: "./" # Assumes artifacts are downloaded to the current directory
+          source: "build/*"
           target: "/home/project"
-      
-      # Executes additional SSH commands on the server if needed
-      - name: SSH Commands
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          password: ${{ secrets.DEPLOY_PASS }}
-          script: |
-            cd /home/project
-            # Any additional commands to restart your server or invalidate caches
-
