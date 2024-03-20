@@ -15,16 +15,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '18' # Specify the Node.js version your project requires
 
       - name: Install Dependencies
         run: yarn install
 
-      - name: Build and List Directory
-        run: |
-          yarn build
-          echo "Listing current directory contents after build..."
-          ls -al
+      - name: Build
+        run: yarn build
+        # Assuming your build command correctly outputs to the 'dist' directory
+
+      - name: List 'dist' Directory Contents
+        run: ls -al dist/
+        # This step is for debugging purposes to confirm 'dist' contents
 
       - name: Deploy to Server
         if: success() && github.event.pull_request.merged == true
@@ -34,5 +36,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASS }}
           port: 22
-          source: "build/"
+          source: "dist/" # Updated to target 'dist' directory
           target: "/home/project"
