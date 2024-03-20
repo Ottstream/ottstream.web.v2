@@ -20,13 +20,14 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Build
-        run: yarn build
-
-      - name: List Build Directory Contents
-        run: ls -al build/
+      - name: Build and List Directory
+        run: |
+          yarn build
+          echo "Listing current directory contents after build..."
+          ls -al
 
       - name: Deploy to Server
+        if: success() && github.event.pull_request.merged == true
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DEPLOY_HOST }}
