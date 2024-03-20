@@ -1,4 +1,5 @@
 name: Build and Deploy
+
 on:
   push:
     branches:
@@ -8,50 +9,59 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
-
-    - name: Install dependencies
-      run: yarn install
-
-    - name: Build
-      run: yarn build
-
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: build/
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      # Sets up a Node.js environment with the specified version
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      
+      # Installs dependencies using yarn
+      - name: Install dependencies
+        run: yarn install
+      
+      # Builds your project and generates output in the 'build/' directory
+      - name: Build
+        run: yarn build
+      
+      # Archives the contents of 'build/' directory as artifacts
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: build/
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: build
+      # Downloads the artifacts from the 'build' job
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+      
+      # Deploys the artifacts to your server using SCP
+      - name: Copy files to the server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_PASS }}
+          port: 22
+          source: "./" # Assumes artifacts are downloaded to the current directory
+          target: "/home/project"
+      
+      # Executes additional SSH commands on the server if needed
+      - name: SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_PASS }}
+          script: |
+            cd /home/project
+            # Any additional commands to restart your server or invalidate caches
 
-    - name: Copy files to the server
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.DEPLOY_HOST }}
-        username: ${{ secrets.DEPLOY_USER }}
-        password: ${{ secrets.DEPLOY_PASS }}
-        port: 22
-        source: "build/*"
-        target: "/home/project"
-
-    - name: SSH Commands
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.DEPLOY_HOST }}
-        username: ${{ secrets.DEPLOY_USER }}
-        password: ${{ secrets.DEPLOY_PASS }}
-        script: |
-          cd /home/project
-          # Any additional commands to restart your server or invalidate caches
