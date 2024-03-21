@@ -28,6 +28,16 @@ jobs:
         run: ls -al dist/
         # This step is for debugging purposes to confirm 'dist' contents
 
+      - name: Rewrite
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_PASS }}
+          script: |
+            rm -rf /home/admin/project/dist
+            
+
       - name: Deploy to Server
         if: success() && github.event.pull_request.merged == true
         uses: appleboy/scp-action@master
