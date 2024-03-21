@@ -31,6 +31,10 @@ const router = createBrowserRouter([
         element: importPages.Users,
       },
       {
+        path: RouterPaths.UserList,
+        element: importPages.UserList,
+      },
+      {
         path: RouterPaths.Clients,
         element: importPages.Clients,
       },
@@ -82,6 +86,26 @@ const router = createBrowserRouter([
       {
         path: RouterPaths.Registration,
         element: importPages.Registration,
+      },
+      // {
+      //   path: RouterPaths.RegistrationCompany,
+      //   element: importPages.RegistrationCompanyInformation,
+      // },
+      {
+        path: RouterPaths.ForgotPassword,
+        element: importPages.ForgotPassword,
+      },
+      {
+        path: RouterPaths.ResetPasswords,
+        element: importPages.ResetPasswords,
+      },
+      {
+        path: RouterPaths.NewPassword,
+        element: importPages.NewPassword,
+      },
+      {
+        path: RouterPaths.Thanks,
+        element: importPages.Thanks,
       },
     ],
   },

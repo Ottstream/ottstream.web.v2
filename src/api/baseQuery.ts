@@ -10,9 +10,16 @@ import {
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/query/react';
 
-import { BaseQueryExtraOptions, FetchArgs } from './types';
+import {
+  BaseQueryExtraOptions,
+  FetchArgs,
+  fetchForgotPasswordType,
+  fetchResetPasswordType,
+  fetchSignInType,
+  fetchSignUpTypes,
+} from './types';
 
-const baseUrl = 'https://panelapidev.ottstream.live/v1/auth';
+const baseUrl = 'https://panelapidev.ottstream.live';
 export const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: async headers => {
@@ -52,5 +59,69 @@ export const baseQueryWithReauth: BaseQueryFn = async (
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithReauth,
-  endpoints: () => ({}),
+  endpoints: builder => ({
+    fetchSignIn: builder.mutation({
+      query: ({ email, password }: fetchSignInType) => ({
+        url: '/v1/auth/login',
+        method: 'POST',
+
+        body: {
+          email,
+          password,
+        },
+      }),
+    }),
+    fetchSignUp: builder.mutation({
+      query: ({
+        firstname,
+        lastname,
+        email,
+        password,
+        channel,
+        client,
+        company,
+        description,
+        companyEmail,
+        website,
+        phone,
+      }: fetchSignUpTypes) => ({
+        url: '/v1/auth/register-user-provider',
+        method: 'POST',
+        body: {
+          firstname,
+          lastname,
+          email,
+          password,
+          channelAmount: channel,
+          clientAmount: client,
+          companyName: company,
+          description,
+          companyEmail,
+          website,
+          phone,
+        },
+      }),
+    }),
+    forgotPassword: builder.mutation({
+      query: ({ email }: fetchForgotPasswordType) => ({
+        url: '/v1/auth/forgot-password',
+        method: 'POST',
+        body: { email },
+      }),
+    }),
+    ressetPassword: builder.mutation({
+      query: ({ email, oneTimePass }: fetchResetPasswordType) => ({
+        url: '/v2/auth/forgot/login',
+        method: 'POST',
+        body: { email, oneTimePass },
+      }),
+    }),
+  }),
 });
+
+export const {
+  useFetchSignInMutation,
+  useFetchSignUpMutation,
+  useForgotPasswordMutation,
+  useRessetPasswordMutation,
+} = baseApi;

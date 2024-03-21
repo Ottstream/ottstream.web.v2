@@ -27,6 +27,12 @@ const pageList = [
   'Users',
   'Registration',
   'Chat',
+  'RegistrationCompanyInformation',
+  'ForgotPassword',
+  'ResetPasswords',
+  'NewPassword',
+  'Thanks',
+  'UserList',
   'Review',
   'Providers',
   'Clients',
@@ -39,8 +45,8 @@ const pageList = [
   'Flussonics',
   'Help',
 ];
-// const modules = import.meta.glob('../pages/**/*.tsx');
-const modules = import.meta.glob('../pages/**/!(*.styles).tsx');
+const modules = import.meta.glob('../pages/**/*.tsx');
+// const modules = import.meta.glob('../pages/**/!(*.styles).tsx');
 // const modules = import.meta.glob('../pages/**/!(*.styles|Components)/**/*.tsx');
 
 type Props = {
