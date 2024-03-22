@@ -1,108 +1,123 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   BulbTwoTone,
   CameraOutlined,
-  DownOutlined,
+  DownloadOutlined,
   MessageOutlined,
   PhoneOutlined,
 } from '@ant-design/icons';
-import { Button, Dropdown, MenuProps } from 'antd';
+import { Badge, Button, Radio, RadioChangeEvent } from 'antd';
+import { Header } from 'antd/es/layout/layout';
 import styled from 'styled-components';
 
-import CustomBadge from 'Pages/Chat/Components/CustomBadge';
+import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 
-const ButtonRowContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px;
-`;
+const ButtonRow = () => {
+  const [activeButton, setActiveButton] = useState<string>('all');
 
-const CustomButton = styled(Button)<{ isActive: boolean }>`
-  border-radius: 25px; /* Adjusted button border radius */
-  background-color: ${({ isActive }) => (isActive ? '#01B2B8' : 'transparent')};
-  color: ${({ isActive }) => (isActive ? 'white' : 'inherit')};
-  border: none;
-  padding: 0 10px;
-  margin: 0 3px;
-`;
-
-const LeftButtonsContainer = styled.div`
-  display: flex;
-  flex: 1;
-`;
-
-const RightButtonsContainer = styled.div``;
-
-const items: MenuProps['items'] = [
-  {
-    label: <a href="https://www.antgroup.com">1st menu item</a>,
-    key: '0',
-  },
-  {
-    label: <a href="https://www.aliyun.com">2nd menu item</a>,
-    key: '1',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    label: '3rd menu item',
-    key: '3',
-  },
-];
-
-const ButtonRow: React.FC = () => {
-  const [activeButton, setActiveButton] = React.useState<string>('all');
-
-  const handleButtonClick = (buttonId: string) => {
-    setActiveButton(buttonId);
+  const handleButtonClick = (e: RadioChangeEvent) => {
+    setActiveButton(e.target.value);
   };
 
   return (
-    <ButtonRowContainer>
-      <LeftButtonsContainer>
-        <CustomButton
-          isActive={activeButton === 'all'}
-          onClick={() => handleButtonClick('all')}>
-          <CustomBadge count={10} size="small">
-            <p>All</p>
-          </CustomBadge>
-        </CustomButton>
-        <CustomButton
-          isActive={activeButton === 'camera'}
-          onClick={() => handleButtonClick('camera')}>
-          <CustomBadge count={5} size="small">
-            <CameraOutlined twoToneColor={'#01B2B8'} />
-          </CustomBadge>
-        </CustomButton>
-        <CustomButton
-          isActive={activeButton === 'phone'}
-          onClick={() => handleButtonClick('phone')}>
-          <CustomBadge count={3} size="small">
-            <PhoneOutlined twoToneColor={'#01B2B8'} />
-          </CustomBadge>
-        </CustomButton>
-        <CustomButton
-          isActive={activeButton === 'message'}
-          onClick={() => handleButtonClick('message')}>
-          <CustomBadge count={7} size="small">
-            <MessageOutlined twoToneColor={'#01B2B8'} />
-          </CustomBadge>
-        </CustomButton>
-      </LeftButtonsContainer>
-      <RightButtonsContainer>
-        <Dropdown menu={{ items }} trigger={['click']}>
+    <>
+      <ButtonRowContainer>
+        <Radio.Group value={activeButton} onChange={handleButtonClick}>
+          <Badge count={1} size={'small'} offset={[-5, 0]} color={'yellow'}>
+            <Radio.Button value="all">
+              <p>All</p>
+            </Radio.Button>
+          </Badge>
+
+          <Badge count={1} size={'small'} offset={[-5, 0]} color={'yellow'}>
+            <Radio.Button value="camera">
+              <CameraOutlined twoToneColor={'#01B2B8'} />
+            </Radio.Button>
+          </Badge>
+
+          <Badge count={2} size={'small'} offset={[-5, 0]} color={'yellow'}>
+            <Radio.Button value="phone">
+              <PhoneOutlined twoToneColor={'#01B2B8'} />
+            </Radio.Button>
+          </Badge>
+          <Badge count={2} size={'small'} offset={[-5, 0]} color={'yellow'}>
+            <Radio.Button value="message">
+              <MessageOutlined twoToneColor={'#01B2B8'} />
+            </Radio.Button>
+          </Badge>
+        </Radio.Group>
+        <div
+          style={{
+            display: 'flex',
+            flex: 1,
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            paddingRight: '5px',
+          }}>
           <Button>
             <BulbTwoTone twoToneColor={'#01B2B8'} />
-            Providers <DownOutlined />
+            Providers
           </Button>
-        </Dropdown>
-      </RightButtonsContainer>
-    </ButtonRowContainer>
+        </div>
+      </ButtonRowContainer>
+    </>
   );
 };
+
+const ButtonRowContainer = styled(Header)`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+
+  .ant-btn.ant-btn-default {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: #01b2b8;
+    }
+  }
+  .ant-radio-button-wrapper {
+    color: #01b2b8;
+    background-color: transparent;
+    border-color: transparent;
+    padding-inline: 0;
+    border-radius: 25px;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+
+    &::before {
+      display: none;
+    }
+    &:hover {
+      border-color: transparent;
+    }
+    &:first-child {
+      border-color: transparent;
+    }
+
+    &.ant-radio-button-wrapper-checked {
+      background-color: #01b2b8;
+      color: white;
+      :hover {
+        color: white;
+      }
+      .chat-icon {
+        background-color: #01b2b8;
+      }
+    }
+  }
+  .ant-radio-group {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export default ButtonRow;

@@ -1,7 +1,9 @@
+import Sider from 'antd/es/layout/Sider';
 import styled from 'styled-components';
 
-export const RightPanelWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  width: 100%;
+export const SiderContainer = styled(Sider)`
+  &.ant-layout-sider {
+    background-color: ${props => props.theme.colorPalette.light1};
+    box-shadow: 0 4px 6px 0 rgba(10, 60, 104, 0.25);
+  }
 `;

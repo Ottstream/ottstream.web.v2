@@ -1,15 +1,21 @@
+import React from 'react';
+
+import { Layout } from 'antd';
+
 import { ChatWrapper } from '@/pages/Chat/index.styles';
 import LeftPanel from '@/pages/Chat/Sections/LeftPanel/LeftPanel';
-import MainPanel from '@/pages/Chat/Sections/MainPanel/MainPanel';
-import RightPanel from '@/pages/Chat/Sections/RightPanel/RightPanel';
+import MainPanel from 'Pages/Chat/Sections/MainPanel/MainPanel';
+import RightPanel from 'Pages/Chat/Sections/RightPanel/RightPanel';
 
 const Chat = () => {
   return (
     <>
       <ChatWrapper>
-        <LeftPanel />
-        {/*<MainPanel />*/}
-        {/*<RightPanel />*/}
+        <Layout>
+          <LeftPanel />
+          <MainPanel />
+          <RightPanel />
+        </Layout>
       </ChatWrapper>
     </>
   );

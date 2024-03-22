@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
-import type { MenuProps } from 'antd';
-import { Button, Layout, Menu } from 'antd';
+
 import {
-  MenuFoldOutlined,
   LeftOutlined,
+  MenuFoldOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Button, Layout, Menu } from 'antd';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useTheme } from 'styled-components';
+
 import Icon from '@/components/Icon';
+
 import {
   FlexContainer,
-  SiderContainer,
-  LogoContainer,
   HeaderContainer,
-  Trigger,
+  LogoContainer,
   LogoName,
+  SiderContainer,
+  Trigger,
 } from './Layout.styles';
-import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -59,7 +62,7 @@ const items: MenuItem[] = [
 ];
 
 export default function AdminLayout() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -80,7 +83,7 @@ export default function AdminLayout() {
   };
 
   return (
-    <Layout>
+    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       <SiderContainer
         width={256}
         theme={theme}
@@ -109,7 +112,7 @@ export default function AdminLayout() {
             }}
           />
         </HeaderContainer>
-        <div style={{ overflow: 'auto' }}>
+        <div style={{ display: 'flex', flex: 1, overflow: 'auto' }}>
           <Outlet />
         </div>
       </Layout>

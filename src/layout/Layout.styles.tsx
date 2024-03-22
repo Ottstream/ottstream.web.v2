@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import Sider from 'antd/es/layout/Sider';
 import { Header } from 'antd/es/layout/layout';
+import Sider from 'antd/es/layout/Sider';
+import styled from 'styled-components';
 
 export const FlexContainer = styled.div`
   display: flex;

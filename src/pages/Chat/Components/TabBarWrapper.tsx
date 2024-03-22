@@ -2,8 +2,23 @@ import React from 'react';
 
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import styled from 'styled-components';
 
 import ConversationList from '@/pages/Chat/Components/ConversationList';
+
+const CustomTabs = styled(Tabs)`
+  .ant-tabs-content {
+    height: 100%;
+  }
+  .ant-tabs-tabpane {
+    height: 100%;
+  }
+  .infinite-scroll-component__outerdiv {
+    margin-top: 10px;
+    height: 100%;
+    overflow: auto;
+  }
+`;
 
 const TabBarWrapper = () => {
   const onChange = (key: string) => {
@@ -24,14 +39,14 @@ const TabBarWrapper = () => {
   ];
   return (
     <>
-      <Tabs
+      <CustomTabs
         defaultActiveKey="1"
         items={items}
         onChange={onChange}
         centered={true}
         type={'line'}
         animated={{ inkBar: true, tabPane: true }}
-        style={{}}
+        style={{ overflow: 'auto', height: '100%' }}
         tabBarStyle={{}}
       />
     </>

@@ -1,3 +1,5 @@
+import { Layout } from 'antd';
+
 import InfiniteList from 'Pages/Chat/Components/InfiniteList';
 import SearchInput from 'Pages/Chat/Components/SearchInput';
 import ToggleSwitch from 'Pages/Chat/Components/ToggleSwitch';
@@ -8,11 +10,17 @@ interface ConversationListPropsI {
 
 const ConversationList = ({ type }: ConversationListPropsI) => {
   return (
-    <div>
-      <SearchInput placeholder="search" />
-      <ToggleSwitch />
-      <InfiniteList type={type} />
-    </div>
+    <>
+      <Layout
+        style={{
+          height: '100%',
+          overflow: 'hidden',
+        }}>
+        <SearchInput placeholder="search" />
+        <ToggleSwitch />
+        <InfiniteList type={type} />
+      </Layout>
+    </>
   );
 };
 

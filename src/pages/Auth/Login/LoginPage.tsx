@@ -5,7 +5,7 @@ import { Checkbox } from 'antd';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
-import Inputs from '@/components/Input/Inputs';
+import Inputs from '@/components/Input/Inputs.tsx';
 import {
   CheckboxContainerSignIn,
   PersonalButtonNextStep,

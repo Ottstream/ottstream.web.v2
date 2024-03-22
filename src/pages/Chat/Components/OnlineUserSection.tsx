@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import AvatarRow from './AvatarRow';
-import UserStatusDropdown from './UserStatusDropdown';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+import styled from 'styled-components';
+
+import AvatarRow from 'Pages/Chat/Components/AvatarRow';
 
 const users = [
   { name: 'User 1', imageUrl: 'avatar1.jpg' },
@@ -12,12 +15,64 @@ const users = [
 ];
 
 const OnlineUserSection: React.FC = () => {
+  const [isFirstRowVisible, setIsFirstRowVisible] = useState(true);
+
+  const items: CollapseProps['items'] = [
+    {
+      key: '1',
+      label: 'Users Online',
+      children: (
+        <CollapseChild>
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+          <AvatarRow users={users} />
+        </CollapseChild>
+      ),
+      extra: <p>All Users</p>,
+    },
+  ];
+  // const onChange = () => {
+  //   setIsFirstRowVisible(!isFirstRowVisible);
+  // };
+
   return (
-    <div style={{ margin: '10px 0' }}>
-      <UserStatusDropdown onlineUsers={users} />
+    <>
+      <CustomCollapse
+        expandIconPosition={'end'}
+        ghost
+        // onChange={onChange}
+        items={items}
+      />
+      {/*{isFirstRowVisible && <AvatarRow users={users} />}*/}
       <AvatarRow users={users} />
-    </div>
+    </>
   );
 };
 
+const CustomCollapse = styled(Collapse)`
+  .ant-collapse-content-box {
+    padding-block: 0 !important;
+  }
+`;
+
+const CollapseChild = styled.div`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 110px);
+  left: 0;
+  overflow: auto;
+  z-index: 10;
+  padding: 5px;
+  background-color: #dee6ec;
+`;
 export default OnlineUserSection;

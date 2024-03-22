@@ -1,9 +1,8 @@
-// AvatarRow.tsx
 import React from 'react';
 
 import styled from 'styled-components';
 
-import CustomAvatar from 'Pages/Chat/Components/CustomAvatar';
+import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
 interface AvatarRowProps {
   users: { name: string; imageUrl: string }[];
@@ -21,16 +20,7 @@ const AvatarRow: React.FC<AvatarRowProps> = ({ users }) => {
   return (
     <AvatarRowContainer>
       {users.map((_, index) => (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <CustomAvatar index={index} />
-          <p>Name</p>
-        </div>
+        <ChatAvatar type={'AvatarWithNameAtTheBottom'} index={index} />
       ))}
     </AvatarRowContainer>
   );
