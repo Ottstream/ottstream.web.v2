@@ -33,9 +33,6 @@ const MainPanelHeaderRightSection = () => {
       key: '1',
     },
     {
-      type: 'divider',
-    },
-    {
       label: '3rd menu item',
       key: '3',
     },
@@ -43,10 +40,10 @@ const MainPanelHeaderRightSection = () => {
   return (
     <>
       <MainPanelHeaderRightSectionComponent>
-        <ChatIcon icon={<ShareAltOutlined />} />
         <Dropdown menu={{ items }} trigger={['click']}>
           <a onClick={e => e.preventDefault()}>
             <Space style={{ margin: '0 10px' }}>
+              <ChatIcon icon={<ShareAltOutlined />} />
               All Chats
               <DownOutlined />
             </Space>

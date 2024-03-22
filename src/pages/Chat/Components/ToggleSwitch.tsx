@@ -9,11 +9,11 @@ interface ToggleSwitchProps {
 const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
+  p {
+    margin: 0 10px;
+  }
 `;
 
-const ToggleText = styled.p`
-  margin: 0 10px;
-`;
 const ToggleSwitch = ({
   onChange = (checked: boolean) => {
     console.log(`switch to ${checked}`);
@@ -22,9 +22,9 @@ const ToggleSwitch = ({
 }: ToggleSwitchProps) => {
   return (
     <ToggleWrapper>
-      <ToggleText>All</ToggleText>
+      <p>All</p>
       <Switch defaultChecked={defaultChecked} onChange={onChange} />
-      <ToggleText>Unnoticed</ToggleText>
+      <p>Unnoticed</p>
     </ToggleWrapper>
   );
 };

@@ -72,7 +72,6 @@ const CollapseChild = styled.div`
   left: 0;
   overflow: auto;
   z-index: 10;
-  padding: 5px;
   background-color: #dee6ec;
 `;
 export default OnlineUserSection;

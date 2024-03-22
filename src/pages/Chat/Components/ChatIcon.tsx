@@ -9,6 +9,7 @@ interface ChatIconPropsI {
   shape?: 'default' | 'circle' | 'round' | undefined;
   size?: 'small' | 'middle' | 'large' | undefined;
   icon?: JSX.Element;
+  onClick?: () => void;
 }
 
 const StyledButton = styled(Button)`
@@ -34,6 +35,7 @@ const ChatIcon = ({
   shape = 'circle',
   size = undefined,
   icon = <p>Button</p>,
+  onClick = () => {},
 }: ChatIconPropsI) => {
   return (
     <>
@@ -43,6 +45,7 @@ const ChatIcon = ({
         shape={shape}
         size={size}
         icon={icon}
+        onClick={onClick}
       />
     </>
   );

@@ -19,6 +19,9 @@ export const MainPanelWrapper = styled(Content)`
   .ant-layout-content {
   }
   .ant-layout-footer {
+    padding: 10px 20px;
+    box-shadow: none;
+    border: none;
   }
 `;
 export const MainPanelHeaderWrapper = styled(Header)`
@@ -32,4 +35,5 @@ export const MainPanelFooterWrapper = styled(Footer)`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  border: 4px solid #01b2b81a;
 `;
