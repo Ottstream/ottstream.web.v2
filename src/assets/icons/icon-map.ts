@@ -16,6 +16,7 @@ import Installers from './Installers.svg?react';
 import History from './History.svg?react';
 import Map from './Map.svg?react';
 import Filter from './Filter.svg?react';
+import Close from './Close.svg?react';
 
 type Icons = Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
 
@@ -38,6 +39,7 @@ const icons: Icons = {
   history: History,
   map: Map,
   filter: Filter,
+  close: Close,
 };
 
 export default icons;
