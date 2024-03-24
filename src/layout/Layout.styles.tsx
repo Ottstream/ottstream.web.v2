@@ -96,8 +96,10 @@ export const LogoName = styled.div`
 `;
 
 export const HeaderContainer = styled(Header)`
-  padding: 0;
+  padding: 0 20px 0 0;
   background-color: ${props => props.theme.colorPalette.dark3};
+  display: flex;
+  align-items: center;
 `;
 
 export const Trigger = styled.div`
