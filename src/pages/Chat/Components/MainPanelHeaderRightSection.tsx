@@ -42,7 +42,7 @@ const MainPanelHeaderRightSection = () => {
       <MainPanelHeaderRightSectionComponent>
         <Dropdown menu={{ items }} trigger={['click']}>
           <Space style={{ margin: '0 10px' }}>
-            <ChatIcon icon={<ShareAltOutlined />} />
+            <ShareAltOutlined />
             All Chats
             <DownOutlined />
           </Space>

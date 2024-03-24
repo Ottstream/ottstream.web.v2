@@ -13,7 +13,7 @@ const AvatarRowContainer = styled.div`
   width: 100%;
   justify-content: space-around;
   gap: 20px;
-  margin-bottom: 20px;
+  margin: 10px 0;
 `;
 
 const AvatarRow: React.FC<AvatarRowProps> = ({ users }) => {

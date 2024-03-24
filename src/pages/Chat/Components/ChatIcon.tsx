@@ -1,16 +1,10 @@
 import React from 'react';
 
-import { red } from '@ant-design/colors';
 import { Button } from 'antd';
+import { ButtonProps } from 'antd/es/button/button';
 import styled from 'styled-components';
 
-interface ChatIconPropsI {
-  type?: 'link' | 'text' | 'primary' | 'default' | 'dashed' | undefined;
-  shape?: 'default' | 'circle' | 'round' | undefined;
-  size?: 'small' | 'middle' | 'large' | undefined;
-  icon?: JSX.Element;
-  onClick?: () => void;
-}
+interface ChatIconPropsI extends ButtonProps {}
 
 const StyledButton = styled(Button)`
   border: none;
@@ -30,23 +24,10 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const ChatIcon = ({
-  type = 'primary',
-  shape = 'circle',
-  size = undefined,
-  icon = <p>Button</p>,
-  onClick = () => {},
-}: ChatIconPropsI) => {
+const ChatIcon = ({ ...props }: ChatIconPropsI) => {
   return (
     <>
-      <StyledButton
-        className={'chat-icon'}
-        type={type}
-        shape={shape}
-        size={size}
-        icon={icon}
-        onClick={onClick}
-      />
+      <StyledButton className={'chat-icon'} shape={'circle'} {...props} />
     </>
   );
 };

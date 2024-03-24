@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   InstagramFilled,
@@ -10,7 +10,7 @@ import {
   WhatsAppOutlined,
 } from '@ant-design/icons';
 import { MenuUnfoldOutlined } from '@ant-design/icons/lib/icons';
-import { Button, Dropdown, MenuProps } from 'antd';
+import { Button, Dropdown, MenuProps, Modal } from 'antd';
 import styled from 'styled-components';
 
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
@@ -56,13 +56,19 @@ const PanelHeader = styled.div`
   }
 `;
 
-const ThreeDotMenuDropdownItem = styled.div`
+const ThreeDotMenuDropdownItem = styled(Button)`
   display: flex;
   justify-content: start;
   align-items: center;
   width: 276px;
   padding: 10px;
-  border-bottom: 1px solid #ccd5dd;
+  //border-bottom: 1px solid #ccd5dd;
+  border: none;
+  :hover,
+  :active,
+  :focus {
+    background-color: white;
+  }
 `;
 const CustomDropdown = styled(Dropdown)``;
 interface RightPanelTopPropI {
@@ -71,21 +77,69 @@ interface RightPanelTopPropI {
 }
 
 const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isBlockModalVisible, setIsBlockModalVisible] = useState(false);
+  const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
+
   const items: MenuProps['items'] = [
     {
       key: '1',
       label: (
-        <ThreeDotMenuDropdownItem>
-          <p>Block Chat</p>
-        </ThreeDotMenuDropdownItem>
+        <>
+          <ThreeDotMenuDropdownItem
+            onClick={() => setIsBlockModalVisible(true)}>
+            <p>Block Chat</p>
+          </ThreeDotMenuDropdownItem>
+          <Modal
+            title="Block"
+            centered
+            open={isBlockModalVisible}
+            okText={'Block'}
+            okType={'danger'}
+            onOk={() => {
+              setIsBlockModalVisible(false);
+              // setIsDropdownOpen(false);
+            }}
+            onCancel={() => {
+              setIsBlockModalVisible(false);
+              // setIsDropdownOpen(false);
+            }}>
+            <p>
+              Are you sure you want to delete this item, or do you want to
+              cancel the action?
+            </p>
+          </Modal>
+        </>
       ),
     },
     {
       key: '2',
       label: (
-        <ThreeDotMenuDropdownItem>
-          <p>Delete Chat</p>
-        </ThreeDotMenuDropdownItem>
+        <>
+          <ThreeDotMenuDropdownItem
+            onClick={() => setIsRemoveModalVisible(true)}>
+            <p>Delete Chat</p>
+          </ThreeDotMenuDropdownItem>
+          <Modal
+            title="Remove"
+            centered
+            open={isRemoveModalVisible}
+            okText={'Remove'}
+            okType={'danger'}
+            onOk={() => {
+              setIsRemoveModalVisible(false);
+              // setIsDropdownOpen(false);
+            }}
+            onCancel={() => {
+              setIsRemoveModalVisible(false);
+              // setIsDropdownOpen(false);
+            }}>
+            <p>
+              Are you sure you want to delete this item, or do you want to
+              cancel the action?
+            </p>
+          </Modal>
+        </>
       ),
     },
     {
@@ -143,11 +197,13 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
                 overlayStyle={{
                   boxShadow: '4px 0px 6px 0px #0A3C6840',
                 }}
-                placement={'bottomLeft'}>
+                placement={'bottomLeft'}
+                open={isDropdownOpen}>
                 <Button
                   type="text"
                   icon={<MoreOutlined />}
-                  onClick={() => {}}
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  onChange={() => setIsDropdownOpen(false)}
                   style={{
                     fontSize: '16px',
                     width: 56,

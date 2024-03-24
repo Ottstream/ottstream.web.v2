@@ -4,9 +4,9 @@ import { BellTwoTone, TagTwoTone } from '@ant-design/icons';
 import { Select, SelectProps } from 'antd';
 import styled from 'styled-components';
 
-import Inputs from '@/components/Input/Inputs';
+import RightPanelTabs from 'Pages/Chat/Components/RightPanelTabs';
 
-// Functions
+// Functions TODO: Should be moved to separate file
 
 function getRandomArmenianNumberStringArray(length: number) {
   const result = [];
@@ -52,13 +52,19 @@ function generateRandomAddresses(numAddresses: number) {
 
 //  ----------------------------------------------------------------
 
+const RightPanelContentContainer = styled.div`
+  margin: 10px;
+  height: 100%;
+  overflow: auto;
+`;
+
 const RightPanelContent = () => {
   const phoneOptions = getRandomArmenianNumberStringArray(5);
   const addressOptions = generateRandomAddresses(5);
 
   return (
     <>
-      <div style={{ margin: '10px' }}>
+      <RightPanelContentContainer>
         <WrapperSelects>
           <h5>Phone Number</h5>
           <CustomSelect
@@ -92,7 +98,10 @@ const RightPanelContent = () => {
             prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
           />
         </WrapperSelects>
-      </div>
+        <div style={{ height: '100%', overflow: 'auto' }}>
+          <RightPanelTabs />
+        </div>
+      </RightPanelContentContainer>
     </>
   );
 };

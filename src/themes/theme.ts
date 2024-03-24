@@ -8,6 +8,7 @@ const colorPalette: Theme['colorPalette'] = {
   light1: '#DEE6EC',
   dark3: '#F8F8FA',
   light: '#F8F8FA',
+  white: '#FFFFFF',
   blueGreen: '#01B2B8',
 };
 

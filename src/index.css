@@ -1,24 +1,4 @@
 
-
-/*for tabs*/
-.ant-tabs-nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.ant-tabs-tab {
-  width: 50%;
-  justify-content: center;
-}
-
-.ant-tabs-ink-bar  {
-  border-bottom: 2px solid #01B2B8;
-}
-.ant-tabs .ant-tabs-tab.ant-tabs-tab-active  .ant-tabs-tab-btn{
-  color:#01B2B8
-}
-
 .ant-layout .ant-layout-sider,  .ant-layout-header {
   /*border: 1px solid blue;*/
   /*background-color: #7c7878;*/

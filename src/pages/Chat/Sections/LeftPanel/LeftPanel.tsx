@@ -6,10 +6,8 @@ import { useTheme } from 'styled-components';
 import ConversationTypesSection from 'Pages/Chat/Components/ConversationTypesSection';
 import LeftPanelTabs from 'Pages/Chat/Components/LeftPanelTabs';
 import OnlineUserSection from 'Pages/Chat/Components/OnlineUserSection';
-import {
-  FlexContainer,
-  SiderContainer,
-} from 'Pages/Chat/Sections/LeftPanel/LeftPanel.styles';
+import { FlexContainer } from 'Pages/Chat/index.styles';
+import { SiderContainer } from 'Pages/Chat/Sections/LeftPanel/LeftPanel.styles';
 
 const LeftPanel = () => {
   const theme = useTheme();

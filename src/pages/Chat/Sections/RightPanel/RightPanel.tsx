@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
+import { Layout } from 'antd';
 import { useTheme } from 'styled-components';
 
 import { SiderContainer } from '@/pages/Chat/Sections/RightPanel/RightPanel.styles';
 import RightPanelContent from 'Pages/Chat/Components/RightPanelContent';
 import RightPanelTop from 'Pages/Chat/Components/RightPanelTop';
+import { FlexContainer } from 'Pages/Chat/index.styles.tsx';
 
 const RightPanel = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -21,8 +23,12 @@ const RightPanel = () => {
         collapsed={collapsed}
         reverseArrow={true}
         onCollapse={value => setCollapsed(value)}>
-        <RightPanelTop collapsed={collapsed} setCollapsed={setCollapsed} />
-        {!collapsed && <RightPanelContent />}
+        <FlexContainer>
+          <Layout>
+            <RightPanelTop collapsed={collapsed} setCollapsed={setCollapsed} />
+            {!collapsed && <RightPanelContent />}
+          </Layout>
+        </FlexContainer>
       </SiderContainer>
     </>
   );
