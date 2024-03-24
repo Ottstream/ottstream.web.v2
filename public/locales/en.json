@@ -1,3 +1,16 @@
 {
-  "auth": "auth"
+  "auth": "auth",
+  "installers": "Installers",
+  "history": "History",
+  "map": "Map",
+  "filter": "Filter",
+  "month": "Month",
+  "week": "Week",
+  "work_week": "Work Week",
+  "day": "Day",
+  "today": "Today",
+  "back": "Back",
+  "next": "Next",
+  "filter_by": "Filter By",
+  "select_installers": "Select Installers"
 }
