@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-import { MenuFoldOutlined } from '@ant-design/icons';
-import { MenuUnfoldOutlined } from '@ant-design/icons/lib/icons';
-import { Button } from 'antd';
 import { useTheme } from 'styled-components';
 
-import { FlexContainer } from '@/layout/Layout.styles';
 import { SiderContainer } from '@/pages/Chat/Sections/RightPanel/RightPanel.styles';
+import RightPanelContent from 'Pages/Chat/Components/RightPanelContent';
+import RightPanelTop from 'Pages/Chat/Components/RightPanelTop';
 
 const RightPanel = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const theme = useTheme();
 
   return (
@@ -23,17 +21,8 @@ const RightPanel = () => {
         collapsed={collapsed}
         reverseArrow={true}
         onCollapse={value => setCollapsed(value)}>
-        <Button
-          type="text"
-          icon={!collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={() => setCollapsed(!collapsed)}
-          style={{
-            fontSize: '16px',
-            width: 56,
-            height: 56,
-          }}
-        />
-        <FlexContainer></FlexContainer>
+        <RightPanelTop collapsed={collapsed} setCollapsed={setCollapsed} />
+        {!collapsed && <RightPanelContent />}
       </SiderContainer>
     </>
   );

@@ -112,7 +112,13 @@ export default function AdminLayout() {
             }}
           />
         </HeaderContainer>
-        <div style={{ display: 'flex', flex: 1, overflow: 'auto' }}>
+        <div
+          style={{
+            display: 'flex',
+            flex: 1,
+            height: '100%',
+            overflow: 'hidden',
+          }}>
           <Outlet />
         </div>
       </Layout>

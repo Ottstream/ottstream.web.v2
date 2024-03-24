@@ -10,7 +10,8 @@ interface ChatAvatarPropsI {
     | 'AvatarWithNameAtTheBottom'
     | 'AvatarWithNameOnTheRight'
     | 'AvatarWithNameOnTheRightAndSecondLine'
-    | 'AvatarWithNameOnTheRightAndSecondLineWithRightInfo';
+    | 'AvatarWithNameOnTheRightAndSecondLineWithRightInfo'
+    | 'AvatarChatInfo';
   index: number;
 }
 
@@ -58,6 +59,9 @@ const AvatarWithNameOnTheRightWrapper = styled(List.Item)`
     line-height: 22px;
     text-align: left;
   }
+  .description {
+    color: #a5aac6;
+  }
   .right-info {
     display: flex;
     flex-direction: column;
@@ -84,6 +88,63 @@ const AvatarWithNameOnTheRightWrapper = styled(List.Item)`
       font-weight: 400;
       font-size: 12px;
     }
+  }
+`;
+const AvatarWithNameOnTheRightAndSecondLineWrapper = styled(List.Item)`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  // background-color: ${props => props.theme.colorPalette.light1};
+  border-radius: 6px;
+  //border: 1px solid gold;
+
+  ${AvatarStyleComponent} {
+    margin: 8px 0;
+  }
+
+  .ant-list-item-meta,
+  .ant-list-item-meta-content {
+    margin-left: 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    //background-color: red;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+  }
+  .description {
+    color: #a5aac6;
+  }
+`;
+
+const AvatarChatInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+
+  .name {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+  }
+  .company-info {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
   }
 `;
 
@@ -125,13 +186,13 @@ const AvatarWithNameOnTheRightAndSecondLine = ({
   index,
 }: ChatAvatarPropsI) => {
   return (
-    <AvatarWithNameOnTheRightWrapper>
+    <AvatarWithNameOnTheRightAndSecondLineWrapper>
       <Avatar type={type} index={index} />
       <List.Item.Meta
         title={<p>{'Ani Hovhannisyan'}</p>}
-        description={<p>{'Ant Design'}</p>}
+        description={<p className="description">{'Ant Design'}</p>}
       />
-    </AvatarWithNameOnTheRightWrapper>
+    </AvatarWithNameOnTheRightAndSecondLineWrapper>
   );
 };
 const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
@@ -143,7 +204,7 @@ const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
       <Avatar type={type} index={index} />
       <List.Item.Meta
         title={<p>{'Ani Hovhannisyan'}</p>}
-        description={<p>{'Ant Design'}</p>}
+        description={<p className="description">{'Ant Design'}</p>}
       />
       <div className="right-info">
         <div className="timestamp">
@@ -154,6 +215,21 @@ const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
         </div>
       </div>
     </AvatarWithNameOnTheRightWrapper>
+  );
+};
+
+const AvatarChatInfo = ({ index }: ChatAvatarPropsI) => {
+  return (
+    <AvatarChatInfoWrapper>
+      <AvatarStyleComponent
+        shape="circle"
+        size={56}
+        src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
+        icon={<UserOutlined />}
+      />
+      <p className="name">Lisa Price</p>
+      <p className="company-info">Company Info</p>
+    </AvatarChatInfoWrapper>
   );
 };
 
@@ -177,6 +253,8 @@ const ChatAvatar = ({ type, index }: ChatAvatarPropsI) => {
             type={type}
           />
         );
+      case 'AvatarChatInfo':
+        return <AvatarChatInfo index={index} type={type} />;
     }
   };
 

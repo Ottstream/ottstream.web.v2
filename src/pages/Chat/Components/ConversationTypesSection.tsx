@@ -24,26 +24,35 @@ const ButtonRow = () => {
     <>
       <ButtonRowContainer>
         <Radio.Group value={activeButton} onChange={handleButtonClick}>
-          <Badge count={1} size={'small'} offset={[-5, 0]} color={'yellow'}>
+          <Badge count={1} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio.Button value="all">
-              <p>All</p>
+              <p style={{ fontSize: '18px' }}>All</p>
             </Radio.Button>
           </Badge>
 
-          <Badge count={1} size={'small'} offset={[-5, 0]} color={'yellow'}>
+          <Badge count={9} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio.Button value="camera">
-              <CameraOutlined twoToneColor={'#01B2B8'} />
+              <CameraOutlined
+                style={{ fontSize: '20px' }}
+                twoToneColor={'#01B2B8'}
+              />
             </Radio.Button>
           </Badge>
 
-          <Badge count={2} size={'small'} offset={[-5, 0]} color={'yellow'}>
+          <Badge count={0} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio.Button value="phone">
-              <PhoneOutlined twoToneColor={'#01B2B8'} />
+              <PhoneOutlined
+                style={{ fontSize: '20px' }}
+                twoToneColor={'#01B2B8'}
+              />
             </Radio.Button>
           </Badge>
-          <Badge count={2} size={'small'} offset={[-5, 0]} color={'yellow'}>
+          <Badge count={2} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio.Button value="message">
-              <MessageOutlined twoToneColor={'#01B2B8'} />
+              <MessageOutlined
+                style={{ fontSize: '20px' }}
+                twoToneColor={'#01B2B8'}
+              />
             </Radio.Button>
           </Badge>
         </Radio.Group>
@@ -86,10 +95,13 @@ const ButtonRowContainer = styled(Header)`
     background-color: transparent;
     border-color: transparent;
     padding-inline: 0;
-    border-radius: 25px;
+    border-radius: 25px !important;
     text-align: center;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &::before {
       display: none;

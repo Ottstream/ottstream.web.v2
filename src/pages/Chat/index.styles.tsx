@@ -17,8 +17,8 @@ export const ChatWrapper = styled.div`
     border-top: 2px solid #f0f0f0; //!!TODO: should be removed
   }
   .ant-layout .ant-layout-sider {
-    // background-color: ${props => props.theme.colorPalette.light};
-    box-shadow: none;
+    background-color: ${props => props.theme.colorPalette.light};
+    //box-shadow: none;
   }
   .ant-layout-content {
     background-color: ${props => props.theme.colorPalette.light};
