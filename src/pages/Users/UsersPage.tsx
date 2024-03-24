@@ -1,13 +1,5 @@
-// import Breadcrumbs from '@/components/Breadcrumb/Breadcrumb';
-// import { Link } from 'react-router-dom';
+import React from 'react';
 
-function UsersPage() {
-  return (
-    <div>
-      {/* <Breadcrumbs
-        lists={[{ title: <Link to="/user-list">'ronaldo' </Link> }]}
-      /> */}
-    </div>
-  );
+export default function UsersPage() {
+  return <div>UsersPage</div>;
 }
-export default UsersPage;

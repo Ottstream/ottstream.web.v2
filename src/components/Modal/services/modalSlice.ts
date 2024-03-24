@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '@/store/store';
-import { createDispatchers } from '@/utils/dispatcher';
+import { RootState } from '../../../store/store';
+
+import { createDispatchers } from '../../../utils/dispatcher';
 
 import { IModalState } from '../types/types';
 

@@ -19,56 +19,8 @@ const router = createBrowserRouter([
         element: importPages.Dashboard,
       },
       {
-        path: RouterPaths.Review,
-        element: importPages.Review,
-      },
-      {
-        path: RouterPaths.Providers,
-        element: importPages.Providers,
-      },
-      {
         path: RouterPaths.Users,
         element: importPages.Users,
-      },
-      {
-        path: RouterPaths.UserList,
-        element: importPages.UserList,
-      },
-      {
-        path: RouterPaths.Clients,
-        element: importPages.Clients,
-      },
-      {
-        path: RouterPaths.Transactions,
-        element: importPages.Transactions,
-      },
-      {
-        path: RouterPaths.Packages,
-        element: importPages.Packages,
-      },
-      {
-        path: RouterPaths.Equipments,
-        element: importPages.Equipments,
-      },
-      {
-        path: RouterPaths.Discounts,
-        element: importPages.Discounts,
-      },
-      {
-        path: RouterPaths.Appointments,
-        element: importPages.Appointments,
-      },
-      {
-        path: RouterPaths.Shippings,
-        element: importPages.Shippings,
-      },
-      {
-        path: RouterPaths.Flussonics,
-        element: importPages.Flussonics,
-      },
-      {
-        path: RouterPaths.Help,
-        element: importPages.Help,
       },
     ],
   },
@@ -82,26 +34,6 @@ const router = createBrowserRouter([
       {
         path: RouterPaths.Registration,
         element: importPages.Registration,
-      },
-      // {
-      //   path: RouterPaths.RegistrationCompany,
-      //   element: importPages.RegistrationCompanyInformation,
-      // },
-      {
-        path: RouterPaths.ForgotPassword,
-        element: importPages.ForgotPassword,
-      },
-      {
-        path: RouterPaths.ResetPasswords,
-        element: importPages.ResetPasswords,
-      },
-      {
-        path: RouterPaths.NewPassword,
-        element: importPages.NewPassword,
-      },
-      {
-        path: RouterPaths.Thanks,
-        element: importPages.Thanks,
       },
     ],
   },

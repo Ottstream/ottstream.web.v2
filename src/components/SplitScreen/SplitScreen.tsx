@@ -2,7 +2,7 @@ import React from 'react';
 
 import Container from './SplitScreen.styles';
 
-import { SplitScreenProps } from './types';
+import { SplitScreenProps } from '.';
 
 const SplitScreen = (props: SplitScreenProps) => {
   const { children, leftWeight, rightWeight } = props;

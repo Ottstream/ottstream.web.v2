@@ -26,34 +26,3 @@ export type FetchArgs = {
 export type BaseQueryExtraOptions = {
   signal?: AbortSignal;
 };
-
-export interface fetchSignUpTypes {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  channel: number;
-  client: number;
-  company: [lang: string, name: string];
-  description: string;
-  companyEmail: string;
-  website: string;
-  phone: {
-    countryCode: string;
-    phoneNumber: string;
-  };
-}
-
-export interface fetchSignInType {
-  email: string;
-  password: string;
-}
-
-export interface fetchForgotPasswordType {
-  email: string;
-}
-
-export interface fetchResetPasswordType {
-  email: string;
-  oneTimePass: string;
-}

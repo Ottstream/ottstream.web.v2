@@ -1,5 +1,6 @@
 import welcomeLogo from 'Assets/images/welcomeOST.png';
-import { InfoBoxOTS, WrapperOTS } from '../Styled';
+
+import { InfoBoxOTS, WrapperOTS } from './WelcomeOTS.styles.tsx';
 
 const WelcomeOTS = () => {
   return (
