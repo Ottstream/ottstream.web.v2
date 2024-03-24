@@ -70,9 +70,16 @@ const MainPanelFooter = () => {
                 marginLeft: 8,
               }}>
               <div style={{ marginRight: '10px' }}>
-                <ChatAvatar type={'OnlyAvatar'} index={2} />
+                <ChatAvatar type={'OnlyAvatar'} index={2} size={'small'} />
               </div>
-              <p>Other User is typing...</p>
+              <p
+                style={{
+                  fontSize: '10px',
+                  fontWeight: '400',
+                  color: '#A5AAC6',
+                }}>
+                Loya is typing...
+              </p>
             </div>
           )}
         </div>

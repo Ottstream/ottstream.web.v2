@@ -1,10 +1,9 @@
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
-interface ListItemProps {
-  item: any; // Define type for your item
+interface InfiniteListItemPropsI {
   index: number;
 }
-const ListItem = ({ index }: ListItemProps) => {
+const InfiniteListItem = ({ index }: InfiniteListItemPropsI) => {
   return (
     <>
       <div style={{ margin: '10px' }}>
@@ -17,4 +16,4 @@ const ListItem = ({ index }: ListItemProps) => {
   );
 };
 
-export default ListItem;
+export default InfiniteListItem;

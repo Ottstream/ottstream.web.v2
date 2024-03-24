@@ -4,7 +4,8 @@ import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import styled from 'styled-components';
 
-import ConversationList from '@/pages/Chat/Components/ConversationList';
+import ClientsConversationList from 'Pages/Chat/Components/ClientsConversationList';
+import TeamsConversationList from 'Pages/Chat/Components/TeamsConversationList';
 
 const CustomTabs = styled(Tabs)`
   .ant-tabs-content {
@@ -20,7 +21,7 @@ const CustomTabs = styled(Tabs)`
   }
 `;
 
-const TabBarWrapper = () => {
+const LeftPanelTabs = () => {
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -29,12 +30,12 @@ const TabBarWrapper = () => {
     {
       key: '1',
       label: 'Clients',
-      children: <ConversationList type={'Clients'} />,
+      children: <ClientsConversationList />,
     },
     {
       key: '2',
       label: 'Teams',
-      children: <ConversationList type={'Teams'} />,
+      children: <TeamsConversationList />,
     },
   ];
   return (
@@ -53,4 +54,4 @@ const TabBarWrapper = () => {
   );
 };
 
-export default TabBarWrapper;
+export default LeftPanelTabs;

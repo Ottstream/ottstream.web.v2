@@ -6,17 +6,17 @@ import {
   MessageFilled,
   MoreOutlined,
   SendOutlined,
+  SmileOutlined,
   WhatsAppOutlined,
 } from '@ant-design/icons';
 import { MenuUnfoldOutlined } from '@ant-design/icons/lib/icons';
-import { Button } from 'antd';
+import { Button, Dropdown, MenuProps } from 'antd';
 import styled from 'styled-components';
 
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 
 const PanelHeader = styled.div`
-  //
   border-bottom: 1px solid #ccd5dd;
   padding-bottom: 10px;
   .wrapper {
@@ -56,11 +56,55 @@ const PanelHeader = styled.div`
   }
 `;
 
+const ThreeDotMenuDropdownItem = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 276px;
+  padding: 10px;
+  border-bottom: 1px solid #ccd5dd;
+`;
+const CustomDropdown = styled(Dropdown)``;
 interface RightPanelTopPropI {
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
 }
+
 const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <ThreeDotMenuDropdownItem>
+          <p>Block Chat</p>
+        </ThreeDotMenuDropdownItem>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <ThreeDotMenuDropdownItem>
+          <p>Delete Chat</p>
+        </ThreeDotMenuDropdownItem>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <ThreeDotMenuDropdownItem>
+          <p>Pin Chat</p>
+        </ThreeDotMenuDropdownItem>
+      ),
+    },
+    {
+      key: '4',
+      label: (
+        <ThreeDotMenuDropdownItem>
+          <p>Search</p>
+        </ThreeDotMenuDropdownItem>
+      ),
+    },
+  ];
   return (
     <>
       {collapsed ? (
@@ -93,16 +137,24 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
               <div>
                 <ChatAvatar type={'AvatarChatInfo'} index={3} />
               </div>
-              <Button
-                type="text"
-                icon={<MoreOutlined />}
-                onClick={() => {}}
-                style={{
-                  fontSize: '16px',
-                  width: 56,
-                  height: 56,
+              <CustomDropdown
+                trigger={['click']}
+                menu={{ items }}
+                overlayStyle={{
+                  boxShadow: '4px 0px 6px 0px #0A3C6840',
                 }}
-              />
+                placement={'bottomLeft'}>
+                <Button
+                  type="text"
+                  icon={<MoreOutlined />}
+                  onClick={() => {}}
+                  style={{
+                    fontSize: '16px',
+                    width: 56,
+                    height: 56,
+                  }}
+                />
+              </CustomDropdown>
             </div>
             <div className="lower">
               <div className="icon-row">

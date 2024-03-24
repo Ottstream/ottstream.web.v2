@@ -2,9 +2,10 @@ import React from 'react';
 
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar as AntAvatar, List } from 'antd';
+import { AvatarProps } from 'antd/es/avatar/avatar';
 import styled from 'styled-components';
 
-interface ChatAvatarPropsI {
+interface ChatAvatarPropsI extends AvatarProps {
   type:
     | 'OnlyAvatar'
     | 'AvatarWithNameAtTheBottom'
@@ -148,7 +149,7 @@ const AvatarChatInfoWrapper = styled.div`
   }
 `;
 
-const Avatar = ({ index }: ChatAvatarPropsI) => {
+const Avatar = ({ index, ...props }: ChatAvatarPropsI) => {
   return (
     <>
       <AvatarStyleComponent
@@ -156,25 +157,34 @@ const Avatar = ({ index }: ChatAvatarPropsI) => {
         size={'large'}
         src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
         icon={<UserOutlined />}
+        {...props}
       />
     </>
   );
 };
 
-const AvatarWithNameAtTheBottom = ({ type, index }: ChatAvatarPropsI) => {
+const AvatarWithNameAtTheBottom = ({
+  type,
+  index,
+  ...props
+}: ChatAvatarPropsI) => {
   return (
     <AvatarWithNameAtTheBottomWrapper>
-      <Avatar type={type} index={index} />
+      <Avatar type={type} index={index} {...props} />
       <div style={{ marginTop: '5px' }}>
         <p>Name</p>
       </div>
     </AvatarWithNameAtTheBottomWrapper>
   );
 };
-const AvatarWithNameOnTheRight = ({ type, index }: ChatAvatarPropsI) => {
+const AvatarWithNameOnTheRight = ({
+  type,
+  index,
+  ...props
+}: ChatAvatarPropsI) => {
   return (
     <AvatarWithNameOnTheRightWrapper>
-      <Avatar type={type} index={index} />
+      <Avatar type={type} index={index} {...props} />
       <div style={{ marginLeft: '5px' }}>
         <p>Name</p>
       </div>
@@ -184,10 +194,11 @@ const AvatarWithNameOnTheRight = ({ type, index }: ChatAvatarPropsI) => {
 const AvatarWithNameOnTheRightAndSecondLine = ({
   type,
   index,
+  ...props
 }: ChatAvatarPropsI) => {
   return (
     <AvatarWithNameOnTheRightAndSecondLineWrapper>
-      <Avatar type={type} index={index} />
+      <Avatar type={type} index={index} {...props} />
       <List.Item.Meta
         title={<p>{'Ani Hovhannisyan'}</p>}
         description={<p className="description">{'Ant Design'}</p>}
@@ -198,10 +209,11 @@ const AvatarWithNameOnTheRightAndSecondLine = ({
 const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
   type,
   index,
+  ...props
 }: ChatAvatarPropsI) => {
   return (
     <AvatarWithNameOnTheRightWrapper>
-      <Avatar type={type} index={index} />
+      <Avatar type={type} index={index} {...props} />
       <List.Item.Meta
         title={<p>{'Ani Hovhannisyan'}</p>}
         description={<p className="description">{'Ant Design'}</p>}
@@ -218,7 +230,7 @@ const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
   );
 };
 
-const AvatarChatInfo = ({ index }: ChatAvatarPropsI) => {
+const AvatarChatInfo = ({ index, ...props }: ChatAvatarPropsI) => {
   return (
     <AvatarChatInfoWrapper>
       <AvatarStyleComponent
@@ -226,6 +238,7 @@ const AvatarChatInfo = ({ index }: ChatAvatarPropsI) => {
         size={56}
         src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
         icon={<UserOutlined />}
+        {...props}
       />
       <p className="name">Lisa Price</p>
       <p className="company-info">Company Info</p>
@@ -233,28 +246,37 @@ const AvatarChatInfo = ({ index }: ChatAvatarPropsI) => {
   );
 };
 
-const ChatAvatar = ({ type, index }: ChatAvatarPropsI) => {
+const ChatAvatar = ({ type, index, ...props }: ChatAvatarPropsI) => {
   const returnAvatar = () => {
     switch (type) {
       case 'OnlyAvatar':
-        return <Avatar index={index} type={type} />;
+        return <Avatar index={index} type={type} {...props} />;
       case 'AvatarWithNameAtTheBottom':
-        return <AvatarWithNameAtTheBottom index={index} type={type} />;
+        return (
+          <AvatarWithNameAtTheBottom index={index} type={type} {...props} />
+        );
       case 'AvatarWithNameOnTheRight':
-        return <AvatarWithNameOnTheRight index={index} type={type} />;
+        return (
+          <AvatarWithNameOnTheRight index={index} type={type} {...props} />
+        );
       case 'AvatarWithNameOnTheRightAndSecondLine':
         return (
-          <AvatarWithNameOnTheRightAndSecondLine index={index} type={type} />
+          <AvatarWithNameOnTheRightAndSecondLine
+            index={index}
+            type={type}
+            {...props}
+          />
         );
       case 'AvatarWithNameOnTheRightAndSecondLineWithRightInfo':
         return (
           <AvatarWithNameOnTheRightAndSecondLineWithRightInfo
             index={index}
             type={type}
+            {...props}
           />
         );
       case 'AvatarChatInfo':
-        return <AvatarChatInfo index={index} type={type} />;
+        return <AvatarChatInfo index={index} type={type} {...props} />;
     }
   };
 

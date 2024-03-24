@@ -41,13 +41,11 @@ const MainPanelHeaderRightSection = () => {
     <>
       <MainPanelHeaderRightSectionComponent>
         <Dropdown menu={{ items }} trigger={['click']}>
-          <a onClick={e => e.preventDefault()}>
-            <Space style={{ margin: '0 10px' }}>
-              <ChatIcon icon={<ShareAltOutlined />} />
-              All Chats
-              <DownOutlined />
-            </Space>
-          </a>
+          <Space style={{ margin: '0 10px' }}>
+            <ChatIcon icon={<ShareAltOutlined />} />
+            All Chats
+            <DownOutlined />
+          </Space>
         </Dropdown>
         <ChatIcon icon={<PhoneOutlined />} />
         <ChatIcon icon={<VideoCameraOutlined />} />

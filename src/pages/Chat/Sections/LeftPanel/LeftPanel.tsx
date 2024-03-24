@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { Layout } from 'antd';
-import { Header } from 'antd/es/layout/layout';
 import { useTheme } from 'styled-components';
 
 import ConversationTypesSection from 'Pages/Chat/Components/ConversationTypesSection';
+import LeftPanelTabs from 'Pages/Chat/Components/LeftPanelTabs';
 import OnlineUserSection from 'Pages/Chat/Components/OnlineUserSection';
-import TabBarWrapper from 'Pages/Chat/Components/TabBarWrapper';
 import {
   FlexContainer,
   SiderContainer,
@@ -28,7 +27,7 @@ const LeftPanel = () => {
             <ConversationTypesSection />
             <Layout className={'layout-with-shadow'}>
               <OnlineUserSection />
-              <TabBarWrapper />
+              <LeftPanelTabs />
             </Layout>
           </Layout>
         </FlexContainer>
