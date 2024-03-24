@@ -1,9 +1,6 @@
 import {
   BaseQueryApi,
   BaseQueryFn,
-  QueryReturnValue,
-} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
-import {
   createApi,
   fetchBaseQuery,
   FetchBaseQueryError,
@@ -38,11 +35,11 @@ export const baseQueryWithReauth: BaseQueryFn = async (
   api: BaseQueryApi,
   extraOptions: BaseQueryExtraOptions,
 ) => {
-  const result: QueryReturnValue<
-    unknown,
-    FetchBaseQueryError,
-    FetchBaseQueryMeta
-  > = await baseQuery(args, api, extraOptions);
+  const result: ReturnType<typeof baseQuery> = await baseQuery(
+    args,
+    api,
+    extraOptions,
+  );
   if (
     result?.error?.status === 'FETCH_ERROR' ||
     result?.error?.status === 500
