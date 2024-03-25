@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
-import type { MenuProps } from 'antd';
-import { Button, Layout, Menu } from 'antd';
+
 import {
-  MenuFoldOutlined,
   LeftOutlined,
+  MenuFoldOutlined,
+  PlusOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+import {
+  BellTwoTone,
+  MessageTwoTone,
+  ThunderboltTwoTone,
+} from '@ant-design/icons/lib/icons';
+import { Badge, Button, Input, Layout, Menu, MenuProps } from 'antd';
+// eslint-disable-next-line import/named
+import { ButtonProps } from 'antd/es/button/button';
+import { Outlet, useNavigate } from 'react-router-dom';
+import styled, { useTheme } from 'styled-components';
+
 import Icon from '@/components/Icon';
+
 import {
   FlexContainer,
-  SiderContainer,
-  LogoContainer,
   HeaderContainer,
-  Trigger,
+  LogoContainer,
   LogoName,
+  SiderContainer,
+  Trigger,
 } from './Layout.styles';
-import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -58,7 +68,7 @@ const items: MenuItem[] = [
   getItem('Help', 'help', <Icon name="help" />),
 ];
 
-export default function AdminLayout() {
+const AdminLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const theme = useTheme();
@@ -80,7 +90,8 @@ export default function AdminLayout() {
   };
 
   return (
-    <Layout>
+    <Layout
+      style={{ height: '100vh', overflow: 'hidden', border: '3px solid gold' }}>
       <SiderContainer
         width={256}
         theme={theme}
@@ -98,7 +109,7 @@ export default function AdminLayout() {
       </SiderContainer>
       <Layout>
         <HeaderContainer>
-          <Button
+          <OTTSButton
             type="text"
             icon={<MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
@@ -108,6 +119,37 @@ export default function AdminLayout() {
               height: 64,
             }}
           />
+          <OTTSButtonTypeTwo
+            type={'text'}
+            icon={<PlusOutlined />}
+            onClick={() => {}}>
+            <p>Add Client</p>
+          </OTTSButtonTypeTwo>
+          <Input style={{ margin: '10px' }} placeholder="Search" />
+
+          <OTTSIconButton
+            type="text"
+            icon={<MessageTwoTone twoToneColor={'#165d9b'} />}
+            onClick={() => {}}
+            hasLeftBorder
+            count={7}
+          />
+
+          <OTTSIconButton
+            type="text"
+            icon={<ThunderboltTwoTone twoToneColor={'#165d9b'} />}
+            onClick={() => {}}
+            hasLeftBorder
+          />
+
+          <OTTSIconButton
+            type="text"
+            icon={<BellTwoTone twoToneColor={'#165d9b'} />}
+            onClick={() => {}}
+            hasLeftBorder
+            hasRightBorder
+            count={2}
+          />
         </HeaderContainer>
         <div style={{ overflow: 'auto' }}>
           <Outlet />
@@ -115,4 +157,102 @@ export default function AdminLayout() {
       </Layout>
     </Layout>
   );
+};
+
+// TODO: Should be moved to separate file
+
+// OTTS Button ----------------------------------------------------------------
+interface OTTSButtonPropsI extends ButtonProps {}
+const OTTSButton = ({ ...props }: OTTSButtonPropsI) => {
+  return (
+    <>
+      <OTTSButtonComponent {...props}>
+        {props.children}
+        {/**/}
+      </OTTSButtonComponent>
+    </>
+  );
+};
+
+const OTTSButtonComponent = styled(Button)``;
+
+// OTTS Button Type 2 ---------------------------------------------------------
+const OTTSButtonTypeTwoComponent = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    #0c99a8 8.33%,
+    rgba(10, 60, 104, 0.82) 100.98%
+  );
+  padding: 4px 15px 4px 15px;
+  gap: 10px;
+  border-radius: 6px;
+
+  &:hover {
+    color: white !important;
+    background: linear-gradient(
+      90deg,
+      #0c99a8 8.33%,
+      rgba(10, 60, 104, 0.82) 100.98%
+    ) !important;
+  }
+`;
+
+const OTTSButtonTypeTwo = ({ ...props }: OTTSButtonPropsI) => {
+  return (
+    <>
+      <OTTSButtonTypeTwoComponent {...props}>
+        {props.children}
+        {/**/}
+      </OTTSButtonTypeTwoComponent>
+    </>
+  );
+};
+
+// ----------------------------------------------------------------
+
+// OTTS Icon Button
+
+const OTTSIconButtonWrapper = styled.div`
+  height: 100%;
+  .ant-badge {
+    height: 100%;
+  }
+`;
+const OTTSIconButtonComponent = styled(Button)<OTTSIconButtonPropsI>`
+  padding: 0 10px;
+  margin: 0;
+  height: 100%;
+  border-radius: 0;
+  ${({ hasLeftBorder }) => hasLeftBorder && 'border-left: 1px solid #C7C7C7;'}
+  ${({ hasRightBorder }) =>
+    hasRightBorder && ' border-right: 1px solid #C7C7C7;'}
+
+  &.ant-btn.ant-btn-icon-only {
+    width: auto;
+    padding: 0 20px;
+  }
+`;
+const OTTSBadge = styled(Badge)``;
+interface OTTSIconButtonPropsI extends OTTSButtonPropsI {
+  hasLeftBorder?: boolean;
+  hasRightBorder?: boolean;
+  count?: number;
 }
+
+const OTTSIconButton = ({ count = 0, ...props }: OTTSIconButtonPropsI) => {
+  return (
+    <OTTSIconButtonWrapper>
+      <OTTSBadge color="#ffb800" count={count} offset={[-15, 15]}>
+        <OTTSIconButtonComponent {...props}>
+          {props.children}
+        </OTTSIconButtonComponent>
+      </OTTSBadge>
+    </OTTSIconButtonWrapper>
+  );
+};
+
+export default AdminLayout;
