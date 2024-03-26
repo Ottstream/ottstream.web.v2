@@ -13,8 +13,8 @@ export default function DayView({
 }
 
 DayView.range = (date: Date, { localizer }: { localizer: DateLocalizer }) => {
-  const start = localizer.startOf(date, 'year');
-  const end = localizer.endOf(date, 'year');
+  const start = localizer.startOf(date, 'day');
+  const end = localizer.endOf(date, 'day');
 
   const range = [];
   let current = start;
@@ -36,9 +36,9 @@ DayView.navigate = (
 
   switch (action) {
     case Navigate.NEXT:
-      return localizer.add(date, 1, 'year');
+      return localizer.add(date, 1, 'day');
     case Navigate.PREVIOUS:
-      return localizer.add(date, -1, 'year');
+      return localizer.add(date, -1, 'day');
     default:
       return date;
   }

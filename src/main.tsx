@@ -9,12 +9,13 @@ import '@/i18n/i18n';
 
 import { GlobalStyle } from '@/themes/GlobalStyle';
 
-import Modal from './components/Modal/Modal';
 import router from './router/router';
 
 import { Provider } from 'react-redux';
 
 import { store } from './store/store';
+
+import Modal from './components/Modal/Modal';
 import { ThemeProvider } from 'styled-components';
 import theme from './themes/theme';
 

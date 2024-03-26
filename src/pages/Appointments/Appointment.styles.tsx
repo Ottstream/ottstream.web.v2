@@ -13,7 +13,7 @@ export const Appointments = styled.div`
     border-radius: 7px;
     border: 1px solid #dee6ec;
     border-radius: 7px;
-    margin-bottom: 30px;
+    width: 100%;
     .rbc-calendar {
       height: calc(100vh - 150px);
     }
