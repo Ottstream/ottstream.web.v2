@@ -22,7 +22,7 @@ const breakpoints: Theme['breakpoints'] = {
 const typography: Theme['typography'] = {
   fontFamily: 'Montserrat',
   fontSize: '14px',
-  fontStyle: 'normal ',
+  fontStyle: 'normal',
   fontWeight: 400,
   lineHeight: '22px',
 };
