@@ -1,10 +1,9 @@
 import React, { CSSProperties, useState } from 'react';
 
-import { Badge, Collapse, CollapseProps } from 'antd';
+import { Collapse as AntCollapse, Badge, CollapseProps } from 'antd';
 import styled from 'styled-components';
 
-import AvatarRow from 'Pages/Chat/Components/AvatarRow';
-import ChatAvatar from 'Pages/Chat/Components/ChatAvatar.tsx';
+import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
 const users = [
   { name: 'User 1', imageUrl: 'avatar1.jpg' },
@@ -24,17 +23,54 @@ const users = [
   { name: 'User 15', imageUrl: 'avatar4.jpg' },
   { name: 'User 16', imageUrl: 'avatar4.jpg' },
   { name: 'User 17', imageUrl: 'avatar4.jpg' },
+
+  { name: 'User 2', imageUrl: 'avatar2.jpg' },
+  { name: 'User 3', imageUrl: 'avatar3.jpg' },
+  { name: 'User 4', imageUrl: 'avatar4.jpg' },
+  { name: 'User 5', imageUrl: 'avatar4.jpg' },
+  { name: 'User 6', imageUrl: 'avatar4.jpg' },
+  { name: 'User 7', imageUrl: 'avatar4.jpg' },
+  { name: 'User 8', imageUrl: 'avatar4.jpg' },
+  { name: 'User 9', imageUrl: 'avatar4.jpg' },
+  { name: 'User 10', imageUrl: 'avatar4.jpg' },
+  { name: 'User 11', imageUrl: 'avatar4.jpg' },
+  { name: 'User 12', imageUrl: 'avatar4.jpg' },
+  { name: 'User 13', imageUrl: 'avatar4.jpg' },
+  { name: 'User 14', imageUrl: 'avatar4.jpg' },
+  { name: 'User 15', imageUrl: 'avatar4.jpg' },
+  { name: 'User 16', imageUrl: 'avatar4.jpg' },
+  { name: 'User 17', imageUrl: 'avatar4.jpg' },
+
+  { name: 'User 5', imageUrl: 'avatar4.jpg' },
+  { name: 'User 6', imageUrl: 'avatar4.jpg' },
+  { name: 'User 7', imageUrl: 'avatar4.jpg' },
+  { name: 'User 8', imageUrl: 'avatar4.jpg' },
+  { name: 'User 9', imageUrl: 'avatar4.jpg' },
+  { name: 'User 10', imageUrl: 'avatar4.jpg' },
+  { name: 'User 11', imageUrl: 'avatar4.jpg' },
+  { name: 'User 12', imageUrl: 'avatar4.jpg' },
+  { name: 'User 13', imageUrl: 'avatar4.jpg' },
+  { name: 'User 14', imageUrl: 'avatar4.jpg' },
+  { name: 'User 15', imageUrl: 'avatar4.jpg' },
+  { name: 'User 16', imageUrl: 'avatar4.jpg' },
+  { name: 'User 17', imageUrl: 'avatar4.jpg' },
   // Add more users as needed
 ];
 
+const Collapse = styled(AntCollapse)`
+  .ant-collapse-content-box {
+    padding-block: 0 !important;
+  }
+`;
+
 const AvatarRowContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
   justify-content: center;
-  gap: 20px;
   margin: 10px 0;
+  gap: 20px;
 
   & > * {
     flex: 1 1 20%;
@@ -50,9 +86,19 @@ const CollapseLabelWrapper = styled.div`
   width: 100%;
   padding: 10px 15px 0 15px;
   margin: 0 0 10px 0;
-  border-top: 1px solid #f8f8fa;
 `;
 
+const CollapseChild = styled.div`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 110px); // TODO: double check it
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  overflow: auto;
+  z-index: 10;
+  background-color: white;
+`;
 const OnlineUserSection: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const renderCollapseLabel = ({
@@ -86,7 +132,7 @@ const OnlineUserSection: React.FC = () => {
       key: '1',
       label: renderCollapseLabel({
         text: 'Users Online',
-        color: '#52C41A',
+        color: '#52C41A', // TODO: Use general colors
         isVisible: !isCollapsed,
         style: { margin: '0', padding: '0' },
       }),
@@ -112,7 +158,7 @@ const OnlineUserSection: React.FC = () => {
 
   return (
     <>
-      <CustomCollapse
+      <Collapse
         onChange={() => setIsCollapsed(!isCollapsed)}
         expandIconPosition={'end'}
         ghost
@@ -127,21 +173,4 @@ const OnlineUserSection: React.FC = () => {
   );
 };
 
-const CustomCollapse = styled(Collapse)`
-  .ant-collapse-content-box {
-    padding-block: 0 !important;
-  }
-`;
-
-const CollapseChild = styled.div`
-  position: absolute;
-  width: 100%;
-  height: calc(100% - 110px);
-  display: flex;
-  flex-direction: column;
-  left: 0;
-  overflow: auto;
-  z-index: 10;
-  background-color: white;
-`;
 export default OnlineUserSection;

@@ -1,29 +1,21 @@
-import { useState } from 'react';
+import React from 'react';
 
-import { Button, Layout } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
+import styled from 'styled-components';
 
-import Icon from '@/components/Icon.tsx';
-import ChatMembersListItem from '@/components/InfiniteList/ChatMembersListItem.tsx';
+import ChatMembersListItem from '@/components/InfiniteList/ChatMembersListItem';
 import InfiniteList, {
   defaultEndMessage,
   defaultLoader,
 } from '@/components/InfiniteList/InfiniteList';
+import ChatIcon from 'Pages/Chat/Components/ChatIcon';
+import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
 
 interface MembersListPropsI {}
 
 const ChatMembersList = ({}: MembersListPropsI) => {
-  const [items, setItems] = useState(Array.from({ length: 20 }));
-  const [hasMore, setHasMore] = useState(true);
-
-  const fetchMoreData = () => {
-    if (items.length >= 50) {
-      setHasMore(false);
-      return;
-    }
-    setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 5 })));
-    }, 1500);
-  };
+  const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
   return (
     <>
       <Layout
@@ -41,19 +33,10 @@ const ChatMembersList = ({}: MembersListPropsI) => {
             <>
               <Button
                 block
-                onClick={() => {}}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundColor: '#01B2B8',
-                  color: 'white',
-                }}>
-                <Icon
-                  name="filter"
-                  color="#fffffff"
-                  style={{ marginRight: '10px' }}
-                />
+                shape={'default'}
+                type={'primary'}
+                icon={<PlusOutlined />}
+                onClick={() => {}}>
                 <p> Add Member</p>
               </Button>
               {items.map((_, index) => (
@@ -66,5 +49,8 @@ const ChatMembersList = ({}: MembersListPropsI) => {
     </>
   );
 };
+const Button = styled(ChatIcon)`
+  margin: 0;
+`;
 
 export default ChatMembersList;

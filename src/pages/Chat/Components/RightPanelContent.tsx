@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
-
 import { BellTwoTone, TagTwoTone } from '@ant-design/icons';
-import { Select, SelectProps } from 'antd';
 import styled from 'styled-components';
 
+import RightPanelCarousel from 'Pages/Chat/Components/RightPanelCarousel';
 import RightPanelTabs from 'Pages/Chat/Components/RightPanelTabs';
+import Select from 'Pages/Chat/Components/Select';
 
 // Functions TODO: Should be moved to separate file
 
@@ -65,92 +64,46 @@ const RightPanelContent = () => {
   return (
     <>
       <RightPanelContentContainer>
-        <WrapperSelects>
-          <h5>Phone Number</h5>
-          <CustomSelect
-            size={'large'}
-            options={phoneOptions}
-            defaultValue={phoneOptions[0]}
-            onChange={() => {}}
-            style={{ width: '100%' }}
-            prefixIcon={<BellTwoTone twoToneColor={'#01B2B8'} />}
-          />
-        </WrapperSelects>
-        <WrapperSelects>
-          <h5>Locations</h5>
-          <CustomSelect
-            size={'large'}
-            options={addressOptions}
-            defaultValue={addressOptions[0]}
-            onChange={() => {}}
-            style={{ width: '100%' }}
-            prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
-          />
-        </WrapperSelects>
-        <WrapperSelects>
-          <h5>Company Addresses</h5>
-          <CustomSelect
-            size={'large'}
-            options={addressOptions}
-            defaultValue={addressOptions[0]}
-            onChange={() => {}}
-            style={{ width: '100%' }}
-            prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
-          />
-        </WrapperSelects>
-        <div style={{ height: '100%', overflow: 'auto' }}>
-          <RightPanelTabs />
-        </div>
+        <Select
+          title={'Phone Number'}
+          size={'large'}
+          options={phoneOptions}
+          defaultValue={phoneOptions[0]}
+          onChange={() => {}}
+          style={{ width: '100%' }}
+          prefixIcon={<BellTwoTone twoToneColor={'#01B2B8'} />}
+        />
+        <Select
+          title={'Locations'}
+          size={'large'}
+          options={addressOptions}
+          defaultValue={addressOptions[0]}
+          onChange={() => {}}
+          style={{ width: '100%' }}
+          prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
+        />
+        <Select
+          title={'Company Addresses'}
+          size={'large'}
+          options={addressOptions}
+          defaultValue={addressOptions[0]}
+          onChange={() => {}}
+          style={{ width: '100%' }}
+          prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
+        />
+        {/*<div*/}
+        {/*  style={{*/}
+        {/*    margin: '60px 0',*/}
+        {/*    border: '1px solid red',*/}
+        {/*    // height: '100px',*/}
+        {/*  }}>*/}
+        {/*  <RightPanelCarousel />*/}
+        {/*</div>*/}
+
+        <RightPanelTabs />
       </RightPanelContentContainer>
     </>
   );
 };
-
-const WrapperSelects = styled.div`
-  width: 100%;
-  margin: 10px 0;
-
-  h5 {
-    color: #272b2e;
-    margin-bottom: 8px;
-    //styleName: Small text;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    //text-align: left;
-  }
-`;
-
-// Custom Select TODO: Should be mode to separate file
-type CustomSelectProps = SelectProps & {
-  prefixIcon?: ReactNode;
-};
-
-const CustomSelect = ({ prefixIcon, children, ...rest }: CustomSelectProps) => {
-  return (
-    <SelectWrapper>
-      {prefixIcon && <div className="prefix-icon-wrapper">{prefixIcon}</div>}
-      <Select {...rest}>{children}</Select>
-    </SelectWrapper>
-  );
-};
-
-const SelectWrapper = styled.div`
-  position: relative;
-
-  .prefix-icon-wrapper {
-    position: absolute;
-    z-index: 1;
-    width: 3rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  && .ant-select .ant-select-selector {
-    padding-left: calc(3rem - 8px);
-  }
-`;
 
 export default RightPanelContent;

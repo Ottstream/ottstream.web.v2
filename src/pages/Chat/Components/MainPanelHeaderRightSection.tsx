@@ -6,12 +6,12 @@ import {
   ShareAltOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Dropdown, MenuProps, Space } from 'antd';
+import { Dropdown as AntDropdown, Space as AntSpace, MenuProps } from 'antd';
 import styled from 'styled-components';
 
-import ChatIcon from 'Pages/Chat/Components/ChatIcon';
+import { MainPanelChatIcon } from 'Pages/Chat/Sections/MainPanel/MainPanel.styles';
 
-const MainPanelHeaderRightSectionComponent = styled.div`
+const MainPanelHeaderRightSectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,35 +21,41 @@ const MainPanelHeaderRightSectionComponent = styled.div`
     color: #272b2e;
   }
 `;
+const Dropdown = styled(AntDropdown)`
+  cursor: pointer;
+`;
+const Space = styled(AntSpace)`
+  margin: 0 10px;
+`;
 
 const MainPanelHeaderRightSection = () => {
   const items: MenuProps['items'] = [
     {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
+      label: <p>1st menu item</p>,
       key: '0',
     },
     {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
+      label: <p>2nd menu item</p>,
       key: '1',
     },
     {
-      label: '3rd menu item',
+      label: <p>3rd menu item</p>,
       key: '3',
     },
   ];
   return (
     <>
-      <MainPanelHeaderRightSectionComponent>
+      <MainPanelHeaderRightSectionWrapper>
         <Dropdown menu={{ items }} trigger={['click']}>
-          <Space style={{ margin: '0 10px' }}>
-            <ShareAltOutlined />
+          <Space>
+            <MainPanelChatIcon icon={<ShareAltOutlined />} type={'text'} />
             All Chats
             <DownOutlined />
           </Space>
         </Dropdown>
-        <ChatIcon icon={<PhoneOutlined />} />
-        <ChatIcon icon={<VideoCameraOutlined />} />
-      </MainPanelHeaderRightSectionComponent>
+        <MainPanelChatIcon icon={<PhoneOutlined />} ghost />
+        <MainPanelChatIcon icon={<VideoCameraOutlined />} ghost />
+      </MainPanelHeaderRightSectionWrapper>
     </>
   );
 };

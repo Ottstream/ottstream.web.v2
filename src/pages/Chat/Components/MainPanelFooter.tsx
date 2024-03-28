@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 import { FileOutlined, SendOutlined, SmileOutlined } from '@ant-design/icons';
-import { Button, Input, message, Popover, Upload } from 'antd';
+import { Input, message, Upload } from 'antd';
 
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
-import ChatIcon from 'Pages/Chat/Components/ChatIcon';
-import { MainPanelFooterWrapper } from 'Pages/Chat/Sections/MainPanel/MainPanel.styles';
+import {
+  MainPanelChatIcon,
+  MainPanelFooterWrapper,
+} from 'Pages/Chat/Sections/MainPanel/MainPanel.styles';
 
 const MainPanelFooter = () => {
   const [inputValue, setInputValue] = useState('');
@@ -33,19 +35,12 @@ const MainPanelFooter = () => {
   return (
     <>
       <MainPanelFooterWrapper>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '10px',
-            borderRadius: '6px',
-            border: '4px solid #06B2B826',
-          }}>
+        <div className={'input-container'}>
           <Upload onChange={handleFileUpload} showUploadList={false}>
-            <ChatIcon icon={<FileOutlined />} />
+            <MainPanelChatIcon size={'small'} icon={<FileOutlined />} ghost />
           </Upload>
 
-          <ChatIcon icon={<SmileOutlined />} />
+          <MainPanelChatIcon size={'small'} icon={<SmileOutlined />} ghost />
 
           <Input
             value={inputValue}
@@ -57,29 +52,19 @@ const MainPanelFooter = () => {
             style={{ marginLeft: 8, marginRight: 8, flex: 1 }}
           />
 
-          <ChatIcon icon={<SendOutlined />} onClick={handleSend} />
+          <MainPanelChatIcon
+            icon={<SendOutlined />}
+            ghost
+            onClick={handleSend}
+          />
         </div>
-        <div style={{ margin: '10px 0 0 0' }}>
+        <div className={'typing-user-wrapper'}>
           {isTyping && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'start',
-                fontStyle: 'italic',
-                marginLeft: 8,
-              }}>
-              <div style={{ marginRight: '10px' }}>
+            <div className={'typing-user-wrapper'}>
+              <div className={'typing-avatar-wrapper'}>
                 <ChatAvatar type={'OnlyAvatar'} index={2} size={'small'} />
               </div>
-              <p
-                style={{
-                  fontSize: '10px',
-                  fontWeight: '400',
-                  color: '#A5AAC6',
-                }}>
-                Loya is typing...
-              </p>
+              <p>Loya is typing...</p>
             </div>
           )}
         </div>

@@ -10,22 +10,13 @@ import InfiniteList, {
 import InfiniteListItem from '@/components/InfiniteList/InfiniteListItem';
 import SearchInput from 'Pages/Chat/Components/SearchInput';
 import ToggleSwitch from 'Pages/Chat/Components/ToggleSwitch';
+import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
 
 interface ConversationListPropsI {}
 
 const TeamsConversationList = ({}: ConversationListPropsI) => {
-  const [items, setItems] = useState(Array.from({ length: 20 }));
-  const [hasMore, setHasMore] = useState(true);
+  const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
 
-  const fetchMoreData = () => {
-    if (items.length >= 50) {
-      setHasMore(false);
-      return;
-    }
-    setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 5 })));
-    }, 1500);
-  };
   return (
     <>
       <Layout

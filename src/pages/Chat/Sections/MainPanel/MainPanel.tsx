@@ -1,15 +1,10 @@
 import React from 'react';
 
-import { Input, Layout } from 'antd';
-
 import { MainPanelWrapper } from '@/pages/Chat/Sections/MainPanel/MainPanel.styles';
 import MainPanelFooter from 'Pages/Chat/Components/MainPanelFooter';
 import MainPanelHeader from 'Pages/Chat/Components/MainPanelHeader';
-// eslint-disable-next-line import/named
-import Messenger, { MessageI } from 'Pages/Chat/Components/Messenger';
-
-const { Header, Content } = Layout;
-const { Search } = Input;
+import { MessageI } from 'Pages/Chat/Components/Messenger/Message';
+import Messenger from 'Pages/Chat/Components/Messenger/Messenger';
 
 const testData: MessageI[] = [
   {
@@ -20,6 +15,7 @@ const testData: MessageI[] = [
       name: 'Justin',
       avatarUrl: 'other_person_avatar_url',
     },
+    seen: true,
   },
   {
     id: 9,
@@ -50,7 +46,10 @@ const testData: MessageI[] = [
   },
   {
     id: 6,
-    text: 'Me too. Are you coming to the event tonight?',
+    text:
+      'Me too. Are you coming to the event tonight? Me too. Are you coming to the event tonight? Me too. Are you' +
+      ' coming to the event tonight? Me too. Are you coming to the event tonight?  Me too. Are you coming to the' +
+      ' event tonight? Me too. Are you coming to the event tonight? Me too. Are you coming to the event tonight?  ',
     sender: {
       id: 2,
       name: 'Loya',
@@ -108,20 +107,7 @@ const MainPanel = () => {
   return (
     <MainPanelWrapper>
       <MainPanelHeader />
-      <Layout>
-        <Header style={{ background: '#F8F8FA', padding: '0 16px', border: 0 }}>
-          <Search
-            placeholder="Search messages"
-            style={{
-              width: '100%',
-              margin: '8px 0',
-            }}
-          />
-        </Header>
-        <Content style={{ padding: '0 8px ' }}>
-          <Messenger messages={testData} />
-        </Content>
-      </Layout>
+      <Messenger messages={testData} />
       <MainPanelFooter />
     </MainPanelWrapper>
   );

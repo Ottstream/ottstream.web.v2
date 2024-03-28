@@ -6,7 +6,6 @@ import {
   MessageFilled,
   MoreOutlined,
   SendOutlined,
-  SmileOutlined,
   WhatsAppOutlined,
 } from '@ant-design/icons';
 import { MenuUnfoldOutlined } from '@ant-design/icons/lib/icons';
@@ -46,6 +45,7 @@ const PanelHeader = styled.div`
     }
     .user-status {
       color: #7a7a7a;
+      margin-top: 5px;
       p {
         font-size: 12px;
         font-weight: 400;
@@ -62,13 +62,8 @@ const ThreeDotMenuDropdownItem = styled(Button)`
   align-items: center;
   width: 276px;
   padding: 10px;
-  //border-bottom: 1px solid #ccd5dd;
   border: none;
-  :hover,
-  :active,
-  :focus {
-    background-color: white;
-  }
+  color: black !important;
 `;
 const CustomDropdown = styled(Dropdown)``;
 interface RightPanelTopPropI {
@@ -87,6 +82,7 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
       label: (
         <>
           <ThreeDotMenuDropdownItem
+            ghost
             onClick={() => setIsBlockModalVisible(true)}>
             <p>Block Chat</p>
           </ThreeDotMenuDropdownItem>
@@ -117,6 +113,7 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
       label: (
         <>
           <ThreeDotMenuDropdownItem
+            ghost
             onClick={() => setIsRemoveModalVisible(true)}>
             <p>Delete Chat</p>
           </ThreeDotMenuDropdownItem>
@@ -145,7 +142,7 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
     {
       key: '3',
       label: (
-        <ThreeDotMenuDropdownItem>
+        <ThreeDotMenuDropdownItem ghost>
           <p>Pin Chat</p>
         </ThreeDotMenuDropdownItem>
       ),
@@ -153,7 +150,7 @@ const RightPanelTop = ({ collapsed, setCollapsed }: RightPanelTopPropI) => {
     {
       key: '4',
       label: (
-        <ThreeDotMenuDropdownItem>
+        <ThreeDotMenuDropdownItem ghost>
           <p>Search</p>
         </ThreeDotMenuDropdownItem>
       ),

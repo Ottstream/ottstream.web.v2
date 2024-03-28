@@ -1,14 +1,22 @@
 import React from 'react';
 
-import { Tabs } from 'antd';
+import { Tabs as AntTabs } from 'antd';
 import type { TabsProps } from 'antd';
 import styled from 'styled-components';
 
-import ChatMembersList from 'Pages/Chat/Components/ChatMembersList.tsx';
-import ClientsConversationList from 'Pages/Chat/Components/ClientsConversationList';
-import TeamsConversationList from 'Pages/Chat/Components/TeamsConversationList';
+import ChatFilesList from 'Pages/Chat/Components/ChatFilesList';
+import ChatMembersList from 'Pages/Chat/Components/ChatMembersList';
+import ChatUrlsList from 'Pages/Chat/Components/ChatUrlsList';
 
-const CustomTabs = styled(Tabs)`
+const TabsWrapper = styled.div`
+  height: 100%;
+  overflow: auto;
+`;
+
+const Tabs = styled(AntTabs)`
+  height: 100%;
+  overflow: auto;
+
   .ant-tabs-content {
     height: 100%;
   }
@@ -36,27 +44,26 @@ const RightPanelTabs = () => {
     {
       key: '2',
       label: 'Files',
-      children: <ChatMembersList />,
+      children: <ChatFilesList />,
     },
     {
       key: '3',
       label: 'Urls',
-      children: <ChatMembersList />,
+      children: <ChatUrlsList />,
     },
   ];
   return (
-    <>
-      <CustomTabs
+    <TabsWrapper>
+      <Tabs
         defaultActiveKey="1"
         items={items}
         onChange={onChange}
         centered={true}
         type={'line'}
         animated={{ inkBar: true, tabPane: true }}
-        style={{ overflow: 'auto', height: '100%' }}
         tabBarStyle={{}}
       />
-    </>
+    </TabsWrapper>
   );
 };
 

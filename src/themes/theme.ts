@@ -10,6 +10,7 @@ const colorPalette: Theme['colorPalette'] = {
   light: '#F8F8FA',
   white: '#FFFFFF',
   blueGreen: '#01B2B8',
+  orangeYellow: '#FFB800',
 };
 
 const breakpoints: Theme['breakpoints'] = {
