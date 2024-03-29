@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Select, SelectProps } from 'antd';
+import { Select as AntSelect, SelectProps } from 'antd';
 import jsonp from 'fetch-jsonp';
 import qs from 'qs';
 import styled from 'styled-components';
@@ -44,10 +44,10 @@ interface SearchInputProps {
   placeholder?: string;
   onSearch?: (value: string, callback: (data: any) => void) => void;
 }
-const StyledSelect = styled(Select)`
+const Select = styled(AntSelect)`
   width: 100%;
-  margin: 10px 0;
-  padding: 0 10px;
+  margin: 5px 0;
+  //padding: 0 10px;
 `;
 
 const SearchInput = ({ placeholder, onSearch = fetch }: SearchInputProps) => {
@@ -57,12 +57,11 @@ const SearchInput = ({ placeholder, onSearch = fetch }: SearchInputProps) => {
   const handleSearch = (newValue: string) => {
     onSearch(newValue, setData);
   };
-
   const handleChange = (newValue: string | unknown) => {
     setValue(newValue);
   };
   return (
-    <StyledSelect
+    <Select
       showSearch
       value={value}
       placeholder={placeholder}

@@ -12,8 +12,6 @@ interface InfiniteListItemPropsI {
 }
 const ChatFilesListItemWrapper = styled.div`
   display: flex;
-  //flex-direction: row;
-  //flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   background-color: ${props => props.theme.colorPalette.white};
@@ -22,17 +20,6 @@ const ChatFilesListItemWrapper = styled.div`
   border-bottom: 1px solid #ccd5dd;
 `;
 
-const RemoveButton = styled(Button)`
-  background-color: #dee6ec;
-  border: none;
-  color: black;
-  p {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 22px;
-    text-align: left;
-  }
-`;
 const ChatFilesListItem = ({}: InfiniteListItemPropsI) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (

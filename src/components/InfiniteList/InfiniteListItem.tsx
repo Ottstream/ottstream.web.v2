@@ -6,7 +6,7 @@ interface InfiniteListItemPropsI {
 const InfiniteListItem = ({ index }: InfiniteListItemPropsI) => {
   return (
     <>
-      <div style={{ margin: '10px' }}>
+      <div style={{ margin: '10px 0' }}>
         <ChatAvatar
           type={'AvatarWithNameOnTheRightAndSecondLineWithRightInfo'}
           index={index}

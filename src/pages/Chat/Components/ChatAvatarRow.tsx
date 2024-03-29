@@ -4,26 +4,32 @@ import styled from 'styled-components';
 
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
-interface AvatarRowProps {
+interface ChatAvatarRowPropsI {
   users: { name: string; imageUrl: string }[];
 }
 
-const AvatarRowContainer = styled.div`
+const ChatAvatarRowContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
   gap: 20px;
-  margin: 10px 0;
+
+  & > * {
+    flex: 1 1 20%;
+    max-width: 25%;
+    box-sizing: border-box;
+  }
 `;
 
-const AvatarRow: React.FC<AvatarRowProps> = ({ users }) => {
+const ChatAvatarRow = ({ users }: ChatAvatarRowPropsI) => {
   return (
-    <AvatarRowContainer>
+    <ChatAvatarRowContainer>
       {users.map((_, index) => (
         <ChatAvatar type={'AvatarWithNameAtTheBottom'} index={index} />
       ))}
-    </AvatarRowContainer>
+    </ChatAvatarRowContainer>
   );
 };
 
-export default AvatarRow;
+export default ChatAvatarRow;

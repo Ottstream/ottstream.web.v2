@@ -9,6 +9,8 @@ interface ToggleSwitchProps {
 const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin: 10px 0 0 0;
+
   p {
     margin: 0 10px;
   }

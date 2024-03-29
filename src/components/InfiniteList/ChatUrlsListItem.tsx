@@ -11,8 +11,6 @@ interface InfiniteListItemPropsI {
 }
 const ChatUrlsListItemWrapper = styled.div`
   display: flex;
-  //flex-direction: row;
-  //flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   background-color: ${props => props.theme.colorPalette.white};

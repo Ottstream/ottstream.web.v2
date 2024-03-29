@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import { Input, Layout } from 'antd';
+import { Layout } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styled from 'styled-components';
 
 import Message, { MessageI } from 'Pages/Chat/Components/Messenger/Message';
+import SearchInput from 'Pages/Chat/Components/SearchInput';
 
 interface MessengerPropsI {
   messages: MessageI[];
@@ -38,17 +39,15 @@ const Content = styled(Layout.Content)`
   padding: 0 8px;
 `;
 
-const Search = styled(Input)`
-  width: 100%;
-  margin: 8px 0;
-`;
 const Messenger = ({ messages }: MessengerPropsI) => {
   const [isSearchVisible, setIsSearchVisible] = useState(true);
 
   return (
     <Layout>
       <Header>
-        {isSearchVisible && <Search placeholder="Search in conversation" />}
+        {isSearchVisible && (
+          <SearchInput placeholder="Search in conversation" />
+        )}
       </Header>
       <Content>
         <MessengerWrapper>

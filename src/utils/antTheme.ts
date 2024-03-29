@@ -13,7 +13,6 @@ export const antTheme = {
       defaultColor: '#01b2b8',
       defaultHoverColor: '#01b2b8',
       defaultGhostColor: '#01b2b8',
-      dangerColor: '#000000',
     },
   },
 };

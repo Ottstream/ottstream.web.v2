@@ -9,7 +9,6 @@ interface InfiniteListItemPropsI {
   index: number;
 }
 const ChatMembersListItemWrapper = styled.div`
-  //margin: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

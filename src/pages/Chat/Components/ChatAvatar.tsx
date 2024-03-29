@@ -42,6 +42,9 @@ const AvatarWrapper = styled.div`
     line-height: 22px;
     text-align: left;
   }
+  .name-bottom {
+    margin: 5px 0 0 0;
+  }
 `;
 
 const AvatarWithNameAtTheBottomWrapper = styled(AvatarWrapper)`
@@ -81,7 +84,7 @@ const AvatarWithNameAtTheBottom = ({
   return (
     <AvatarWithNameAtTheBottomWrapper>
       <Avatar type={type} index={index} {...props} />
-      <div style={{ marginTop: '5px' }}>
+      <div className={'name-bottom'}>
         <p>Name</p>
       </div>
     </AvatarWithNameAtTheBottomWrapper>
@@ -95,7 +98,7 @@ const AvatarWithNameOnTheRight = ({
   return (
     <AvatarWithNameOnTheRightWrapper>
       <Avatar type={type} index={index} {...props} />
-      <div style={{ marginLeft: '5px' }}>
+      <div className={'name-bottom'}>
         <p>Name</p>
       </div>
     </AvatarWithNameOnTheRightWrapper>

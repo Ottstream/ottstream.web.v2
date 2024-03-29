@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { Layout } from 'antd';
+import styled from 'styled-components';
 
-import { Button, Layout } from 'antd';
-
-import Icon from '@/components/Icon';
 import InfiniteList, {
   defaultEndMessage,
   defaultLoader,
@@ -14,34 +12,18 @@ import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
 
 interface ConversationListPropsI {}
 
-const TeamsConversationList = ({}: ConversationListPropsI) => {
+const ClientsConversationListWrapper = styled(Layout)`
+  height: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+`;
+
+const ClientsConversationList = ({}: ConversationListPropsI) => {
   const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
 
   return (
     <>
-      <Layout
-        style={{
-          height: '100%',
-          overflow: 'hidden',
-        }}>
-        <Button
-          onClick={() => {}}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#01B2B8',
-            padding: '20px',
-            margin: '5px',
-            color: 'white',
-          }}>
-          <Icon
-            name="filter"
-            color="#fffffff"
-            style={{ marginRight: '10px' }}
-          />
-          <p> Create Group</p>
-        </Button>
+      <ClientsConversationListWrapper>
         <SearchInput placeholder="search" />
         <ToggleSwitch />
         <InfiniteList
@@ -51,12 +33,12 @@ const TeamsConversationList = ({}: ConversationListPropsI) => {
           endMessage={defaultEndMessage()}
           loader={defaultLoader()}
           children={items.map((_, index) => (
-            <InfiniteListItem key={index} index={index} />
+            <InfiniteListItem key={index} index={20 + index} />
           ))}
         />
-      </Layout>
+      </ClientsConversationListWrapper>
     </>
   );
 };
 
-export default TeamsConversationList;
+export default ClientsConversationList;

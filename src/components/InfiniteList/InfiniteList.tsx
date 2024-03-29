@@ -29,7 +29,7 @@ const InfiniteList = ({ ...props }: InfiniteListPropsI) => {
   // };
   return (
     <>
-      <InfiniteScroll {...props} height={height} />
+      <InfiniteScroll {...props} height={height} children={props.children} />
     </>
   );
 };

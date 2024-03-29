@@ -6,11 +6,16 @@ import {
   MessageOutlined,
   PhoneOutlined,
 } from '@ant-design/icons';
-import { Badge, Button, Radio, RadioChangeEvent } from 'antd';
+import { Badge, Radio, RadioChangeEvent } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import styled from 'styled-components';
 
-const ButtonRow = () => {
+import ChatIcon from 'Pages/Chat/Components/ChatIcon';
+
+const Button = styled(ChatIcon)`
+  align-self: center;
+`;
+const ConversationTypeSection = () => {
   const [activeButton, setActiveButton] = useState<string>('all');
 
   const handleButtonClick = (e: RadioChangeEvent) => {
@@ -47,19 +52,11 @@ const ButtonRow = () => {
             </Radio>
           </Badge>
         </Radio.Group>
-        <div
-          style={{
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            paddingRight: '5px',
-          }}>
-          <Button>
-            <BulbTwoTone twoToneColor={'#01B2B8'} />
-            Providers
-          </Button>
-        </div>
+        <Button
+          shape={'default'}
+          icon={<BulbTwoTone twoToneColor={'#01B2B8'} />}>
+          <p>Providers</p>
+        </Button>
       </ConversationTypeContainer>
     </>
   );
@@ -86,4 +83,4 @@ const ConversationTypeContainer = styled(Header)`
   }
 `;
 
-export default ButtonRow;
+export default ConversationTypeSection;

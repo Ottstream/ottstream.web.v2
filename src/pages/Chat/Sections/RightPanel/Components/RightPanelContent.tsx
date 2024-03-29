@@ -1,9 +1,9 @@
 import { BellTwoTone, TagTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 
-import RightPanelCarousel from 'Pages/Chat/Components/RightPanelCarousel';
-import RightPanelTabs from 'Pages/Chat/Components/RightPanelTabs';
 import Select from 'Pages/Chat/Components/Select';
+import RightPanelCarousel from 'Pages/Chat/Sections/RightPanel/Components/RightPanelCarousel';
+import RightPanelTabs from 'Pages/Chat/Sections/RightPanel/Components/RightPanelTabs';
 
 // Functions TODO: Should be moved to separate file
 

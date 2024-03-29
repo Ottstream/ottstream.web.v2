@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { MainPanelWrapper } from '@/pages/Chat/Sections/MainPanel/MainPanel.styles';
-import MainPanelFooter from 'Pages/Chat/Components/MainPanelFooter';
-import MainPanelHeader from 'Pages/Chat/Components/MainPanelHeader';
 import { MessageI } from 'Pages/Chat/Components/Messenger/Message';
 import Messenger from 'Pages/Chat/Components/Messenger/Messenger';
+import MainPanelFooter from 'Pages/Chat/Sections/MainPanel/Components/MainPanelFooter';
+import MainPanelHeader from 'Pages/Chat/Sections/MainPanel/Components/MainPanelHeader';
 
 const testData: MessageI[] = [
   {

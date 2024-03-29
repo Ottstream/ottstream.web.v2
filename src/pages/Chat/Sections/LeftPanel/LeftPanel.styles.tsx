@@ -8,4 +8,7 @@ export const SiderContainer = styled(Sider)`
       box-shadow: 0 4px 6px 0 #0a3c6840;
     }
   }
+  .ant-collapse-content-box {
+    padding-block: 0 !important;
+  }
 `;

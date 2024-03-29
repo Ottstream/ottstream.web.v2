@@ -4,9 +4,9 @@ import { Layout } from 'antd';
 import { useTheme } from 'styled-components';
 
 import ConversationTypesSection from 'Pages/Chat/Components/ConversationTypesSection';
-import LeftPanelTabs from 'Pages/Chat/Components/LeftPanelTabs';
-import OnlineUserSection from 'Pages/Chat/Components/OnlineUserSection';
 import { FlexContainer } from 'Pages/Chat/index.styles';
+import LeftPanelTabs from 'Pages/Chat/Sections/LeftPanel/Components/LeftPanelTabs';
+import OnlineUserSection from 'Pages/Chat/Sections/LeftPanel/Components/OnlineUserSection/OnlineUserSection';
 import { SiderContainer } from 'Pages/Chat/Sections/LeftPanel/LeftPanel.styles';
 
 const LeftPanel = () => {
