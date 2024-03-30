@@ -91,14 +91,8 @@ const RightPanelContent = () => {
           style={{ width: '100%' }}
           prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
         />
-        {/*<div*/}
-        {/*  style={{*/}
-        {/*    margin: '60px 0',*/}
-        {/*    border: '1px solid red',*/}
-        {/*    // height: '100px',*/}
-        {/*  }}>*/}
-        {/*  <RightPanelCarousel />*/}
-        {/*</div>*/}
+
+        <RightPanelCarousel />
 
         <RightPanelTabs />
       </RightPanelContentContainer>
