@@ -9,6 +9,7 @@ import {
 import { Dropdown as AntDropdown, Space as AntSpace, MenuProps } from 'antd';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import { MainPanelChatIcon } from 'Pages/Chat/Sections/MainPanel/MainPanel.styles';
 
 const MainPanelHeaderRightSectionWrapper = styled.div`
@@ -28,19 +29,61 @@ const Space = styled(AntSpace)`
   margin: 0 10px;
 `;
 
+const MainPanelHeaderRightSectionItem = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  p {
+    margin-left: 10px;
+  }
+`;
+
 const MainPanelHeaderRightSection = () => {
   const items: MenuProps['items'] = [
     {
-      label: <p>1st menu item</p>,
+      label: (
+        <MainPanelHeaderRightSectionItem>
+          <Icon name="viber" size={18} />
+          <p>Viber</p>
+        </MainPanelHeaderRightSectionItem>
+      ),
       key: '0',
     },
     {
-      label: <p>2nd menu item</p>,
+      label: (
+        <MainPanelHeaderRightSectionItem>
+          <Icon name="instagram" size={18} />
+          <p>Instagram</p>
+        </MainPanelHeaderRightSectionItem>
+      ),
       key: '1',
     },
     {
-      label: <p>3rd menu item</p>,
+      label: (
+        <MainPanelHeaderRightSectionItem>
+          <Icon name="telegram" size={18} />
+          <p>Telegram</p>
+        </MainPanelHeaderRightSectionItem>
+      ),
+      key: '2',
+    },
+    {
+      label: (
+        <MainPanelHeaderRightSectionItem>
+          <Icon name="x" size={18} />
+          <p>X</p>
+        </MainPanelHeaderRightSectionItem>
+      ),
       key: '3',
+    },
+    {
+      label: (
+        <MainPanelHeaderRightSectionItem>
+          <Icon name="whatsapp" size={18} />
+          <p>Whatsapp</p>
+        </MainPanelHeaderRightSectionItem>
+      ),
+      key: '4',
     },
   ];
   return (
@@ -48,13 +91,16 @@ const MainPanelHeaderRightSection = () => {
       <MainPanelHeaderRightSectionWrapper>
         <Dropdown menu={{ items }} trigger={['click']}>
           <Space>
-            <MainPanelChatIcon icon={<ShareAltOutlined />} type={'text'} />
+            <MainPanelChatIcon
+              icon={<Icon name="allChats" size={16} />}
+              type={'text'}
+            />
             All Chats
             <DownOutlined />
           </Space>
         </Dropdown>
-        <MainPanelChatIcon icon={<PhoneOutlined />} ghost />
-        <MainPanelChatIcon icon={<VideoCameraOutlined />} ghost />
+        <MainPanelChatIcon icon={<Icon name="phone" size={16} />} ghost />
+        <MainPanelChatIcon icon={<Icon name="videoCamera" size={16} />} ghost />
       </MainPanelHeaderRightSectionWrapper>
     </>
   );

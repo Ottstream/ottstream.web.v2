@@ -5,7 +5,13 @@ import styled from 'styled-components';
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
 interface ChatAvatarRowPropsI {
-  users: { name: string; imageUrl: string }[];
+  users: {
+    id: number;
+    name: string;
+    status: string;
+    unreadCount: number;
+    social: string;
+  }[];
 }
 
 const ChatAvatarRowContainer = styled.div`
@@ -25,8 +31,12 @@ const ChatAvatarRowContainer = styled.div`
 const ChatAvatarRow = ({ users }: ChatAvatarRowPropsI) => {
   return (
     <ChatAvatarRowContainer>
-      {users.map((_, index) => (
-        <ChatAvatar type={'AvatarWithNameAtTheBottom'} index={index} />
+      {users.map((user, index) => (
+        <ChatAvatar
+          type={'AvatarWithNameAtTheBottom'}
+          index={index}
+          name={user.name}
+        />
       ))}
     </ChatAvatarRowContainer>
   );

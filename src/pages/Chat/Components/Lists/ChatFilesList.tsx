@@ -9,7 +9,7 @@ import InfiniteList, {
   defaultLoader,
 } from '@/components/InfiniteList/InfiniteList';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
-import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
+import useMockFilesData from 'Pages/Chat/Hooks/useMockFilesData';
 
 interface FilesListPropsI {}
 
@@ -19,19 +19,24 @@ const FilesListWrapper = styled(Layout)`
 `;
 
 const ChatFilesList = ({}: FilesListPropsI) => {
-  const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
+  const { files, hasMore, fetchMoreData } = useMockFilesData();
   return (
     <FilesListWrapper>
       <InfiniteList
         next={fetchMoreData}
         hasMore={hasMore}
-        dataLength={items.length}
+        dataLength={files.length}
         endMessage={defaultEndMessage()}
         loader={defaultLoader()}
         children={
           <>
-            {items.map((_, index) => (
-              <ChatFilesListItem key={index} index={20 + index} />
+            {files.map((file, index) => (
+              <ChatFilesListItem
+                key={index}
+                index={20 + index}
+                name={file.name}
+                extension={file.extension}
+              />
             ))}
           </>
         }

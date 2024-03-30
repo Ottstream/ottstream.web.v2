@@ -1,6 +1,9 @@
+import React from 'react';
+
 import { BellTwoTone, TagTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import Select from 'Pages/Chat/Components/Select';
 import RightPanelCarousel from 'Pages/Chat/Sections/RightPanel/Components/RightPanelCarousel';
 import RightPanelTabs from 'Pages/Chat/Sections/RightPanel/Components/RightPanelTabs';
@@ -71,7 +74,7 @@ const RightPanelContent = () => {
           defaultValue={phoneOptions[0]}
           onChange={() => {}}
           style={{ width: '100%' }}
-          prefixIcon={<BellTwoTone twoToneColor={'#01B2B8'} />}
+          prefixIcon={<Icon name="bell" size={16} />}
         />
         <Select
           title={'Locations'}
@@ -80,7 +83,7 @@ const RightPanelContent = () => {
           defaultValue={addressOptions[0]}
           onChange={() => {}}
           style={{ width: '100%' }}
-          prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
+          prefixIcon={<Icon name="location" size={16} />}
         />
         <Select
           title={'Company Addresses'}
@@ -89,7 +92,7 @@ const RightPanelContent = () => {
           defaultValue={addressOptions[0]}
           onChange={() => {}}
           style={{ width: '100%' }}
-          prefixIcon={<TagTwoTone twoToneColor={'#01B2B8'} />}
+          prefixIcon={<Icon name="address" size={16} />}
         />
 
         <RightPanelCarousel />

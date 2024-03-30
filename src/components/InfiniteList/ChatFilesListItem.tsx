@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
-import { FilePdfFilled } from '@ant-design/icons';
-import { Button, Modal } from 'antd';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import ListMeta from '@/components/InfiniteList/ListMeta';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 
-interface InfiniteListItemPropsI {
+interface ChatFilesListItemPropsI {
   index: number;
+  name: string;
+  extension: string;
 }
 const ChatFilesListItemWrapper = styled.div`
   display: flex;
@@ -20,31 +21,22 @@ const ChatFilesListItemWrapper = styled.div`
   border-bottom: 1px solid #ccd5dd;
 `;
 
-const ChatFilesListItem = ({}: InfiniteListItemPropsI) => {
+const ChatFilesListItem = ({ name, extension }: ChatFilesListItemPropsI) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
       <ChatFilesListItemWrapper>
         <div className="left-icon-container">
-          <ChatIcon icon={<FilePdfFilled size={20} />} ghost size={'large'} />
+          <ChatIcon
+            icon={<Icon name={extension} size={40} />}
+            ghost
+            size={'large'}
+          />
         </div>
         <ListMeta
-          title={<p>{'FileName.pdf'}</p>}
+          title={<p>{name}</p>}
           description={<p className="description">{'123.4 MB'}</p>}
         />
-        <Modal
-          title="Remove"
-          centered
-          open={isModalVisible}
-          okText={'Remove'}
-          okType={'danger'}
-          onOk={() => setIsModalVisible(false)}
-          onCancel={() => setIsModalVisible(false)}>
-          <p>
-            Are you sure you want to delete this item, or do you want to cancel
-            the action?
-          </p>
-        </Modal>
       </ChatFilesListItemWrapper>
     </>
   );

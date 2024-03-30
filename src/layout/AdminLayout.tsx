@@ -128,7 +128,7 @@ const AdminLayout = () => {
 
           <OTTSIconButton
             type="text"
-            icon={<MessageTwoTone twoToneColor={'#165d9b'} />}
+            icon={<Icon name="chat" size={22} />}
             onClick={() => {}}
             hasLeftBorder
             count={7}
@@ -136,14 +136,14 @@ const AdminLayout = () => {
 
           <OTTSIconButton
             type="text"
-            icon={<ThunderboltTwoTone twoToneColor={'#165d9b'} />}
+            icon={<Icon name="sound" size={22} />}
             onClick={() => {}}
             hasLeftBorder
           />
 
           <OTTSIconButton
             type="text"
-            icon={<BellTwoTone twoToneColor={'#165d9b'} />}
+            icon={<Icon name="bellHeader" size={22} />}
             onClick={() => {}}
             hasLeftBorder
             hasRightBorder

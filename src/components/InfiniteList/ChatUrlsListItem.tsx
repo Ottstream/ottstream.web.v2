@@ -6,10 +6,7 @@ import styled from 'styled-components';
 import ListMeta from '@/components/InfiniteList/ListMeta';
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 
-interface InfiniteListItemPropsI {
-  index: number;
-}
-const ChatUrlsListItemWrapper = styled.div`
+const ChatUrlsListItemWrapper = styled.div<{ $color: string }>`
   display: flex;
   justify-content: start;
   align-items: center;
@@ -17,34 +14,69 @@ const ChatUrlsListItemWrapper = styled.div`
   border-radius: 6px;
   padding: 6px 0;
   border-bottom: 1px solid #ccd5dd;
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 5px;
+    p {
+      font-size: 14px;
+    }
+    .title {
+      color: #012f57;
+    }
+    .description {
+      color: #7a7a7a;
+    }
+    .link {
+      color: #01b2b8;
+      cursor: pointer;
+    }
+  }
+  .colorful-circle {
+    width: 40px;
+    height: 40px;
+    background-color: ${props => props.$color};
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: white;
+    }
+  }
 `;
 
-const ChatUrlsListItem = ({}: InfiniteListItemPropsI) => {
+interface ChatUrlsListItemPropsI {
+  index: number;
+  title: string;
+  color: string;
+  link: string;
+  description: string;
+}
+
+const ChatUrlsListItem = ({
+  title,
+  link,
+  description,
+  color,
+}: ChatUrlsListItemPropsI) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
-      <ChatUrlsListItemWrapper>
+      <ChatUrlsListItemWrapper $color={color}>
         <div className="left-icon-container">
-          <ChatAvatar type={'OnlyAvatar'} index={2} />
+          <div className={'colorful-circle'}>
+            <p>AM</p>
+          </div>
         </div>
-        <ListMeta
-          title={<p>{'Title'}</p>}
-          description={<p className="description">{'Description'}</p>}
-        />
-
-        <Modal
-          title="Remove"
-          centered
-          open={isModalVisible}
-          okText={'Remove'}
-          okType={'danger'}
-          onOk={() => setIsModalVisible(false)}
-          onCancel={() => setIsModalVisible(false)}>
-          <p>
-            Are you sure you want to delete this item, or do you want to cancel
-            the action?
-          </p>
-        </Modal>
+        <div className={'text-container'}>
+          <p className={'title'}>{title}</p>
+          <p className={'description'}>{description}</p>
+          <p className={'link'}>{link}</p>
+        </div>
       </ChatUrlsListItemWrapper>
     </>
   );

@@ -5,6 +5,7 @@ import { Avatar as AntAvatar } from 'antd';
 import { AvatarProps } from 'antd/lib/skeleton/Avatar';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import ListMeta, { ListItem } from '@/components/InfiniteList/ListMeta';
 
 interface ChatAvatarPropsI extends AvatarProps {
@@ -16,6 +17,10 @@ interface ChatAvatarPropsI extends AvatarProps {
     | 'AvatarWithNameOnTheRightAndSecondLineWithRightInfo'
     | 'AvatarChatInfo';
   index: number;
+  name?: string;
+  status?: string;
+  social?: string;
+  unreadCount?: number;
 }
 
 const AvatarStyleComponent = styled(AntAvatar)`
@@ -55,8 +60,25 @@ const AvatarChatInfoWrapper = styled(AvatarWrapper)`
   padding-top: 24px;
 `;
 
-const AvatarWithNameOnTheRightWrapper = styled(ListItem)`
-  background-color: ${props => props.theme.colorPalette.light1};
+const AvatarWithNameOnTheRightWrapper = styled(ListItem)<{
+  $isUnread?: boolean;
+  $noBorders?: boolean;
+  $noBackground?: boolean;
+}>`
+  background-color: ${props =>
+    props.$noBackground
+      ? 'none'
+      : props.$isUnread
+        ? 'transparent'
+        : props.theme.colorPalette.light1};
+
+  border: ${props =>
+    props.$noBorders
+      ? 'none'
+      : props.$isUnread
+        ? '1px dashed #A5AAC6'
+        : 'none'};
+
   ${AvatarStyleComponent} {
     margin: 8px 0;
   }
@@ -79,13 +101,14 @@ const Avatar = ({ index, ...props }: ChatAvatarPropsI) => {
 const AvatarWithNameAtTheBottom = ({
   type,
   index,
+  name,
   ...props
 }: ChatAvatarPropsI) => {
   return (
     <AvatarWithNameAtTheBottomWrapper>
       <Avatar type={type} index={index} {...props} />
       <div className={'name-bottom'}>
-        <p>Name</p>
+        <p>{name}</p>
       </div>
     </AvatarWithNameAtTheBottomWrapper>
   );
@@ -107,15 +130,16 @@ const AvatarWithNameOnTheRight = ({
 const AvatarWithNameOnTheRightAndSecondLine = ({
   type,
   index,
+  unreadCount,
   ...props
 }: ChatAvatarPropsI) => {
   return (
-    <AvatarWithNameOnTheRightWrapper>
+    <AvatarWithNameOnTheRightWrapper $noBorders $noBackground>
       <div className="left-info">
         <Avatar type={type} index={index} {...props} />
         <ListMeta
           title={<p>{'Ani Hovhannisyan'}</p>}
-          description={<p className="description">{'Ant Design'}</p>}
+          description={<p className="description">{'(415)282-1649'}</p>}
         />
       </div>
     </AvatarWithNameOnTheRightWrapper>
@@ -124,24 +148,34 @@ const AvatarWithNameOnTheRightAndSecondLine = ({
 const AvatarWithNameOnTheRightAndSecondLineWithRightInfo = ({
   type,
   index,
+  name = '',
+  social,
+  unreadCount = 0,
   ...props
 }: ChatAvatarPropsI) => {
   return (
-    <AvatarWithNameOnTheRightWrapper>
+    <AvatarWithNameOnTheRightWrapper $isUnread={!!unreadCount}>
       <div className="left-info">
         <Avatar type={type} index={index} {...props} />
         <ListMeta
-          title={<p>{'Ani Hovhannisyan'}</p>}
-          description={<p className="description">{'Ant Design'}</p>}
+          title={<p>{name}</p>}
+          description={
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {social && <Icon name={social} size={14} />}
+              <p className="description">{'description'}</p>
+            </div>
+          }
         />
       </div>
       <div className="right-info">
         <div className="timestamp">
           <p>{'12:57PM'}</p>
         </div>
-        <div className="number-circle">
-          <p>{4}</p>
-        </div>
+        {unreadCount > 0 && (
+          <div className="number-circle">
+            <p>{unreadCount}</p>
+          </div>
+        )}
       </div>
     </AvatarWithNameOnTheRightWrapper>
   );

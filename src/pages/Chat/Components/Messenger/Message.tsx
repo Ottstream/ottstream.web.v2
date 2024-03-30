@@ -4,6 +4,7 @@ import { InstagramOutlined } from '@ant-design/icons';
 import { List } from 'antd';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 
@@ -70,7 +71,7 @@ const Message = ({ item }: MessagePropsI) => {
             <div className={'message-text'}>
               <p>{item.text}</p>
             </div>
-            <ChatIcon icon={<InstagramOutlined />} size={'small'} />
+            <ChatIcon icon={<Icon name="x" size={12} />} size={'small'} />
           </div>
           {item.seen && (
             <div className={'message-status'}>
@@ -81,7 +82,7 @@ const Message = ({ item }: MessagePropsI) => {
         <div className={'avatar-wrapper'}>
           <ChatAvatar
             type={'OnlyAvatar'}
-            index={item.sender.id === 1 ? 1 : 2}
+            index={item.sender.id === 1 ? 13 : 9}
           />
         </div>
       </MessageComponent>

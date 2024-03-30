@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FileOutlined, SendOutlined, SmileOutlined } from '@ant-design/icons';
 import { Input, Upload } from 'antd';
 
+import Icon from '@/components/Icon';
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 import useHandleMessage from 'Pages/Chat/Hooks/useHandleMessage';
 import MainPanelBlockedFooter from 'Pages/Chat/Sections/MainPanel/Components/MainPanelBlockedFooter';
@@ -33,14 +34,14 @@ const MainPanelFooter = () => {
               <Upload onChange={handleFileUpload} showUploadList={false}>
                 <MainPanelChatIcon
                   size={'small'}
-                  icon={<FileOutlined />}
+                  icon={<Icon name="attach" size={16} />}
                   ghost
                 />
               </Upload>
 
               <MainPanelChatIcon
                 size={'small'}
-                icon={<SmileOutlined />}
+                icon={<Icon name="emoji" size={16} />}
                 ghost
               />
 
@@ -55,7 +56,7 @@ const MainPanelFooter = () => {
               />
 
               <MainPanelChatIcon
-                icon={<SendOutlined />}
+                icon={<Icon name="viber" size={16} />}
                 ghost
                 onClick={handleSend}
               />

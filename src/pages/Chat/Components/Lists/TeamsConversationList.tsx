@@ -12,7 +12,7 @@ import InfiniteListItem from '@/components/InfiniteList/InfiniteListItem';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 import SearchInput from 'Pages/Chat/Components/SearchInput';
 import ToggleSwitch from 'Pages/Chat/Components/ToggleSwitch';
-import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
+import useMockUsersData from 'Pages/Chat/Hooks/useMockUsersData';
 
 interface ConversationListPropsI {}
 
@@ -25,7 +25,7 @@ const Button = styled(ChatIcon)`
   margin: 10px 0;
 `;
 const TeamsConversationList = ({}: ConversationListPropsI) => {
-  const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
+  const { users, hasMore, fetchMoreData } = useMockUsersData({});
 
   return (
     <>
@@ -44,11 +44,18 @@ const TeamsConversationList = ({}: ConversationListPropsI) => {
         <InfiniteList
           next={fetchMoreData}
           hasMore={hasMore}
-          dataLength={items.length}
+          dataLength={users.length}
           endMessage={defaultEndMessage()}
           loader={defaultLoader()}
-          children={items.map((_, index) => (
-            <InfiniteListItem key={index} index={index} />
+          children={users.map((user, index) => (
+            <InfiniteListItem
+              key={index}
+              index={index}
+              name={user.name}
+              social={user.social}
+              unreadCount={user.unreadCount}
+              status={user.status}
+            />
           ))}
         />
       </TeamsConversationListWrapper>

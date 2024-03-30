@@ -69,6 +69,7 @@ const Meta = styled(ListItem.Meta)`
   }
   .description {
     color: #a5aac6;
+    margin-left: 5px;
   }
   .member-email {
     color: #7a7a7a;

@@ -5,9 +5,6 @@ import styled from 'styled-components';
 
 import ListMeta from '@/components/InfiniteList/ListMeta';
 
-interface InfiniteListItemPropsI {
-  index: number;
-}
 const ChatMembersListItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,13 +28,17 @@ const RemoveButton = styled(Button)`
     text-align: left;
   }
 `;
-const ChatMembersListItem = ({}: InfiniteListItemPropsI) => {
+interface ChatMembersListItemPropsI {
+  name: string;
+}
+
+const ChatMembersListItem = ({ name }: ChatMembersListItemPropsI) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
       <ChatMembersListItemWrapper>
         <ListMeta
-          title={<p>{'Ani Hovhannisyan'}</p>}
+          title={<p>{name}</p>}
           description={
             <p className="description member-email">{'loya@ttsolutions.am'}</p>
           }

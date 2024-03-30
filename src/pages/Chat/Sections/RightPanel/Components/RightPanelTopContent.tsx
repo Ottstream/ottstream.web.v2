@@ -12,6 +12,7 @@ import { MenuUnfoldOutlined } from '@ant-design/icons/lib/icons';
 import { Dropdown as AntDropdown, MenuProps } from 'antd';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import ChatAvatar from 'Pages/Chat/Components/ChatAvatar';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 import RightPanelDropdownMenuItem from 'Pages/Chat/Sections/RightPanel/Components/RightPanelDropdownMenuItem';
@@ -156,10 +157,21 @@ const RightPanelTopContent = ({
           </div>
           <div className="lower">
             <div className="icon-row">
-              <ChatIcon size={'large'} icon={<InstagramFilled />} />
-              <ChatIcon size={'large'} icon={<MessageFilled />} />
-              <ChatIcon size={'large'} icon={<WhatsAppOutlined />} />
-              <ChatIcon size={'large'} icon={<SendOutlined />} />
+              <ChatIcon
+                size={'large'}
+                icon={<Icon name="instagram" size={18} />}
+              />
+              <ChatIcon size={'large'} icon={<Icon name="viber" size={18} />} />
+              <ChatIcon
+                size={'large'}
+                icon={<Icon name="telegram" size={18} />}
+              />
+              <ChatIcon
+                size={'large'}
+                icon={<Icon name="whatsapp" size={18} />}
+                disabled
+              />
+              <ChatIcon size={'large'} icon={<Icon name="x" size={18} />} />
             </div>
             <div className="user-status">
               <p>User is active</p>

@@ -8,7 +8,7 @@ const MainPanelHeader = () => {
   return (
     <>
       <MainPanelHeaderWrapper>
-        <ChatAvatar type={'AvatarWithNameOnTheRightAndSecondLine'} index={7} />
+        <ChatAvatar type={'AvatarWithNameOnTheRightAndSecondLine'} index={9} />
         <MainPanelHeaderRightSection />
       </MainPanelHeaderWrapper>
     </>

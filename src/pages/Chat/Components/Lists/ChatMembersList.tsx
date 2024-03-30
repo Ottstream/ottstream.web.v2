@@ -10,12 +10,12 @@ import InfiniteList, {
   defaultLoader,
 } from '@/components/InfiniteList/InfiniteList';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
-import useMockInfiniteListData from 'Pages/Chat/Hooks/useMockInfiniteListData';
+import useMockUsersData from 'Pages/Chat/Hooks/useMockUsersData';
 
-interface MembersListPropsI {}
+interface ChatMembersListPropsI {}
 
-const ChatMembersList = ({}: MembersListPropsI) => {
-  const { items, hasMore, fetchMoreData } = useMockInfiniteListData();
+const ChatMembersList = ({}: ChatMembersListPropsI) => {
+  const { users, hasMore, fetchMoreData } = useMockUsersData({});
   return (
     <>
       <Layout
@@ -26,7 +26,7 @@ const ChatMembersList = ({}: MembersListPropsI) => {
         <InfiniteList
           next={fetchMoreData}
           hasMore={hasMore}
-          dataLength={items.length}
+          dataLength={users.length}
           endMessage={defaultEndMessage()}
           loader={defaultLoader()}
           children={
@@ -39,8 +39,8 @@ const ChatMembersList = ({}: MembersListPropsI) => {
                 onClick={() => {}}>
                 <p> Add Member</p>
               </Button>
-              {items.map((_, index) => (
-                <ChatMembersListItem key={index} index={20 + index} />
+              {users.map((user, index) => (
+                <ChatMembersListItem name={user.name} key={index} />
               ))}
             </>
           }

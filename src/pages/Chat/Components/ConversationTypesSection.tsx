@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 
-import {
-  BulbTwoTone,
-  CameraOutlined,
-  MessageOutlined,
-  PhoneOutlined,
-} from '@ant-design/icons';
 import { Badge, Radio, RadioChangeEvent } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import styled from 'styled-components';
 
+import Icon from '@/components/Icon';
 import { modalDispatcher } from '@/components/Modal/services/modalSlice';
 import { useAppDispatch } from '@/store/hooks';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
@@ -49,17 +44,33 @@ const ConversationTypeSection = () => {
           </Badge>
           <Badge count={9} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio value="camera">
-              <CameraOutlined />
+              <Icon
+                name="videoCamera"
+                stroke={activeButton === 'camera' ? '#fff' : '#01B2B8'}
+                width={16}
+                height={12}
+              />
             </Radio>
           </Badge>
           <Badge count={0} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio value="phone">
-              <PhoneOutlined />
+              {/*<PhoneOutlined />*/}
+              <Icon
+                name="phone"
+                stroke={activeButton === 'phone' ? '#fff' : '#01B2B8'}
+                width={16}
+                height={12}
+              />
             </Radio>
           </Badge>
           <Badge count={2} size={'default'} offset={[-5, 0]} color={'#FFB800'}>
             <Radio value="message">
-              <MessageOutlined />
+              <Icon
+                name="email"
+                stroke={activeButton === 'message' ? '#fff' : '#01B2B8'}
+                width={16}
+                height={12}
+              />
             </Radio>
           </Badge>
         </Radio.Group>
@@ -68,7 +79,7 @@ const ConversationTypeSection = () => {
             openModalHandler();
           }}
           shape={'default'}
-          icon={<BulbTwoTone twoToneColor={'#01B2B8'} />}>
+          icon={<Icon name="chatProviders" />}>
           <p>Providers</p>
         </Button>
       </ConversationTypeContainer>
@@ -94,6 +105,7 @@ const ConversationTypeContainer = styled(Header)`
     flex: 1;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
 `;
 

@@ -4,14 +4,18 @@ import { Collapse as AntCollapse, CollapseProps } from 'antd';
 import styled from 'styled-components';
 
 import ChatAvatarRow from 'Pages/Chat/Components/ChatAvatarRow';
+import useMockUsersData from 'Pages/Chat/Hooks/useMockUsersData';
 import CollapsedChild from 'Pages/Chat/Sections/LeftPanel/Components/OnlineUserSection/CollapsedChild';
 import CollapsedLabel from 'Pages/Chat/Sections/LeftPanel/Components/OnlineUserSection/CollapsedLabel';
-import { onlineUsersSectionUsers as users } from 'Pages/Chat/Sections/LeftPanel/Components/OnlineUserSection/constants';
 
 const Collapse = styled(AntCollapse)``;
 
 const OnlineUserSection: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { users, hasMore, fetchMoreData } = useMockUsersData({
+    initialNumber: 30,
+  });
+
   const onChange = () => {
     setIsCollapsed(!isCollapsed);
   };
