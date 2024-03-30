@@ -12,5 +12,7 @@
   "back": "Back",
   "next": "Next",
   "filter_by": "Filter By",
-  "select_installers": "Select Installers"
+  "select_installers": "Select Installers",
+  "search": "Search",
+  "all_installers": "All Installers"
 }

@@ -1,6 +1,7 @@
 export interface IAppointmentFilterSection {
   isOpen: boolean;
   title: string;
+  componentName: string;
 }
 
 export enum View {
@@ -9,3 +10,14 @@ export enum View {
   week = 'week',
   work_week = 'work_week',
 }
+
+export type TInstallersList = {
+  id: number;
+  name: string;
+  color: string;
+};
+
+export type SelectOption = {
+  label: string;
+  value: string;
+};

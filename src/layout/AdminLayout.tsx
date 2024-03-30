@@ -90,8 +90,7 @@ const AdminLayout = () => {
   };
 
   return (
-    <Layout
-      style={{ height: '100vh', overflow: 'hidden', border: '3px solid gold' }}>
+    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       <SiderContainer
         width={256}
         theme={theme}

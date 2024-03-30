@@ -37,7 +37,7 @@ const DrawerWrapper = styled.div<{
 }>`
   position: relative;
   transition: 0.3s;
-  min-width: ${props => (props.open ? 'fit-content' : 0)};
+  min-width: ${props => (props.open ? '392px' : 0)};
   max-width: 0;
   overflow-y: scroll;
   overflow: hidden;
@@ -59,7 +59,7 @@ const DrawerCard = styled(Card)`
   }
   svg {
     cursor: pointer;
-    margin-top: 7px;
+    // margin-top: 7px;
     margin-left: 16px;
   }
 `;

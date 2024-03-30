@@ -22,7 +22,7 @@ export const CheckboxContainer = styled.div<{ color: string }>`
   .ant-checkbox:not(.ant-checkbox-disabled) {
     &:hover {
       .ant-checkbox-inner {
-        border-color: ${props => props.color} !important;
+        border-color: ${props => props.color};
       }
     }
   }
@@ -33,7 +33,7 @@ export const CheckboxContainer = styled.div<{ color: string }>`
     &:hover {
       .ant-checkbox:not(.ant-checkbox-disabled) {
         .ant-checkbox-inner {
-          border-color: ${props => props.color} !important;
+          border-color: ${props => props.color};
         }
       }
       .ant-checkbox-checked:not(.ant-checkbox-disabled) {

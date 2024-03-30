@@ -8,6 +8,7 @@ import { IAppointmentFilterSection } from '../types/types';
 export const initialState: IAppointmentFilterSection = {
   isOpen: false,
   title: '',
+  componentName: '',
 };
 
 export const appointmentSlice = createSlice({
@@ -15,11 +16,15 @@ export const appointmentSlice = createSlice({
   initialState,
   reducers: {
     openFilterSection: (state, action) => {
+      const { title, componentName } = action.payload;
       state.isOpen = true;
-      state.title = action.payload.title;
+      state.title = title;
+      state.componentName = componentName;
     },
     closeFilterSection: state => {
       state.isOpen = false;
+      state.title = '';
+      state.componentName = '';
     },
   },
 });
