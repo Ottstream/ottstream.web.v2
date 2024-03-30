@@ -10,6 +10,8 @@ import { Badge, Radio, RadioChangeEvent } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import styled from 'styled-components';
 
+import { modalDispatcher } from '@/components/Modal/services/modalSlice';
+import { useAppDispatch } from '@/store/hooks';
 import ChatIcon from 'Pages/Chat/Components/ChatIcon';
 
 const Button = styled(ChatIcon)`
@@ -20,6 +22,15 @@ const ConversationTypeSection = () => {
 
   const handleButtonClick = (e: RadioChangeEvent) => {
     setActiveButton(e.target.value);
+  };
+
+  const dispatch = useAppDispatch();
+  const { openModal } = modalDispatcher(dispatch);
+  const openModalHandler = () => {
+    openModal({
+      modalType: 'providers',
+      props: { closeAction: () => console.log('closed') },
+    });
   };
 
   return (
@@ -53,6 +64,9 @@ const ConversationTypeSection = () => {
           </Badge>
         </Radio.Group>
         <Button
+          onClick={() => {
+            openModalHandler();
+          }}
           shape={'default'}
           icon={<BulbTwoTone twoToneColor={'#01B2B8'} />}>
           <p>Providers</p>

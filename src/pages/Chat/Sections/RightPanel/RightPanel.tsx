@@ -16,7 +16,7 @@ const RightPanel = () => {
   return (
     <>
       <SiderContainer
-        width={312}
+        width={336}
         collapsedWidth={56}
         theme={theme}
         trigger={null}

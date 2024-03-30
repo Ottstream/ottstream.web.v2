@@ -1,13 +1,16 @@
 import React, { Fragment, useRef, useState } from 'react';
+
 import { Checkbox, Input, Typography } from 'antd';
 import type { CheckboxProps } from 'antd';
 import { useTranslation } from 'react-i18next';
-import CheckboxItems from './CheckboxItems';
+import styled from 'styled-components';
+
 import {
   CheckboxContainer,
   StyedInput,
   StyledDivider,
 } from './CheckboxGroup.styles';
+import CheckboxItems from './CheckboxItems';
 import { ICheckboxGroupProps } from './types';
 
 const CheckboxGroup: React.FC<ICheckboxGroupProps> = ({
@@ -58,30 +61,38 @@ const CheckboxGroup: React.FC<ICheckboxGroupProps> = ({
 
   return (
     <Fragment>
-      <CheckboxContainer color={checkAllColor}>
-        <Checkbox
-          onChange={onCheckAllChange}
-          indeterminate={indeterminate}
-          checked={checkAll}
-        />
-        <span>{t(checkAllText)}</span>
-      </CheckboxContainer>
-      <StyledDivider />
+      <CheckboxGroupWrapper>
+        <CheckboxContainer color={checkAllColor}>
+          <Checkbox
+            onChange={onCheckAllChange}
+            indeterminate={indeterminate}
+            checked={checkAll}
+          />
+          <span>{t(checkAllText)}</span>
+        </CheckboxContainer>
+        <StyledDivider />
 
-      <StyedInput>
-        <Typography.Text>{t('search')}</Typography.Text>
-        <Input
-          ref={inputRef}
-          onChange={handleInputChange}
-          placeholder="search"
+        <StyedInput>
+          <Typography.Text>{t('search')}</Typography.Text>
+          <Input
+            ref={inputRef}
+            onChange={handleInputChange}
+            placeholder="search"
+          />
+        </StyedInput>
+        <CheckboxItems
+          data={filteredData}
+          onChange={onItemChange}
+          checkedList={checkedList}
         />
-      </StyedInput>
-      <CheckboxItems
-        data={filteredData}
-        onChange={onItemChange}
-        checkedList={checkedList}
-      />
+      </CheckboxGroupWrapper>
     </Fragment>
   );
 };
+
+const CheckboxGroupWrapper = styled.div`
+  height: 100%;
+  overflow: auto;
+`;
+
 export default CheckboxGroup;
