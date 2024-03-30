@@ -130,7 +130,6 @@ const AvatarWithNameOnTheRight = ({
 const AvatarWithNameOnTheRightAndSecondLine = ({
   type,
   index,
-  unreadCount,
   ...props
 }: ChatAvatarPropsI) => {
   return (

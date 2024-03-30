@@ -129,7 +129,9 @@ const AdminLayout = () => {
           <OTTSIconButton
             type="text"
             icon={<Icon name="chat" size={22} />}
-            onClick={() => {}}
+            onClick={() => {
+              navigate('/chat/');
+            }}
             hasLeftBorder
             count={7}
           />
