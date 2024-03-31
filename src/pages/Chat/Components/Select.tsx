@@ -8,7 +8,7 @@ type SelectProps = AntSelectProps & {
   title?: string;
 };
 
-const Select = ({ title, prefixIcon, children, ...rest }: SelectProps) => {
+const Select = ({ title, prefixIcon, children, ...props }: SelectProps) => {
   return (
     <>
       <SelectWrapper>
@@ -17,12 +17,17 @@ const Select = ({ title, prefixIcon, children, ...rest }: SelectProps) => {
           {prefixIcon && (
             <div className="prefix-icon-wrapper">{prefixIcon}</div>
           )}
-          <AntSelect {...rest}>{children}</AntSelect>
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/*@ts-expect-error*/}
+          <StyledSelect {...props}>{children}</StyledSelect>
         </SelectContainer>
       </SelectWrapper>
     </>
   );
 };
+const StyledSelect = styled(AntSelect)`
+  width: 100%;
+`;
 
 const SelectWrapper = styled.div`
   width: 100%;

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 interface ToggleSwitchProps {
   onChange?: (checked: boolean) => void;
   defaultChecked?: boolean;
+  beforeText?: string;
+  afterText?: string;
 }
 
 const ToggleWrapper = styled.div`
@@ -20,13 +22,15 @@ const ToggleSwitch = ({
   onChange = (checked: boolean) => {
     console.log(`switch to ${checked}`);
   },
-  defaultChecked = true,
+  defaultChecked = false,
+  beforeText,
+  afterText,
 }: ToggleSwitchProps) => {
   return (
     <ToggleWrapper>
-      <p>All</p>
+      {beforeText && <p>{beforeText}</p>}
       <Switch defaultChecked={defaultChecked} onChange={onChange} />
-      <p>Unnoticed</p>
+      {afterText && <p>{afterText}</p>}
     </ToggleWrapper>
   );
 };

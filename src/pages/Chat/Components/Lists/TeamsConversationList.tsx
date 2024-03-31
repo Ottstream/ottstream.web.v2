@@ -40,7 +40,7 @@ const TeamsConversationList = ({}: ConversationListPropsI) => {
         </Button>
 
         <SearchInput placeholder="search" />
-        <ToggleSwitch />
+        <ToggleSwitch beforeText={'All'} afterText={'Unnoticed'} />
         <InfiniteList
           next={fetchMoreData}
           hasMore={hasMore}
