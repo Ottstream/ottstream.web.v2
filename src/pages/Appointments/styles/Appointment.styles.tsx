@@ -1,4 +1,4 @@
-import { Badge, Button, Flex } from 'antd';
+import { Badge, Flex } from 'antd';
 import styled from 'styled-components';
 
 export const CalendarViewWrapper = styled(Flex)`
@@ -167,8 +167,7 @@ export const Appointments = styled.div`
 
       .rbc-time-content {
         border-top: none;
-        //margin-top: 29px;
-        margin-top: 15px;
+        margin-top: 29px;
         .rbc-timeslot-group {
           border: none;
           .rbc-time-slot:nth-child(2) {
@@ -189,6 +188,14 @@ export const Appointments = styled.div`
         display: none;
       }
     }
+  }
+  .ant-radio-button-wrapper {
+    border-color: #d9d9d9;
+    color: #0a3c68;
+  }
+  .ant-radio-button-wrapper-checked {
+    border-color: #01b2b8 !important;
+    color: #01b2b8;
   }
 `;
 
@@ -251,8 +258,11 @@ export const InstallerImage = styled.img`
   box-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.25);
 `;
 
-export const ViewsToolbar = styled.div`
+export const ViewsToolbar = styled.div<{ shouldHaveMoreHeight?: boolean }>`
   height: 96px;
+  //min-height: 96px;
+  min-height: ${props => (props.shouldHaveMoreHeight ? '119px' : '96px')};
+
   // position: sticky;
   // top: 162px;
   z-index: 99;

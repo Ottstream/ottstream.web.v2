@@ -1,6 +1,6 @@
-import { EventStatuses, TEventComponent } from '../types/types';
 import { eventStatuses } from '../constants';
 import { EventBadge } from '../styles/Appointment.styles';
+import { EventStatuses, TEventComponent } from '../types/types';
 
 export const EventComponent = (props: TEventComponent) => {
   const {

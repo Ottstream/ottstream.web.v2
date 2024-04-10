@@ -32,7 +32,7 @@ export default function WorkWeekView(
     <CalendarViewWrapper justify="center" gap={'16px'}>
       <Calendar
         components={{
-          toolbar: props => <ViewToolbar {...props} />,
+          toolbar: props => <ViewToolbar shouldHaveMoreHeight {...props} />,
         }}
         localizer={localizer}
         views={{

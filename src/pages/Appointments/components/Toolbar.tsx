@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 
 import {
+  Button as AntButton,
   Badge,
-  Button,
   DatePicker,
   Divider,
   Flex,
@@ -12,6 +12,7 @@ import {
 import moment from 'moment';
 import { Navigate, ToolbarProps } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
 import Icon from '@/components/Icon';
 import { useAppDispatch } from '@/store/hooks';
@@ -160,5 +161,10 @@ const CustomToolbar = (props: ToolbarProps) => {
     </>
   );
 };
+
+const Button = styled(AntButton)`
+  color: #0a3c68;
+  border-color: #d9d9d9;
+`;
 
 export default CustomToolbar;
