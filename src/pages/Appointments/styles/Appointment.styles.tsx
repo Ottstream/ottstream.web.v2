@@ -2,6 +2,14 @@ import styled from 'styled-components';
 
 export const Appointments = styled.div`
   background: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  overflow: hidden;
+
   .breadcrumb {
     margin-top: 8px;
     padding: 8px 16px;

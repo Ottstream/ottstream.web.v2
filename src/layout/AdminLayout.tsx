@@ -5,14 +5,13 @@ import {
   MenuFoldOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-
 import { Button, Layout, Menu, MenuProps } from 'antd';
-
 import { ButtonProps } from 'antd/es/button/button';
 import { Outlet, useNavigate } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 
 import Icon from '@/components/Icon';
+import Header from '@/pages/Header/Header';
 
 import {
   FlexContainer,
@@ -22,7 +21,6 @@ import {
   SiderContainer,
   Trigger,
 } from './Layout.styles';
-import Header from '@/pages/Header/Header';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -121,7 +119,7 @@ const AdminLayout = () => {
             display: 'flex',
             flex: 1,
             height: '100%',
-            overflow: 'hidden',
+            overflow: 'auto',
           }}>
           <Outlet />
         </div>
@@ -143,11 +141,5 @@ const OTTSButton = ({ ...props }: OTTSButtonPropsI) => {
 };
 
 const OTTSButtonComponent = styled(Button)``;
-
-// OTTS Button Type 2 ---------------------------------------------------------
-
-// ----------------------------------------------------------------
-
-// OTTS Icon Button
 
 export default AdminLayout;
