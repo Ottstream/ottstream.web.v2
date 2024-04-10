@@ -3,6 +3,7 @@ export interface TextAreasAttributeI {
   minRows?: number;
   maxRows?: number;
   name: string;
-  placeholder: string;
+  className?: string;
+  placeholder?: string;
   [key: string]: any;
 }

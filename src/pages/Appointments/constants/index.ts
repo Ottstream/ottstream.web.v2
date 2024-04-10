@@ -1,4 +1,4 @@
-import { SelectOption, TInstallersList } from '../types/types';
+import { SelectOption, TInstallersList, CalendarEvents } from '../types/types';
 
 export const installers: TInstallersList[] = [
   {
@@ -46,3 +46,49 @@ export const statusOptions: SelectOption[] = [
   { value: 'completed', label: 'Completed' },
   { value: 'cancelled', label: 'Cancelled' },
 ];
+
+export const calendarEvents: CalendarEvents[] = [
+  {
+    title: 'Title',
+    allDay: false,
+    status: 'Process',
+    start: new Date(Date.parse('2024-04-08 03:00')),
+    end: new Date(Date.parse('2024-04-08 04:00')),
+  },
+  {
+    title: 'Title',
+    allDay: false,
+    status: 'Active',
+    start: new Date(Date.parse('2024-04-08 06:00')),
+    end: new Date(Date.parse('2024-04-08 07:00')),
+  },
+  {
+    title: 'Title',
+    allDay: false,
+    status: 'Completed',
+    start: new Date(Date.parse('2024-04-09 06:00')),
+    end: new Date(Date.parse('2024-04-09 07:00')),
+  },
+  {
+    title: 'Title',
+    allDay: false,
+    status: 'Canceled',
+    start: new Date(Date.parse('2024-04-09 03:00')),
+    end: new Date(Date.parse('2024-04-09 04:00')),
+  },
+];
+
+export const eventStatuses: { [key: string]: string } = {
+  Completed: 'success',
+  Canceled: 'error',
+  Process: 'warning',
+  Active: 'processing',
+  Default: 'default',
+};
+const today = new Date();
+export const timeSlotMinValue = new Date(
+  today.getFullYear(),
+  today.getMonth(),
+  today.getDate(),
+  1,
+);

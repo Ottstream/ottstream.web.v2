@@ -12,8 +12,8 @@ const colorPalette: Theme['colorPalette'] = {
 const breakpoints: Theme['breakpoints'] = {
   sm: '576px',
   md: '768px',
-  lg: '992px',
-  xl: '1200px',
+  lg: '1270px',
+  xl: '1440px',
 };
 
 const typography: Theme['typography'] = {

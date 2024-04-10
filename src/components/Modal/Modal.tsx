@@ -18,14 +18,21 @@ function Modal() {
       {modals.map(item => {
         const {
           modalType,
-          props: { closeAction, ...rest },
+          props: { closeAction, title, okText, ...rest },
         } = item;
         const onModalClose = () => {
           closeTopModal();
           closeAction?.();
         };
         return (
-          <AntModal key={modalType} open centered onCancel={onModalClose}>
+          <AntModal
+            open
+            centered
+            title={title}
+            key={modalType}
+            okText={okText}
+            width={'fit-content'}
+            onCancel={onModalClose}>
             {React.createElement(modalList[modalType as MODALS], {
               ...rest,
               closeAction,
