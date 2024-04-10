@@ -2,6 +2,7 @@ import React, { Fragment, useRef, useState } from 'react';
 
 import { Checkbox, Input, Typography } from 'antd';
 import type { CheckboxProps } from 'antd';
+import { InputRef } from 'antd/lib/input/Input';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -19,7 +20,7 @@ const CheckboxGroup: React.FC<ICheckboxGroupProps> = ({
   checkAllText = '',
 }) => {
   const { t } = useTranslation();
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<InputRef | null>(null);
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const [debouncedValue, setDebouncedValue] = useState('');
@@ -36,7 +37,7 @@ const CheckboxGroup: React.FC<ICheckboxGroupProps> = ({
 
   const handleInputChange = () => {
     if (inputRef.current) {
-      const value = inputRef.current.input.value;
+      const value = inputRef.current?.input?.value!;
       if (debounceTimeout.current) {
         clearTimeout(debounceTimeout.current);
       }

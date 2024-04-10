@@ -13,7 +13,7 @@ import {
 } from 'antd';
 
 import Icon from '@/components/Icon';
-import { Toolbar } from '../Appointment.styles';
+import { Toolbar } from '../styles/Appointment.styles';
 import { View } from '../types/types';
 import { useAppDispatch } from '@/store/hooks';
 import { appointmentDispatcher } from '../services/appointmentSlice';
@@ -88,7 +88,12 @@ const CustomToolbar = (props: ToolbarProps) => {
           </div>
           <Flex className="actions" align="center" gap={'8px'}>
             <Button
-              onClick={() => openFilterSection({ title: 'select_installers' })}>
+              onClick={() =>
+                openFilterSection({
+                  title: 'select_installers',
+                  componentName: 'installers',
+                })
+              }>
               <Icon name="installers" />
               {t('installers')}
               <Badge className="badge" count={5} />
@@ -97,11 +102,20 @@ const CustomToolbar = (props: ToolbarProps) => {
               <Icon name="history" />
               {t('history')}
             </Button>
-            <Button onClick={() => openFilterSection({ title: '' })}>
+            <Button
+              onClick={() =>
+                openFilterSection({ title: '', componentName: 'map' })
+              }>
               <Icon name="map" />
               {t('map')}
             </Button>
-            <Button onClick={() => openFilterSection({ title: 'filter_by' })}>
+            <Button
+              onClick={() =>
+                openFilterSection({
+                  title: 'filter_by',
+                  componentName: 'filter',
+                })
+              }>
               <Icon name="filter" />
               {t('filter')}
             </Button>

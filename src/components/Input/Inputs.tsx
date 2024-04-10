@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
+import { Input, Tooltip } from 'antd';
 import { useField } from 'formik';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import Icon from '../Icon';
 
 const Inputs = ({
   label,
+  tooltip,
   showPasswordToggle,
   closePasswordLength,
   ...props
@@ -29,7 +31,21 @@ const Inputs = ({
   return (
     <div>
       <label>
-        <h5 className="smallText">{label && label}</h5>
+        <h5 className="smallText">
+          {label && label}
+          {tooltip ? (
+            <Tooltip
+              title={tooltip}
+              trigger="hover"
+              color="white"
+              overlayInnerStyle={{
+                color: '#252525',
+                backgroundColor: 'white',
+              }}>
+              <Icon name="help" />
+            </Tooltip>
+          ) : null}
+        </h5>
         {props.type === 'password' && showPasswordToggle ? (
           <Input.Password
             {...field}
