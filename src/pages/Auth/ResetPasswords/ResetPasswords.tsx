@@ -13,12 +13,12 @@ import {
 import { Button, Flex } from 'antd';
 import { Form, Formik } from 'formik';
 
+import Inputs from '@/components/Input/Inputs';
+import { VerifyOTPSchema } from '@/schema';
 import {
   useForgotPasswordMutation,
   useRessetPasswordMutation,
-} from '@/api/baseQuery';
-import Inputs from '@/components/Input/Inputs';
-import { VerifyOTPSchema } from '@/schema';
+} from '../services/authApi';
 
 interface InitialValues {
   otp: string;
