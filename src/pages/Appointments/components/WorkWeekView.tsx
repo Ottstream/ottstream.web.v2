@@ -23,7 +23,7 @@ export default function WorkWeekView(
     // events,
   } = props;
   const currRange = WorkWeekView.range(date, { localizer });
-  const { openModalHandler } = useOpenModalHandler();
+  const { openModalHandler, openOverviewHandler } = useOpenModalHandler();
   const { formats } = useWeekFormat();
 
   return (
@@ -61,7 +61,7 @@ export default function WorkWeekView(
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
       />
       <Calendar
         selectable
@@ -83,7 +83,7 @@ export default function WorkWeekView(
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
       />
     </Flex>
   );

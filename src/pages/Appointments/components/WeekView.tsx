@@ -23,7 +23,7 @@ export default function WeekView(
     // events,
   } = props;
   const currRange = WeekView.range(date, { localizer });
-  const { openModalHandler } = useOpenModalHandler();
+  const { openModalHandler, openOverviewHandler } = useOpenModalHandler();
   const { formats } = useWeekFormat();
 
   return (
@@ -59,7 +59,7 @@ export default function WeekView(
         defaultView="week"
         formats={formats}
         date={date}
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
@@ -81,7 +81,7 @@ export default function WeekView(
         formats={formats}
         className="week-view"
         defaultView="week"
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
