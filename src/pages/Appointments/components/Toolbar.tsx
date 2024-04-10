@@ -1,22 +1,24 @@
-import { useState, useMemo } from 'react';
-import moment from 'moment';
-import { useTranslation } from 'react-i18next';
-import { Navigate, ToolbarProps } from 'react-big-calendar';
+import { useMemo, useState } from 'react';
+
 import {
-  Typography,
   Badge,
   Button,
   DatePicker,
+  Divider,
   Flex,
   Radio,
-  Divider,
+  Typography,
 } from 'antd';
+import moment from 'moment';
+import { Navigate, ToolbarProps } from 'react-big-calendar';
+import { useTranslation } from 'react-i18next';
 
 import Icon from '@/components/Icon';
+import { useAppDispatch } from '@/store/hooks';
+
+import { appointmentDispatcher } from '../services/appointmentSlice';
 import { Toolbar } from '../styles/Appointment.styles';
 import { View } from '../types/types';
-import { useAppDispatch } from '@/store/hooks';
-import { appointmentDispatcher } from '../services/appointmentSlice';
 
 const { Text } = Typography;
 
@@ -61,7 +63,7 @@ const CustomToolbar = (props: ToolbarProps) => {
     onNavigate(Navigate.DATE, new Date(newDate));
   };
 
-  const fomatDateLabel: String = useMemo(() => {
+  const fomatDateLabel: string = useMemo(() => {
     if (view === View.month || view === View.day) {
       return moment(date).format('MMMM Do YYYY');
     }

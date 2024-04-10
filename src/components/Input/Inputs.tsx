@@ -4,7 +4,8 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
 import { useField } from 'formik';
 import PasswordStrengthBar from 'react-password-strength-bar';
-import Icon from '../Icon';
+
+import Icon from '@/components/Icon';
 
 const Inputs = ({
   label,
@@ -43,7 +44,9 @@ const Inputs = ({
                 color: '#252525',
                 backgroundColor: 'white',
               }}>
-              <Icon name="help" />
+              <>
+                <Icon name="help" />
+              </>
             </Tooltip>
           ) : null}
         </h5>

@@ -1,27 +1,27 @@
-import moment from 'moment';
 import { Breadcrumb, Flex } from 'antd';
+import moment from 'moment';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useTranslation } from 'react-i18next';
 
+import Drawer from '@/components/Drawer/Drawer';
+import Icon from '@/components/Icon';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+
+import {
+  CustomToolbar,
+  DayView,
+  FilterByInstallers,
+  FilterByMap,
+  FilterByProperties,
+  MonthView,
+  WeekView,
+  WorkWeekView,
+} from './components';
+import { useOpenModalHandler } from './hooks/useOpenModalHandler';
 import {
   appointmentDispatcher,
   appointmentSelector,
 } from './services/appointmentSlice';
-import { useOpenModalHandler } from './hooks/useOpenModalHandler';
-
-import {
-  FilterByMap,
-  FilterByProperties,
-  FilterByInstallers,
-  CustomToolbar,
-  MonthView,
-  WorkWeekView,
-  WeekView,
-  DayView,
-} from './components';
-import Icon from '@/components/Icon';
-import Drawer from '@/components/Drawer/Drawer';
 import { AddButton, Appointments } from './styles/Appointment.styles';
 
 const localizer = momentLocalizer(moment);
