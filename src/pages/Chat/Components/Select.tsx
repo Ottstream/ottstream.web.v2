@@ -18,7 +18,6 @@ const Select = ({ title, prefixIcon, children, ...props }: SelectProps) => {
             <div className="prefix-icon-wrapper">{prefixIcon}</div>
           )}
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/*@ts-expect-error*/}
           <StyledSelect {...props}>{children}</StyledSelect>
         </SelectContainer>
       </SelectWrapper>
