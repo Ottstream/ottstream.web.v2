@@ -31,7 +31,9 @@ export default function DayView({
       <Calendar
         selectable
         components={{
-          toolbar: props => <ViewToolbar isWithDayNames={false} {...props} />,
+          toolbar: props => (
+            <ViewToolbar shouldHaveMoreHeight={false} {...props} />
+          ),
         }}
         localizer={localizer}
         views={{
