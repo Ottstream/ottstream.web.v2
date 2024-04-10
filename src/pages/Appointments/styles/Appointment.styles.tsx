@@ -4,6 +4,11 @@ import styled from 'styled-components';
 export const CalendarViewWrapper = styled(Flex)`
   height: 100%;
   overflow: auto;
+
+  .rbc-time-view {
+    height: unset;
+    min-height: unset;
+  }
 `;
 
 export const Appointments = styled.div`
@@ -38,7 +43,7 @@ export const Appointments = styled.div`
     .rbc-calendar {
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow: unset;
     }
     .rbc-current-time-indicator {
       background-color: red;
@@ -162,7 +167,8 @@ export const Appointments = styled.div`
 
       .rbc-time-content {
         border-top: none;
-        margin-top: 29px;
+        //margin-top: 29px;
+        margin-top: 15px;
         .rbc-timeslot-group {
           border: none;
           .rbc-time-slot:nth-child(2) {
@@ -173,7 +179,7 @@ export const Appointments = styled.div`
     }
     .time-slot {
       > div {
-        height: 119px;
+        //height: 119px;
       }
     }
 

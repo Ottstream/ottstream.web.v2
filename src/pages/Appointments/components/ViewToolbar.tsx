@@ -12,7 +12,11 @@ const ViewToolbar = ({ color, name }: TViewToolbar) => {
           />
           <span>{name}</span>
         </>
-      ) : null}
+      ) : (
+        <>
+          <div style={{ height: '86px' }}></div>
+        </>
+      )}
     </ViewsToolbar>
   );
 };
