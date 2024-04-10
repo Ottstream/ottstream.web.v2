@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Modal as AntModal } from 'antd';
-
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import styled from 'styled-components';
 
 import { modalList, MODALS } from './constants';
 import { modalDispatcher, modalSelector } from './services/modalSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 function Modal() {
   const dispatch = useAppDispatch();
@@ -18,23 +18,40 @@ function Modal() {
       {modals.map(item => {
         const {
           modalType,
-          props: { closeAction, ...rest },
+          props: { closeAction, title, okText, ...rest },
         } = item;
         const onModalClose = () => {
           closeTopModal();
           closeAction?.();
         };
         return (
-          <AntModal key={modalType} open centered onCancel={onModalClose}>
+          <CustomModal
+            style={{
+              maxHeight: '90vh',
+              height: '100%',
+              overflow: 'auto',
+            }}
+            // footer={null}
+            open
+            centered
+            title={title}
+            key={modalType}
+            okText={okText}
+            width={'fit-content'}
+            onCancel={onModalClose}>
             {React.createElement(modalList[modalType as MODALS], {
               ...rest,
               closeAction,
             })}
-          </AntModal>
+          </CustomModal>
         );
       })}
     </>
   );
 }
+
+const CustomModal = styled(AntModal)`
+  border: 10px soild #5ff503;
+`;
 
 export default Modal;

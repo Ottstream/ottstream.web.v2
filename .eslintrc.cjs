@@ -19,9 +19,9 @@ module.exports = {
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   settings: {
-    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
     'import/resolver': {
       alias: {
@@ -46,19 +46,19 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
     ],
     'import/no-cycle': ['off', { maxDepth: '∞' }],
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["warn"],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn'],
     'no-console': 'off',
     'no-param-reassign': 'off',
     'import/no-extraneous-dependencies': 'off',

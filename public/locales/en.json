@@ -10,5 +10,9 @@
   "day": "Day",
   "today": "Today",
   "back": "Back",
-  "next": "Next"
+  "next": "Next",
+  "filter_by": "Filter By",
+  "select_installers": "Select Installers",
+  "search": "Search",
+  "all_installers": "All Installers"
 }

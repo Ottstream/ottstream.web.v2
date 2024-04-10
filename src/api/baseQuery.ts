@@ -7,9 +7,13 @@ import {
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/query/react';
 
-import { BaseQueryExtraOptions, FetchArgs } from './types';
+import {
+  BaseQueryExtraOptions,
+  FetchArgs,
+  fetchResetPasswordType,
+} from './types';
 
-const baseUrl = 'https://panelapidev.ottstream.live/v1/auth';
+const baseUrl = 'https://panelapidev.ottstream.live';
 export const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: async headers => {
@@ -49,5 +53,13 @@ export const baseQueryWithReauth: BaseQueryFn = async (
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithReauth,
-  endpoints: () => ({}),
+  endpoints: builder => ({
+    ressetPassword: builder.mutation({
+      query: ({ email, oneTimePass }: fetchResetPasswordType) => ({
+        url: '/v2/auth/forgot/login',
+        method: 'POST',
+        body: { email, oneTimePass },
+      }),
+    }),
+  }),
 });

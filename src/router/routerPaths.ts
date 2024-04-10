@@ -2,8 +2,12 @@ enum RouterPaths {
   Home = '/',
   Login = '/login',
   Registration = '/registration',
+  // RegistrationCompany = '/RegistrationCompanyInformation',
   CreateNewPassword = '/create-new-password',
-  ResetPassword = '/reset-password',
+  ForgotPassword = '/forgot-password',
+  ResetPasswords = '/reset-password',
+  NewPassword = '/new-password',
+  Thanks = '/thanks',
   NotFound = '*',
   Dashboard = '/dashboard',
   Review = '/review',
@@ -18,7 +22,6 @@ enum RouterPaths {
   Shippings = '/shippings',
   Flussonics = '/flussonics',
   Help = '/Help',
-
   Devices = '/devices',
   UserAuthentications = '/user-authentications',
   Venues = '/venues',
@@ -29,6 +32,7 @@ enum RouterPaths {
   Guests = '/guests',
   SessionToken = '/session-token',
   AuditTrail = '/audit-trail',
+  UserList = '/user-list',
   Roles = '/roles',
   Groups = '/groups',
   EventTypes = '/event-types',
@@ -39,6 +43,7 @@ enum RouterPaths {
   Fees = '/fees',
   Counterparties = '/counterparties',
   CommissionRules = '/commission-rules',
+  Chat = '/chat',
 }
 
 export default RouterPaths;

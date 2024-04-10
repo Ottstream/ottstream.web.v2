@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
-import type { MenuProps } from 'antd';
-import { Button, Layout, Menu } from 'antd';
+
 import {
-  MenuFoldOutlined,
   LeftOutlined,
+  MenuFoldOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+import { Button, Layout, Menu, MenuProps } from 'antd';
+import { ButtonProps } from 'antd/es/button/button';
+import { Outlet, useNavigate } from 'react-router-dom';
+import styled, { useTheme } from 'styled-components';
+
 import Icon from '@/components/Icon';
+import Header from '@/pages/Header/Header';
+
 import {
   FlexContainer,
-  SiderContainer,
-  LogoContainer,
   HeaderContainer,
-  Trigger,
+  LogoContainer,
   LogoName,
+  SiderContainer,
+  Trigger,
 } from './Layout.styles';
-import { useTheme } from 'styled-components';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -58,7 +62,7 @@ const items: MenuItem[] = [
   getItem('Help', 'help', <Icon name="help" />),
 ];
 
-export default function AdminLayout() {
+const AdminLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const theme = useTheme();
@@ -80,7 +84,7 @@ export default function AdminLayout() {
   };
 
   return (
-    <Layout>
+    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       <SiderContainer
         width={256}
         theme={theme}
@@ -98,7 +102,7 @@ export default function AdminLayout() {
       </SiderContainer>
       <Layout>
         <HeaderContainer>
-          <Button
+          <OTTSButton
             type="text"
             icon={<MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
@@ -108,11 +112,34 @@ export default function AdminLayout() {
               height: 64,
             }}
           />
+          <Header />
         </HeaderContainer>
-        <div style={{ overflow: 'auto' }}>
+        <div
+          style={{
+            display: 'flex',
+            flex: 1,
+            height: '100%',
+            overflow: 'hidden',
+          }}>
           <Outlet />
         </div>
       </Layout>
     </Layout>
   );
-}
+};
+
+// TODO: Should be moved to separate file
+
+// OTTS Button ----------------------------------------------------------------
+interface OTTSButtonPropsI extends ButtonProps {}
+const OTTSButton = ({ ...props }: OTTSButtonPropsI) => {
+  return (
+    <>
+      <OTTSButtonComponent {...props}>{props.children}</OTTSButtonComponent>
+    </>
+  );
+};
+
+const OTTSButtonComponent = styled(Button)``;
+
+export default AdminLayout;

@@ -10,7 +10,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+//    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -28,13 +28,8 @@
     "paths": {
       "@/*": ["src/*"],
       "Assets/*": ["src/assets/*"],
-      "Pages/*": ["src/pages/*"],
-    },
+      "Pages/*": ["src/pages/*"]
+    }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.ts",
-    "**/**/*.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "**/**/*.ts", "**/**/*.tsx"]
 }
