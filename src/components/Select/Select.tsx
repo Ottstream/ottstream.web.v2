@@ -5,12 +5,15 @@ import { ISelectProps } from './types';
 const { Option } = AntSelect;
 
 const Select: React.FC<ISelectProps> = props => {
-  const { label, name, options, ...rest } = props;
+  const { label, className = '', required, name, options, ...rest } = props;
   const [field] = useField(name);
 
   return (
-    <div>
-      <label>{label && label}</label>
+    <div className={className}>
+      <label>
+        {required && <span>*</span>}
+        {label && label}
+      </label>
       <AntSelect {...field} {...rest}>
         {options.map((option: any) => (
           <Option key={option.value} value={option.value}>

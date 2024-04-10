@@ -18,7 +18,7 @@ function Modal() {
       {modals.map(item => {
         const {
           modalType,
-          props: { closeAction, ...rest },
+          props: { closeAction, title, okText, ...rest },
         } = item;
         const onModalClose = () => {
           closeTopModal();
@@ -31,10 +31,13 @@ function Modal() {
               height: '100%',
               overflow: 'auto',
             }}
-            footer={null}
-            key={modalType}
+            // footer={null}
             open
             centered
+            title={title}
+            key={modalType}
+            okText={okText}
+            width={'fit-content'}
             onCancel={onModalClose}>
             {React.createElement(modalList[modalType as MODALS], {
               ...rest,

@@ -37,6 +37,9 @@ import History from './History.svg?react';
 import Installers from './Installers.svg?react';
 import LogoSM from './LogoSmall.svg?react';
 import Map from './Map.svg?react';
+import Filter from './Filter.svg?react';
+import Close from './Close.svg?react';
+import Plus from './Plus.svg?react';
 import Discount from './Percent.svg?react';
 import Providers from './Providers.svg?react';
 import Review from './Review.svg?react';
@@ -92,6 +95,7 @@ const icons: Icons = {
   jpg: JPG,
   docx: DOCX,
   bellHeader: BellHeader,
+  plus: Plus,
 };
 
 export default icons;

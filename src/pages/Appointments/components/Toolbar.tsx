@@ -72,7 +72,7 @@ const CustomToolbar = (props: ToolbarProps) => {
       return `${moment(date).startOf('week').format('MMMM Do YYYY')} - ${moment(date).endOf('week').format('MMMM Do YYYY')}`;
     }
     return '';
-  }, [label, date]);
+  }, [label, date, view]);
 
   return (
     <>
@@ -80,6 +80,7 @@ const CustomToolbar = (props: ToolbarProps) => {
         <Flex justify="space-between">
           <div className="picker">
             <DatePicker
+              showNow={false}
               onChange={goToSpecificDate}
               allowClear={false}
               suffixIcon={<Icon name="datepicker" size={24} />}

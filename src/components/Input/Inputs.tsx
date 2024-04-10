@@ -11,6 +11,7 @@ const Inputs = ({
   tooltip,
   showPasswordToggle,
   closePasswordLength,
+  className = '',
   ...props
 }: {
   [x: string]: any;
@@ -29,7 +30,7 @@ const Inputs = ({
   };
 
   return (
-    <div>
+    <div className={className}>
       <label>
         <h5 className="smallText">
           {label && label}

@@ -46,6 +46,9 @@ const DrawerWrapper = styled.div<{
     css`
       ${props.customStyles as string}
     `}
+  @media (max-width: ${props => props.theme.breakpoints.lg}) {
+    min-width: ${props => (props.open ? '300px' : 0)};
+  }
 `;
 
 const DrawerCard = styled(Card)`
@@ -59,7 +62,6 @@ const DrawerCard = styled(Card)`
   }
   svg {
     cursor: pointer;
-    // margin-top: 7px;
     margin-left: 16px;
   }
 `;
