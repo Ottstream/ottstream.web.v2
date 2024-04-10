@@ -1,4 +1,3 @@
-import { Flex } from 'antd';
 import {
   Calendar,
   DateLocalizer,
@@ -7,8 +6,11 @@ import {
   ViewProps,
   Views,
 } from 'react-big-calendar';
-import ViewToolbar from './ViewToolbar';
+
+import { CalendarViewWrapper } from 'Pages/Appointments/styles/Appointment.styles';
+
 import { EventComponent } from './EventComponent';
+import ViewToolbar from './ViewToolbar';
 import { calendarEvents, timeSlotMinValue } from '../constants';
 import { useOpenModalHandler } from '../hooks/useOpenModalHandler';
 import { useWeekFormat } from '../hooks/useWeekFormat';
@@ -25,7 +27,7 @@ export default function DayView({
   const { formats } = useWeekFormat();
 
   return (
-    <Flex justify="center" gap={'16px'}>
+    <CalendarViewWrapper justify="center" gap={'16px'}>
       <Calendar
         selectable
         components={{
@@ -83,7 +85,7 @@ export default function DayView({
         }
         onSelectEvent={event => console.log(1, event)}
       />
-    </Flex>
+    </CalendarViewWrapper>
   );
 }
 

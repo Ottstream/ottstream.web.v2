@@ -5,10 +5,12 @@ import {
   NavigateAction,
   ViewProps,
 } from 'react-big-calendar';
-import { Flex } from 'antd';
+
+import { CalendarViewWrapper } from 'Pages/Appointments/styles/Appointment.styles';
+
+import { EventComponent } from './EventComponent';
 import ViewToolbar from './ViewToolbar';
 import { calendarEvents } from '../constants';
-import { EventComponent } from './EventComponent';
 import { useOpenModalHandler } from '../hooks/useOpenModalHandler';
 import { useWeekFormat } from '../hooks/useWeekFormat';
 
@@ -27,7 +29,7 @@ export default function MonthView(
   const { formats } = useWeekFormat();
 
   return (
-    <Flex justify="center" gap={'16px'}>
+    <CalendarViewWrapper justify="center" gap={'16px'}>
       <Calendar
         selectable
         events={calendarEvents}
@@ -74,7 +76,7 @@ export default function MonthView(
         startAccessor="start"
         endAccessor="end"
       />
-    </Flex>
+    </CalendarViewWrapper>
   );
 }
 

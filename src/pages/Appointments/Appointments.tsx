@@ -59,7 +59,11 @@ const AppointmentsPage = () => {
           { title: 'Calendar Events' },
         ]}
       />
-      <Flex>
+      <div
+        style={{
+          display: 'flex',
+          overflow: 'hidden',
+        }}>
         <div className="container">
           <Calendar
             selectable
@@ -81,7 +85,7 @@ const AppointmentsPage = () => {
         <Drawer open={isOpen} onClose={closeFilterSection} title={t(title)}>
           <FilterComponenet key={componentName} />
         </Drawer>
-      </Flex>
+      </div>
       <AddButton onClick={handleOpenModal} isDrawerOpen={isOpen}>
         <Icon name="plus" size={48} />
       </AddButton>

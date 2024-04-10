@@ -5,9 +5,11 @@ import {
   NavigateAction,
   ViewProps,
 } from 'react-big-calendar';
-import { Flex } from 'antd';
-import ViewToolbar from './ViewToolbar';
+
+import { CalendarViewWrapper } from 'Pages/Appointments/styles/Appointment.styles';
+
 import { EventComponent } from './EventComponent';
+import ViewToolbar from './ViewToolbar';
 import { calendarEvents, timeSlotMinValue } from '../constants';
 import { useOpenModalHandler } from '../hooks/useOpenModalHandler';
 import { useWeekFormat } from '../hooks/useWeekFormat';
@@ -27,7 +29,7 @@ export default function WorkWeekView(
   const { formats } = useWeekFormat();
 
   return (
-    <Flex justify="center" gap={'16px'}>
+    <CalendarViewWrapper justify="center" gap={'16px'}>
       <Calendar
         components={{
           toolbar: props => <ViewToolbar {...props} />,
@@ -85,7 +87,7 @@ export default function WorkWeekView(
         }
         onSelectEvent={event => console.log(1, event)}
       />
-    </Flex>
+    </CalendarViewWrapper>
   );
 }
 

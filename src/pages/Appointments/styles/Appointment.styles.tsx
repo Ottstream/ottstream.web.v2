@@ -1,5 +1,10 @@
-import { Badge, Button } from 'antd';
+import { Badge, Button, Flex } from 'antd';
 import styled from 'styled-components';
+
+export const CalendarViewWrapper = styled(Flex)`
+  height: 100%;
+  overflow: auto;
+`;
 
 export const Appointments = styled.div`
   background: #fff;
@@ -9,7 +14,7 @@ export const Appointments = styled.div`
   justify-content: space-between;
 
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
 
   .breadcrumb {
     // position: sticky;
@@ -25,11 +30,15 @@ export const Appointments = styled.div`
     position: relative;
     z-index: 998;
     background-color: white;
-    margin: 24px;
+    padding: 24px;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+
     .rbc-calendar {
       width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
     .rbc-current-time-indicator {
       background-color: red;
