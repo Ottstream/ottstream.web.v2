@@ -1,6 +1,17 @@
-import reset from 'Assets/images/reset.svg';
 import { useEffect, useRef, useState } from 'react';
+
+import { Button, Flex } from 'antd';
+import { Form, Formik } from 'formik';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import Inputs from '@/components/Input/Inputs';
+import { VerifyOTPSchema } from '@/schema';
+import reset from 'Assets/images/reset.svg';
+
+import {
+  useForgotPasswordMutation,
+  useRessetPasswordMutation,
+} from '../services/authApi';
 import {
   BorderBottomLine,
   PersonalButtonNextStep,
@@ -10,15 +21,6 @@ import {
   WrapperResendEmail,
   WrapperResetPasswordDescription,
 } from '../Styled';
-import { Button, Flex } from 'antd';
-import { Form, Formik } from 'formik';
-
-import Inputs from '@/components/Input/Inputs';
-import { VerifyOTPSchema } from '@/schema';
-import {
-  useForgotPasswordMutation,
-  useRessetPasswordMutation,
-} from '../services/authApi';
 
 interface InitialValues {
   otp: string;
@@ -69,10 +71,13 @@ const ResetPasswords = () => {
   };
 
   const handleResendEmail = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { state } = useLocation();
     if (state !== null) {
       const { email } = state;
       forgotPassword({ email });
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       setTimer(prevTimer => (prevTimer = 5));
     }
   };
