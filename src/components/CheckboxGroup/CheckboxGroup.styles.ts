@@ -1,6 +1,6 @@
 import { Divider } from 'antd';
-import styled from 'styled-components';
 import { Form } from 'formik';
+import styled from 'styled-components';
 
 export const StyledDivider = styled(Divider)`
   margin: 13px 0;
@@ -16,6 +16,7 @@ export const StyedInput = styled.div`
 
 export const CheckboxContainer = styled.div<{ color: string }>`
   width: 100%;
+  height: 100%;
   label {
     margin-right: 8px;
   }

@@ -1,10 +1,13 @@
-import { SignInSchema } from '@/schema';
-import hello from 'Assets/images/hello.svg';
 import { Checkbox } from 'antd';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
 import Inputs from '@/components/Input/Inputs';
+import { SignInSchema } from '@/schema';
+import hello from 'Assets/images/hello.svg';
+
+import styles from './index.module.css';
+import { useFetchSignInMutation } from '../services/authApi';
 import {
   CheckboxContainerSignIn,
   PersonalButtonNextStep,
@@ -16,8 +19,6 @@ import {
   WrapperPersonalInformation,
 } from '../Styled';
 import { LoginInitialValuesType, LoginValuesType } from '../types';
-import styles from './index.module.css';
-import { useFetchSignInMutation } from '../services/authApi';
 
 const initialValues: LoginInitialValuesType = {
   email: '',

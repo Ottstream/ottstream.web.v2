@@ -18,7 +18,7 @@ The project follows a well-organized structure to enhance maintainability, scala
 
 **`index.html`**: Entry point HTML file IMPORTANT
 
-**`/src/main.tsx`**: Entry Point tsx file (replacing index.tsx)
+**`/src/main.tsx`**: Entry Point tsx file (replacing Chat.tsx)
 
 - **`/public`**: This directory contains public assets and static files that can be accessed directly. It is typically used for assets like images, fonts, or any file that should be publicly accessible.
 

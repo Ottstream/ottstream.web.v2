@@ -203,6 +203,7 @@ export const GlobalStyle = createGlobalStyle`
 
   #root{
 		width: 100%;
+    height: 100%;
     box-sizing: border-box;
     min-height: 100%;
   }

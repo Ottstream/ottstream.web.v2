@@ -37,7 +37,10 @@ export type CalendarEvents = {
   end: Date;
 };
 
-export type TViewToolbar = ToolbarProps & Partial<TInstallersList>;
+export type TViewToolbar = ToolbarProps &
+  Partial<TInstallersList> & {
+    shouldHaveMoreHeight?: boolean;
+  };
 
 export type EventStatuses =
   | 'success'

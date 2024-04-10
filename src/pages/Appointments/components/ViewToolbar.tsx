@@ -1,9 +1,13 @@
 import { InstallerImage, ViewsToolbar } from '../styles/Appointment.styles';
 import { TViewToolbar } from '../types/types';
 
-const ViewToolbar = ({ color, name }: TViewToolbar) => {
+const ViewToolbar = ({
+  color,
+  name,
+  shouldHaveMoreHeight = false,
+}: TViewToolbar) => {
   return (
-    <ViewsToolbar>
+    <ViewsToolbar shouldHaveMoreHeight={shouldHaveMoreHeight}>
       {name ? (
         <>
           <InstallerImage
@@ -12,7 +16,12 @@ const ViewToolbar = ({ color, name }: TViewToolbar) => {
           />
           <span>{name}</span>
         </>
-      ) : null}
+      ) : (
+        <>
+          <div
+            style={{ height: shouldHaveMoreHeight ? '100px' : '200px' }}></div>
+        </>
+      )}
     </ViewsToolbar>
   );
 };

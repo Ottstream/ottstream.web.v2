@@ -1,8 +1,26 @@
-import { Badge, Button } from 'antd';
+import { Badge, Flex } from 'antd';
 import styled from 'styled-components';
+
+export const CalendarViewWrapper = styled(Flex)`
+  height: 100%;
+  overflow: auto;
+
+  .rbc-time-view {
+    height: unset;
+    min-height: unset;
+  }
+`;
 
 export const Appointments = styled.div`
   background: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  overflow: hidden;
+
   .breadcrumb {
     // position: sticky;
     // top: 0;
@@ -17,11 +35,15 @@ export const Appointments = styled.div`
     position: relative;
     z-index: 998;
     background-color: white;
-    margin: 24px;
+    padding: 24px;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+
     .rbc-calendar {
       width: 100%;
+      height: 100%;
+      overflow: unset;
     }
     .rbc-current-time-indicator {
       background-color: red;
@@ -156,7 +178,7 @@ export const Appointments = styled.div`
     }
     .time-slot {
       > div {
-        height: 119px;
+        //height: 119px;
       }
     }
 
@@ -166,6 +188,14 @@ export const Appointments = styled.div`
         display: none;
       }
     }
+  }
+  .ant-radio-button-wrapper {
+    border-color: #d9d9d9;
+    color: #0a3c68;
+  }
+  .ant-radio-button-wrapper-checked {
+    border-color: #01b2b8 !important;
+    color: #01b2b8;
   }
 `;
 
@@ -228,8 +258,11 @@ export const InstallerImage = styled.img`
   box-shadow: 1px 4px 2px -3px rgba(0, 0, 0, 0.25);
 `;
 
-export const ViewsToolbar = styled.div`
+export const ViewsToolbar = styled.div<{ shouldHaveMoreHeight?: boolean }>`
   height: 96px;
+  //min-height: 96px;
+  min-height: ${props => (props.shouldHaveMoreHeight ? '119px' : '96px')};
+
   // position: sticky;
   // top: 162px;
   z-index: 99;

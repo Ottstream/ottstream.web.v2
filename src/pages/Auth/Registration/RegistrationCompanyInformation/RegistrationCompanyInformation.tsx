@@ -27,6 +27,7 @@ const RegistrationCompanyInformation = () => {
     label: country.code,
   }));
   const handleCountryChange = (value: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const country = countryCodes.find(country => country.code === value);
     if (country) {
       setFieldValue('phone.countryCode', country.code);
@@ -46,6 +47,7 @@ const RegistrationCompanyInformation = () => {
     const selectedValue = e.target.value;
     setFieldValue('clientAmount', selectedValue);
   };
+
   return (
     <>
       <PersonalInformationTitle className="companyRegTitle">
@@ -88,6 +90,8 @@ const RegistrationCompanyInformation = () => {
               onChange={handleCountryChange}
               options={AllOptions}
               showSearch
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
               name="phone.countryCode"
             />
           </label>
@@ -193,6 +197,7 @@ const RegistrationCompanyInformation = () => {
         <TextAreas
           name="description"
           placeholder="* Briefly describe your project"
+          label={''}
         />
       </WrapperInputsContainer>
     </>

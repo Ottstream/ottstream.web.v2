@@ -26,6 +26,7 @@ const pageList = [
   'Dashboard',
   'Users',
   'Registration',
+  'Chat',
   'RegistrationCompanyInformation',
   'ForgotPassword',
   'ResetPasswords',
@@ -45,6 +46,8 @@ const pageList = [
   'Help',
 ];
 const modules = import.meta.glob('../pages/**/*.tsx');
+// const modules = import.meta.glob('../pages/**/!(*.styles).tsx');
+// const modules = import.meta.glob('../pages/**/!(*.styles|Components)/**/*.tsx');
 
 type Props = {
   loading?: ElementType;
@@ -69,9 +72,9 @@ function mapPagesToModules(
   moduleList: Record<string, () => Promise<unknown>>,
 ) {
   return pages.reduce((acc, page) => {
-    const modulePath = Object.keys(modules).find(path =>
-      path.includes(`/${page}/${page}`),
-    );
+    const modulePath = Object.keys(modules).find(path => {
+      return path.includes(`/${page}/${page}`);
+    });
     if (modulePath) {
       acc[page] = lazyRoute({
         factory: moduleList[modulePath] as () => JSX.Element['type'],

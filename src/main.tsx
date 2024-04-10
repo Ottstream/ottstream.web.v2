@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { ConfigProvider } from 'antd';
-
 import ReactDOM from 'react-dom/client';
-
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import './index.css';
@@ -11,13 +10,11 @@ import './index.css';
 import '@/i18n/i18n';
 import { ThemeProvider } from 'styled-components';
 
+import { GlobalStyle } from '@/themes/GlobalStyle';
+
 import Modal from './components/Modal/Modal';
 import router from './router/router';
 import { store } from './store/store';
-
-import { Provider } from 'react-redux';
-
-import { GlobalStyle } from './themes/GlobalStyle';
 import theme from './themes/theme';
 import { antTheme } from './utils/antTheme';
 

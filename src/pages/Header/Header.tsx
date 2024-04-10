@@ -1,13 +1,12 @@
-import ButtonIcon from '@/components/ButtonIcon/ButtonIcon';
-
 import { PlusOutlined } from '@ant-design/icons';
-import ronaldo from '@/assets/images/ronaldo.jpg';
-import {
-  BellTwoTone,
-  MessageTwoTone,
-  ThunderboltTwoTone,
-} from '@ant-design/icons/lib/icons';
 import { Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
+import ronaldo from '@/assets/images/ronaldo.jpg';
+import ButtonIcon from '@/components/ButtonIcon/ButtonIcon';
+import Icon from '@/components/Icon';
+
+import OTTSButtonTypeTwo from './OTTSButtonTypeTwo/OTTSButtonTypeTwo';
 import {
   UserFullName,
   UserFullNameWrapper,
@@ -15,9 +14,9 @@ import {
   UserPosition,
   UserWrapper,
 } from './Styled/Header.styled';
-import OTTSButtonTypeTwo from './OTTSButtonTypeTwo/OTTSButtonTypeTwo';
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <>
       <OTTSButtonTypeTwo
@@ -27,22 +26,27 @@ const Header = () => {
         <p>Add Client</p>
       </OTTSButtonTypeTwo>
       <Input style={{ margin: '10px' }} placeholder="Search" />
+
       <ButtonIcon
         type="text"
-        icon={<MessageTwoTone twoToneColor={'#165d9b'} />}
-        onClick={() => {}}
+        icon={<Icon name="chat" size={22} />}
+        onClick={() => {
+          navigate('/chat/');
+        }}
         hasLeftBorder
         count={7}
       />
+
       <ButtonIcon
         type="text"
-        icon={<ThunderboltTwoTone twoToneColor={'#165d9b'} />}
+        icon={<Icon name="sound" size={22} />}
         onClick={() => {}}
         hasLeftBorder
       />
+
       <ButtonIcon
         type="text"
-        icon={<BellTwoTone twoToneColor={'#165d9b'} />}
+        icon={<Icon name="bellHeader" size={22} />}
         onClick={() => {}}
         hasLeftBorder
         hasRightBorder
