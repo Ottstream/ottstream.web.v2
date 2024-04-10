@@ -1,4 +1,3 @@
-import { useFetchSignInMutation } from '@/api/baseQuery';
 import { SignInSchema } from '@/schema';
 import hello from 'Assets/images/hello.svg';
 import { Checkbox } from 'antd';
@@ -18,6 +17,7 @@ import {
 } from '../Styled';
 import { LoginInitialValuesType, LoginValuesType } from '../types';
 import styles from './index.module.css';
+import { useFetchSignInMutation } from '../services/authApi';
 
 const initialValues: LoginInitialValuesType = {
   email: '',

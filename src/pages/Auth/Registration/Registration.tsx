@@ -7,7 +7,6 @@ import { initialValuesSignUp, SignupSchema } from '@/schema';
 import RegistrationCompanyInformation from './RegistrationCompanyInformation/RegistrationCompanyInformation';
 import RegistrationPersonaInformation from './RegistrationPersonalInformation/RegistrationPersonaInformation';
 
-import { useFetchSignUpMutation } from '@/api/baseQuery';
 import ArrowLeftIcon from '@/components/Icon/Icon';
 import { InitialValuesSignUp } from '@/schema/types';
 import {
@@ -16,6 +15,7 @@ import {
   WrapperPersonalInformation,
 } from '../Styled';
 import { FormikActions } from '../types';
+import { useFetchSignUpMutation } from '../services/authApi';
 const steps = ['Personal Information', 'Company Information'];
 
 function _renderStepContent(step: number) {
@@ -109,8 +109,8 @@ export default function Registration() {
             {activeStep === 1 && (
               <CompanyInformationWrapper>
                 <RegistrationCompanyInformation />
-                <button onClick={handleBack} className='backStep'>
-                  <ArrowLeftIcon/>
+                <button onClick={handleBack} className="backStep">
+                  <ArrowLeftIcon />
                 </button>
                 <PersonalButtonNextStep disabled={isSubmitting} type="submit">
                   Sign Up

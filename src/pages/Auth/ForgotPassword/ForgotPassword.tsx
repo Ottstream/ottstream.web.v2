@@ -3,7 +3,6 @@ import forgot from 'Assets/images/forgot.svg';
 import { ResetPasswordSchema } from '@/schema';
 import { Form, Formik } from 'formik';
 
-import { useForgotPasswordMutation } from '@/api/baseQuery';
 import Inputs from '@/components/Input/Inputs';
 
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +13,7 @@ import {
   WrapperInputs,
   WrapperPersonalInformation,
 } from '../Styled';
+import { useForgotPasswordMutation } from '../services/authApi';
 
 interface InitialValues {
   email: string;
