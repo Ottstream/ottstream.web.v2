@@ -10,12 +10,13 @@ const TextAreas = ({
   label,
   minRows = 3,
   maxRows = 5,
+  className = '',
   ...props
 }: TextAreasAttributeI) => {
   const [field, meta, helpers] = useField(props);
 
   return (
-    <div>
+    <div className={className}>
       {label && <Typography.Title level={5}>{label}</Typography.Title>}
       <TextArea {...field} {...props} autoSize={{ minRows, maxRows }} />
       {meta.touched && meta.error ? (

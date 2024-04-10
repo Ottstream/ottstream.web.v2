@@ -1,22 +1,28 @@
 import moment from 'moment';
 import { Breadcrumb, Flex } from 'antd';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-
-import { Appointments } from './styles/Appointment.styles';
-import DayView from './Day';
-import Drawer from '@/components/Drawer/Drawer';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useTranslation } from 'react-i18next';
+
 import {
   appointmentDispatcher,
   appointmentSelector,
 } from './services/appointmentSlice';
-import { useTranslation } from 'react-i18next';
+import { useOpenModalHandler } from './hooks/useOpenModalHandler';
+
 import {
   FilterByMap,
   FilterByProperties,
   FilterByInstallers,
   CustomToolbar,
-} from './components/index';
+  MonthView,
+  WorkWeekView,
+  WeekView,
+  DayView,
+} from './components';
+import Icon from '@/components/Icon';
+import Drawer from '@/components/Drawer/Drawer';
+import { AddButton, Appointments } from './styles/Appointment.styles';
 
 const localizer = momentLocalizer(moment);
 
@@ -31,8 +37,17 @@ const AppointmentsPage = () => {
   const dispatch = useAppDispatch();
   const { closeFilterSection } = appointmentDispatcher(dispatch);
   const { isOpen, title, componentName } = useAppSelector(appointmentSelector);
+  const { openModalHandler } = useOpenModalHandler();
 
   const FilterComponenet = componentMap[componentName] || FilterByInstallers;
+
+  const handleOpenModal = () =>
+    openModalHandler({
+      start: new Date(),
+      end: new Date(),
+      slots: [],
+      action: 'click',
+    });
 
   return (
     <Appointments>
@@ -52,17 +67,14 @@ const AppointmentsPage = () => {
               toolbar: CustomToolbar,
             }}
             localizer={localizer}
-            views={{
-              month: true,
-              week: true,
-              work_week: true,
-              day: DayView as never,
-            }}
-            onDoubleClickEvent={event => console.log(3, event)}
-            onSelectEvent={event => console.log(1, event)}
-            onSelectSlot={event => console.log(2, event)}
-            startAccessor="start"
-            endAccessor="end"
+            views={
+              {
+                month: MonthView,
+                week: WeekView,
+                work_week: WorkWeekView,
+                day: DayView,
+              } as never
+            }
           />
         </div>
 
@@ -70,6 +82,9 @@ const AppointmentsPage = () => {
           <FilterComponenet key={componentName} />
         </Drawer>
       </Flex>
+      <AddButton onClick={handleOpenModal} isDrawerOpen={isOpen}>
+        <Icon name="plus" size={48} />
+      </AddButton>
     </Appointments>
   );
 };
