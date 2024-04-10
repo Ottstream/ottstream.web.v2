@@ -9,7 +9,7 @@ export const Appointments = styled.div`
   justify-content: space-between;
 
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 
   .breadcrumb {
     // position: sticky;
