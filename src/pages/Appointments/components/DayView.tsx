@@ -23,7 +23,7 @@ export default function DayView({
   // events,
 }: Omit<ViewProps, 'date'> & { date: Date }) {
   const currRange = DayView.range(date, { localizer });
-  const { openModalHandler } = useOpenModalHandler();
+  const { openModalHandler, openOverviewHandler } = useOpenModalHandler();
   const { formats } = useWeekFormat();
 
   return (
@@ -64,7 +64,7 @@ export default function DayView({
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
       />
       <Calendar
         selectable
@@ -85,7 +85,7 @@ export default function DayView({
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
-        onSelectEvent={event => console.log(1, event)}
+        onSelectEvent={event => openOverviewHandler(event)}
       />
     </CalendarViewWrapper>
   );

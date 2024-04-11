@@ -1,6 +1,7 @@
 import { modalDispatcher } from '@/components/Modal/services/modalSlice';
 import { useAppDispatch } from '@/store/hooks';
 import { SlotInfo } from 'react-big-calendar';
+import { CalendarEvents } from '../types/types';
 
 export const useOpenModalHandler = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,17 @@ export const useOpenModalHandler = () => {
       },
     });
   };
+  const openOverviewHandler = (event: CalendarEvents) => {
+    openModal({
+      modalType: 'viewAppointment',
+      props: {
+        closeAction: () => console.log('closed'),
+        event,
+        footer: null,
+        className: event.status,
+      },
+    });
+  };
 
-  return { openModalHandler };
+  return { openModalHandler, openOverviewHandler };
 };

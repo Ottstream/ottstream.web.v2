@@ -25,7 +25,7 @@ export default function MonthView(
     // events,
   } = props;
   const currRange = MonthView.range(date, { localizer });
-  const { openModalHandler } = useOpenModalHandler();
+  const { openModalHandler, openOverviewHandler } = useOpenModalHandler();
   const { formats } = useWeekFormat();
 
   return (
@@ -49,32 +49,34 @@ export default function MonthView(
         defaultView="month"
         date={date}
         className="month_view"
-        // onSelectEvent={event => console.log('onSelectEvent', event)}
+        onSelectEvent={event => openOverviewHandler(event)}
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
       />
       <Calendar
         selectable
+        events={calendarEvents}
         components={{
           toolbar: props => (
             <ViewToolbar {...props} color="#5562EB" name="John Adams" />
           ),
+          event: props => <EventComponent {...props} />,
         }}
-        date={date}
         localizer={localizer}
         views={{
           month: true,
         }}
         formats={formats}
-        className="month_view"
+        startAccessor="start"
+        endAccessor="end"
         defaultView="month"
-        onSelectEvent={event => console.log(1, event)}
+        date={date}
+        className="month_view"
+        onSelectEvent={event => openOverviewHandler(event)}
         onSelectSlot={event =>
           event.action === 'doubleClick' ? openModalHandler(event) : {}
         }
-        startAccessor="start"
-        endAccessor="end"
       />
     </CalendarViewWrapper>
   );

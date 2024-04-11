@@ -66,3 +66,9 @@ export const FormContainer = styled.div`
     }
   }
 `;
+
+export const FlexItem = styled.div<{ width: string }>`
+  width: ${props => props.width}px;
+  padding: 16px;
+  border-bottom: 1px solid #a5aac6;
+`;

@@ -230,11 +230,32 @@ export const GlobalStyle = createGlobalStyle`
 		line-height: 22px;
 	}
   
-  .smallText {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-  }
+  	.smallText {
+		font-family: Montserrat;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 22px;
+	}
+  	.Active {
+		.ant-modal-content{
+			background-color: #F2FBFB
+		}
+  	}
+   	.Completed {
+		.ant-modal-content{
+			background-color: #EEFAE9
+		}
+  	}
+	.Process {
+		.ant-modal-content{
+			background-color: #FFF7E8
+		}
+  	}
+	.Canceled {
+		.ant-modal-content{
+			background-color: #FFEEEE
+		}
+  	}
+  
 `;
