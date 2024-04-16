@@ -1,0 +1,12 @@
+.forgotPassword {
+  width: 112px;
+  flex-shrink: 0;
+  color: var(--dark-gray, #666);
+  text-align: right;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  text-decoration-line: underline;
+}

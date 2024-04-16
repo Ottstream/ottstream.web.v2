@@ -25,7 +25,13 @@ function Modal() {
           closeAction?.();
         };
         return (
-          <AntModal key={modalType} open centered onCancel={onModalClose}>
+          <AntModal
+            open
+            centered
+            key={modalType}
+            width={'fit-content'}
+            onCancel={onModalClose}
+            {...rest}>
             {React.createElement(modalList[modalType as MODALS], {
               ...rest,
               closeAction,

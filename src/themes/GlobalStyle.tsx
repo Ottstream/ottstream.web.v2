@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-// eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle`
 
 /* reset default css styles */
@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		border: 0;
+		font-family: Montserrat
 	}
 	*,
 	:after,
@@ -203,7 +204,7 @@ export const GlobalStyle = createGlobalStyle`
   #root{
 		width: 100%;
     box-sizing: border-box;
-    /* min-height: 100%; */
+    min-height: 100%;
   }
 
 	.heading1 {
@@ -227,5 +228,33 @@ export const GlobalStyle = createGlobalStyle`
 		font-weight: 500;
 		line-height: 22px;
 	}
-
+  
+  	.smallText {
+		font-family: Montserrat;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 22px;
+	}
+  	.Active {
+		.ant-modal-content{
+			background-color: #F2FBFB
+		}
+  	}
+   	.Completed {
+		.ant-modal-content{
+			background-color: #EEFAE9
+		}
+  	}
+	.Process {
+		.ant-modal-content{
+			background-color: #FFF7E8
+		}
+  	}
+	.Canceled {
+		.ant-modal-content{
+			background-color: #FFEEEE
+		}
+  	}
+  
 `;
