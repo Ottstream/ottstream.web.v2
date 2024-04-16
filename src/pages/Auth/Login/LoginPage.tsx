@@ -2,7 +2,7 @@ import { SignInSchema } from '@/schema';
 import hello from 'Assets/images/hello.svg';
 import { Checkbox } from 'antd';
 import { Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Inputs from '@/components/Input/Inputs';
 import {
@@ -27,11 +27,23 @@ const initialValues: LoginInitialValuesType = {
 
 const LoginPage = () => {
   const [fetchSignIn, data] = useFetchSignInMutation();
-
+  const naigate = useNavigate();
   const handleSubmit = (values: LoginValuesType) => {
-    const { email, password } = values;
+    const { email, password, rememberMe } = values;
 
-    fetchSignIn({ email, password });
+    fetchSignIn({ email, password }).then((res: any) => {
+      if (res.data.tokens.access.token) {
+        if (rememberMe) {
+          localStorage.setItem('token', res.data.tokens.access.token);
+          localStorage.setItem('refresh', res.data.tokens.refresh.token);
+          naigate('/dashboard');
+        } else {
+          sessionStorage.setItem('token', res.data.tokens.access.token);
+          sessionStorage.setItem('refresh', res.data.tokens.refresh.token);
+          naigate('/dashboard');
+        }
+      }
+    });
   };
 
   return (
